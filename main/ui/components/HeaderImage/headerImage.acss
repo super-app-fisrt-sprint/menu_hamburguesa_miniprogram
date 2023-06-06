@@ -1,0 +1,18 @@
+.header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 3rpx 5rpx 5rpx rgba(0, 0, 0, 0.25);
+  background-image: linear-gradient(to right,#313A41, #040F16);
+  z-index: 1;
+}
+
+.header image {
+  margin-top: 10%;
+  width: 45%;
+  height: 45%;
+}

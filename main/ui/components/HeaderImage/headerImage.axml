@@ -1,0 +1,3 @@
+<view class="header" style="{{style}}">
+  <image mode="scaleToFill" src="{{image}}" />
+</view>

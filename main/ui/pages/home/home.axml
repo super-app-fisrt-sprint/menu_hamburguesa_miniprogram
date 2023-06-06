@@ -1,0 +1,25 @@
+<view class="container-menu">
+  <view class="menu-header">
+
+ 
+      <view class="menu-header_logo">
+        <image mode="scaleToFill" class="menu-header__image" src="/main/ui/assets/logo-claro-blanco.svg" />
+      </view>
+      <view class="menu-header__info">
+        <text class="menu-header_image__text_name">Compensar</text>
+        <divider  lineHeight="2" lineColor="#ffffff" />
+        <text class="menu-header_image__text_nit">Nit: 800.198.456-1</text>
+      </view>
+   
+
+
+  </view>
+  <view class="menu-grid-access">
+
+  </view>
+
+  <view class="menu-banner">
+
+  </view>
+
+</view>

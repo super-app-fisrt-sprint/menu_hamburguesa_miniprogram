@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "test": "jest --coverage",
+    "lint": "eslint .",
+    "fix": "eslint --fix ."
+  },
+  "dependencies": {
+    "antd-mini": "^1.8.3",
+    "jest": "^29.5.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "functions": 100,
+        "statements": 80
+      }
+    },
+    "collectCoverageFrom": [
+      "**/main/domain/**/*.{js,jsx}"
+    ]
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-standard": "^17.1.0"
+  }
+}
