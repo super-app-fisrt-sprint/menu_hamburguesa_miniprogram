@@ -42,6 +42,7 @@
 }
 
 .menu-header_logo {
+  margin-top: 10rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,8 +74,8 @@
 .menu-grid-access {
   border: 1px solid red;
   position: absolute;
-  top: 0;
-  /* left: 0; */
+  top: 1%;
+  left: 1%;
   margin-top: 190px;
   margin-left: 15px;
   width: 91%;
