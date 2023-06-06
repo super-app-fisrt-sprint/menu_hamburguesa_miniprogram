@@ -1,6 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
 .container-menu {
-  background-color: violet;
+  background-color: #f5f5fc;
   height: 100vh;
+  overflow-y: scroll;
+  z-index: 997;
 }
 
 .menu-header {
@@ -15,7 +21,8 @@
   justify-content: space-evenly;
   background-image: linear-gradient(to right, #313a41, #040f16);
   border-radius: 0 0 15px 15px;
-  height: 400rpx;
+  height: 450rpx;
+  z-index: 1;
 }
 
 .menu-header_container {
@@ -36,7 +43,6 @@
   color: #ffffff;
   font-weight: bold;
   width: 85%;
-  /* height: 300rpx; */
   display: flex;
   flex-direction: column;
 }
@@ -72,17 +78,214 @@
 }
 
 .menu-grid-access {
-  border: 1px solid red;
-  position: absolute;
-  top: 1%;
-  left: 1%;
-  margin-top: 190px;
+  position: relative;
+  padding: 25rpx;
+  top: -5%;
+  left: 0;
   margin-left: 15px;
-  width: 91%;
+  width: 92%;
   background-color: #fff;
   border-radius: 20rpx;
   box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
   overflow: hidden;
-  z-index: 1;
-  height: 500rpx;
+  z-index: 2;
+}
+
+.menu-grid-access__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  height: 100rpx;
+  margin: 5px;
+  padding: 10px;
+  background-color: #fdfdff;
+  text-align: center;
+  width: 100rpx;
+  box-shadow: 2px 2px 8px #2f2f6026;
+  opacity: 1;
+}
+
+.cards-container__card-text-access {
+  display: flex;
+}
+
+.menu-grid-access__text {
+  font-weight: bold;
+  font-size: 40rpx;
+}
+
+.menu-grid-access__cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.cards-container__card-icon-image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.menu-grid-access__container {
+  padding-top: 35rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25rpx;
+}
+
+.cards-container__card-text-access {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.menu-banner {
+  display: flex;
+  flex-direction: column;
+  margin-top: -2%;
+  align-items: center;
+  border-radius: 15px;
+  height: 300rpx;
+}
+
+.image-banner {
+  border-radius: 15px;
+  width: 92%;
+}
+
+.menu_footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 4%;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px 10px 0px 0px;
+}
+
+.menu_footer__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.menu_footer__items__cards-icon {
+  display: flex;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.menu_footer__items {
+  display: flex;
+}
+
+.container-popup-home-info {
+  display: flex;
+  margin-top: 200px;
+}
+.ant-popup-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfdff;
+}
+
+.container-menu-popup {
+  border: 1px solid red;
+  padding: 3%;
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  direction: column;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-top: 90rpx;
+  height: 100vh;
+}
+
+.container-popup__user {
+  margin-top: 7%;
+  display: flex;
+  direction: column;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-weight: bold;
+}
+
+.container-popup__name {
+  display: flex;
+  font-size: 50rpx;
+  color: #187385;
+}
+
+.container-popup__document {
+  padding-top: 20rpx;
+  font-size: 30rpx;
+  color: #040f16;
+}
+
+.container-user-access {
+  border: 1px red solid;
+}
+
+.container-user-access__cards {
+  color: #040f16;
+  border: 1px red solid;
+}
+
+.cards-container__card-menu-image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.container-user-menu-access {
+  margin-top: 40rpx;
+}
+.cards-menu__card-text-access {
+  font-size: 35rpx;
+  font-weight: bold;
+  color: #000;
+}
+.menu-grid-access__cards {
+  margin-top: 50rpx;
+  width: 650rpx;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 15px #2f2f6026;
+  border-radius: 10px;
+  opacity: 1;
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cards-menu__icon {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #187385;
+}
+
+.icon {
+  color: #222222;
+}
+
+.ant-modal-body-content {
+  color: #222222;
+}
+
+.container-user-access__icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.icon-close-menu {
+  font-size: 40rpx;
+  padding-left: 600rpx;
+  font-weight: bold;
+  color: #e03224;
 }
