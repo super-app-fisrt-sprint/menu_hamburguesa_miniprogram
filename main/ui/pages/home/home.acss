@@ -1,48 +1,87 @@
-.container-home {
-  display: flex;
-  flex-flow: column wrap;
-  padding: 0 10rpx;
-  background-color: var(--bg-lila);
+.container-menu {
+  background-color: violet;
+  height: 100vh;
 }
 
-.menu-header{
+.menu-header {
+  position: relative;
+  padding-top: 30rpx;
   display: flex;
-  flex-flow: column nowrap;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
-  height: 500rpx;
-  background-image: linear-gradient(to right,#313A41, #040F16);
-  border: 2px solid red;
+  justify-content: flex-end;
+  align-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-image: linear-gradient(to right, #313a41, #040f16);
   border-radius: 0 0 15px 15px;
+  height: 400rpx;
 }
 
-.menu-header_container{
+.menu-header_container {
   display: flex;
 }
 
-.menu-header_logo{
-  display: flex;
+.menu-header__image {
+  width: 300rpx;
+  height: 50rpx;
 }
 
-.menu-header__image{
-width: 300rpx;
-height:100rpx;
-}
-
-.menu-header__text{
+.menu-header__text {
   color: #ffffff;
   font-size: medium;
-
 }
 
-.menu-header__info{
+.menu-header__info {
   color: #ffffff;
   font-weight: bold;
   width: 85%;
+  /* height: 300rpx; */
   display: flex;
   flex-direction: column;
 }
 
-.menu-header__info{
-  display: flex  ;
+.menu-header_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.menu-header__info__horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5rpx;
+}
+
+.menu-header_info__text_name {
+  font-size: 40rpx;
+}
+
+.menu-header_info__menu {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.menu-header__info {
+  padding-bottom: 50rpx;
+  display: flex;
+}
+
+.menu-grid-access {
+  border: 1px solid red;
+  position: absolute;
+  top: 0;
+  /* left: 0; */
+  margin-top: 190px;
+  margin-left: 15px;
+  width: 91%;
+  background-color: #fff;
+  border-radius: 20rpx;
+  box-shadow: 0 10px 10px rgb(0 0 0 / 10%);
+  overflow: hidden;
+  z-index: 1;
+  height: 500rpx;
 }

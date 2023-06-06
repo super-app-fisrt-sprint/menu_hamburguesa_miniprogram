@@ -1,16 +1,19 @@
 <view class="container-menu">
   <view class="menu-header">
+    <view class="menu-header_logo">
+      <image class="menu-header__image" src="/main/ui/assets/logo-claro-blanco.svg" />
+    </view>
+    <view class="menu-header__info">
 
- 
-      <view class="menu-header_logo">
-        <image mode="scaleToFill" class="menu-header__image" src="/main/ui/assets/logo-claro-blanco.svg" />
+      <view class="menu-header__info__horizontal">
+        <text class="menu-header_info__text_name">Compensar</text>
+        <image class="menu-header_info__menu" src="/main/ui/assets/icons/menu.svg" />
       </view>
-      <view class="menu-header__info">
-        <text class="menu-header_image__text_name">Compensar</text>
-        <divider  lineHeight="2" lineColor="#ffffff" />
-        <text class="menu-header_image__text_nit">Nit: 800.198.456-1</text>
-      </view>
-   
+
+      <divider lineHeight="2" lineColor="#ffffff" />
+      <text class="menu-header_info__text_nit">Nit: 800.198.456-1</text>
+    </view>
+
 
 
   </view>
