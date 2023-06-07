@@ -45,39 +45,39 @@ Page({
       {
         iconAccess: "/main/ui/assets/icons/users.svg",
         titleAccess: "Administrar perfiles",
-        pageUrl: "/pages/test/test"
+        pageUrl: "/main/ui/pages/index/index"
       },
       {
         iconAccess: "/main/ui/assets/icons/edit.svg",
         titleAccess: "Personalizar servicios",
-        pageUrl: "/pages/test/test"
+        pageUrl: "/main/ui/pages/index/index"
       },
       {
         iconAccess: "/main/ui/assets/icons/user.svg",
         titleAccess: "Gestion de la cuenta",
-        pageUrl: "/pages/test/test"
+        pageUrl: "/main/ui/pages/index/index"
       }
     ],
     footerItems: [
       {
         icon: "/main/ui/assets/icons/inicio.svg",
         title: "Inicio",
-        pageUrl: "/pages/test/test"
+        pageUrl: "/pages/index/index"
       },
       {
         icon: "/main/ui/assets/icons/adquirir.svg",
         title: "Adquirir",
-        pageUrl: "/pages/test/test"
+        pageUrl: "/pages/index/index"
       },
       {
         icon: "/main/ui/assets/icons/chat.svg",
         title: "Chat",
-        pageUrl: "/pages/test/test"
+        pageUrl: "/pages/index/index"
       },
       {
         icon: "/main/ui/assets/icons/pedidos.svg",
         title: "Pedidos",
-        pageUrl: "/pages/test/test"
+        pageUrl: "/pages/index/index"
       }
     ]
   },
@@ -112,6 +112,11 @@ Page({
     this.setData({
       basicVisible: false
     });
+  },
+  onIconClick(e) {
+    const index = e.target.dataset.index;
+    const pageUrl = this.data.menuAccess[index].pageUrl;
+    my.navigateTo({ url: pageUrl });
   },
 
   onUnload() {}

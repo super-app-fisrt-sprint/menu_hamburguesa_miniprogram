@@ -21,8 +21,7 @@
   <block a:for="{{menuAccess}}" a:for-index="index" a:for-item="item">
     <view
       class="menu-grid-access__cards-popup"
-      onTap="navigateToMiniProgram"
-      data-index="{{index}}"
+     onTap="onIconClick" data-index="{{index}}"
     >
       <view class="menu-access__card-icon">
         <view class="cards-menu__card-image">
@@ -30,7 +29,7 @@
         </view>
       </view>
       <text class="cards-menu__card-text-access">{{item.titleAccess}}</text>
-      <icon class="cards-menu__icon" type="RightOutline" onTap="handlePopupClose" />
+      <icon class="cards-menu__icon" type="RightOutline" />
     </view>
   </block>
 </view>
@@ -65,7 +64,7 @@
     <view class="menu-header__info">
 
       <view class="menu-header__info__horizontal">
-        <text class="menu-header_info__text_name">Compensar</text>
+        <text class="menu-header_info__text_name">Telmex</text>
         <image
           data-position="right"
           onTap="handleShowMenu"
@@ -111,7 +110,7 @@
   <view class="menu_footer">
     <view class="menu_footer__container">
       <block a:for="{{footerItems}}" a:for-index="index" a:for-item="item">
-        <view class="menu_footer__items" onTap="onIconClick" data-index="{{index}}">
+        <view class="menu_footer__items" onTap="onIconClickPage" data-index="{{index}}">
           <view class="menu_footer__items-container">
             <view class="menu_footer__items__cards">
               <image class="menu_footer__items__cards-icon" src="{{item.icon}}" />

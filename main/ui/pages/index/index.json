@@ -1,2 +1,5 @@
 {
+  "usingComponents": {
+    "header-image": "/main/ui/components/HeaderImage/headerImage"
+  }
 }
