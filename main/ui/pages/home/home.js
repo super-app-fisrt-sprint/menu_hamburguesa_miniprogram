@@ -7,8 +7,8 @@ Page({
     });
   },
   data: {
-    basicVisible: true,
-    position: "top",
+    position: "",
+    basicVisible: false,
     access: [
       {
         icon: "/main/ui/assets/icons/moviles.svg",
@@ -88,7 +88,7 @@ Page({
       `Navigating to mini program with appId: ${appId} at index: ${index}`
     );
     my.navigateToMiniProgram({
-      appId: appId,
+      appId,
       path: "pages/home/home",
       extraData: {
         data1: "test"
@@ -108,5 +108,11 @@ Page({
       basicVisible: true
     });
   },
+  handlePopupClose() {
+    this.setData({
+      basicVisible: false
+    });
+  },
+
   onUnload() {}
 });

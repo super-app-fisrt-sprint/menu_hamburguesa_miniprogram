@@ -20,7 +20,7 @@
 <view class="container-menu-access__cards">
   <block a:for="{{menuAccess}}" a:for-index="index" a:for-item="item">
     <view
-      class="menu-grid-access__cards"
+      class="menu-grid-access__cards-popup"
       onTap="navigateToMiniProgram"
       data-index="{{index}}"
     >
@@ -35,11 +35,26 @@
   </block>
 </view>
   </view>
+  <view class="sign-out-container">
+    <text>Cerrar sesión</text>
+  </view>
+
   
 </view>
-<view class="menu-app-version">
-  <text class="menu-app-version-text">{{version}}</text>
+<view class="terms-container">
+  <view class="politics-container">
+  <text>Términos y condiciones</text>
+  <text style="padding-top:30rpx">Política de privacidad</text>
 </view>
+<divider lineHeight="2" lineColor="#B3B3B3"/>
+<view class="menu-app-version">
+  <text class="menu-app-version__text">Version 1.0.62</text>
+</view>
+  
+</view>
+
+
+
 </popup>
 
 

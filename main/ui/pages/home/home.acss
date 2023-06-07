@@ -4,7 +4,7 @@
 
 .container-menu {
   background-color: #f5f5fc;
-  height: 100vh;
+  height: 90vh;
   overflow-y: scroll;
   z-index: 997;
 }
@@ -193,7 +193,6 @@
 }
 
 .container-menu-popup {
-  border: 1px solid red;
   padding: 3%;
   align-items: center;
   color: #ffffff;
@@ -202,7 +201,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   margin-top: 90rpx;
-  height: 100vh;
+  height: 80vh;
 }
 
 .container-popup__user {
@@ -227,13 +226,8 @@
   color: #040f16;
 }
 
-.container-user-access {
-  border: 1px red solid;
-}
-
 .container-user-access__cards {
   color: #040f16;
-  border: 1px red solid;
 }
 
 .cards-container__card-menu-image {
@@ -249,7 +243,7 @@
   font-weight: bold;
   color: #000;
 }
-.menu-grid-access__cards {
+.menu-grid-access__cards-popup {
   margin-top: 50rpx;
   width: 650rpx;
   background-color: #ffffff;
@@ -288,4 +282,33 @@
   padding-left: 600rpx;
   font-weight: bold;
   color: #e03224;
+}
+.sign-out-container {
+  margin-top: 60rpx;
+  color: #187385;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: lighter;
+  font-size: 30rpx;
+}
+
+.terms-container {
+  padding: 5%;
+  height: 20vh;
+}
+
+.politics-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: center;
+  color: #187385;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: lighter;
+  font-size: 30rpx;
+}
+
+.menu-app-version__text {
+  color: #b3b3b3;
 }
