@@ -1,60 +1,63 @@
 
 
-
 <view class="container-menu">
   <popup
-  visible="{{basicVisible}}"
-  width="{{429}}"
-  position="{{position}}"
-  animation="{{animation}}"
-  onClose="handlePopupClose"
->
-<view class="container-menu-popup">
-  <view class="container-popup__user">
-  <icon class="icon-close-menu" type="CloseOutline" onTap="handlePopupClose" />
-    <text class="container-popup__name">Telmex</text>
-    <text class="container-popup__document"> Nit: 800.198.456-1</text>
-  </view>
+    visible="{{basicVisible}}"
+    width="{{429}}"
+    position="{{position}}"
+    animation="{{animation}}"
+    onClose="handlePopupClose"
+  >
+    <view class="container-menu-popup">
+      <view class="container-popup__user">
+        <icon class="icon-close-menu" type="CloseOutline" onTap="handlePopupClose" />
+        <text class="container-popup__name">Telmex</text>
+        <text class="container-popup__document"> Nit: 800.198.456-1</text>
+      </view>
 
-  <view class="container-user-menu-access">
-<view class="container-menu-access__cards">
-  <block a:for="{{menuAccess}}" a:for-index="index" a:for-item="item">
-    <view
-      class="menu-grid-access__cards-popup"
-     onTap="onIconClick" data-index="{{index}}"
-    >
-      <view class="menu-access__card-icon">
-        <view class="cards-menu__card-image">
-          <image class="cards-container__card-menu-image" src="{{item.iconAccess}}" />
+      <view class="container-user-menu-access">
+        <view class="container-menu-access__cards">
+          <block a:for="{{menuAccess}}" a:for-index="index" a:for-item="item">
+            <view
+              class="menu-grid-access__cards-popup"
+              onTap="onIconClick"
+              data-index="{{index}}"
+            >
+              <view class="menu-access__card-icon">
+                <view class="cards-menu__card-image">
+                  <image
+                    class="cards-container__card-menu-image"
+                    src="{{item.iconAccess}}"
+                  />
+                </view>
+              </view>
+              <text class="cards-menu__card-text-access">{{item.titleAccess}}</text>
+              <icon class="cards-menu__icon" type="RightOutline" />
+            </view>
+          </block>
         </view>
       </view>
-      <text class="cards-menu__card-text-access">{{item.titleAccess}}</text>
-      <icon class="cards-menu__icon" type="RightOutline" />
+      <view class="sign-out-container">
+        <text>Cerrar sesión</text>
+      </view>
+
+
     </view>
-  </block>
-</view>
-  </view>
-  <view class="sign-out-container">
-    <text>Cerrar sesión</text>
-  </view>
+    <view class="terms-container">
+      <view class="politics-container">
+        <text>Términos y condiciones</text>
+        <text style="padding-top:30rpx">Política de privacidad</text>
+      </view>
+      <divider lineHeight="2" lineColor="#B3B3B3" />
+      <view class="menu-app-version">
+        <text class="menu-app-version__text">Version 1.0.62</text>
+      </view>
 
-  
-</view>
-<view class="terms-container">
-  <view class="politics-container">
-  <text>Términos y condiciones</text>
-  <text style="padding-top:30rpx">Política de privacidad</text>
-</view>
-<divider lineHeight="2" lineColor="#B3B3B3"/>
-<view class="menu-app-version">
-  <text class="menu-app-version__text">Version 1.0.62</text>
-</view>
-  
-</view>
+    </view>
 
 
 
-</popup>
+  </popup>
 
 
   <view class="menu-header">
