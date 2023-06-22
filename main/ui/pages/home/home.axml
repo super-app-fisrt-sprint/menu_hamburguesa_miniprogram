@@ -1,7 +1,6 @@
 <view class="container-menu">
   <popup
     visible="{{basicVisible}}"
-    width="{{430}}"
     position="{{position}}"
     animation="{{animation}}"
     onClose="handlePopupClose"
