@@ -193,7 +193,7 @@
 }
 
 .container-menu-popup {
-  padding: 3%;
+  padding: 3% 0;
   align-items: center;
   color: #ffffff;
   display: flex;
@@ -237,6 +237,7 @@
 
 .container-user-menu-access {
   margin-top: 40rpx;
+  width: 80%;
 }
 .cards-menu__card-text-access {
   font-size: 35rpx;
@@ -245,7 +246,7 @@
 }
 .menu-grid-access__cards-popup {
   margin-top: 50rpx;
-  width: 650rpx;
+  width: 100%;
   background-color: #ffffff;
   box-shadow: 3px 3px 15px #2f2f6026;
   border-radius: 10px;
