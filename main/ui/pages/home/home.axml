@@ -17,6 +17,7 @@
 
       <view class="container-user-menu-access">
         <view class="container-menu-access__cards">
+          
           <block a:for="{{menuAccess}}" a:for-index="index" a:for-item="item">
             <view
               class="menu-grid-access__cards-popup"

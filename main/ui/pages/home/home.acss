@@ -295,6 +295,7 @@
 .terms-container {
   padding: 5%;
   height: 20vh;
+  margin-left: 20rpx;
 }
 
 .politics-container {
