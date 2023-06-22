@@ -313,3 +313,7 @@
 .menu-app-version__text {
   color: #b3b3b3;
 }
+
+.ant-popup-transform-right {
+  left: 0;
+}
