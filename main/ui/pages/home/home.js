@@ -54,7 +54,7 @@ Page({
       },
       {
         iconAccess: "/main/ui/assets/icons/user.svg",
-        titleAccess: "Gestion de la cuenta",
+        titleAccess: "Gestión de la cuenta",
         pageUrl: "/main/ui/pages/index/index"
       }
     ],
