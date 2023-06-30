@@ -113,11 +113,19 @@ Page({
       basicVisible: false
     });
   },
-  onIconClick(e) {
-    const index = e.target.dataset.index;
-    const pageUrl = this.data.menuAccess[index].pageUrl;
-    my.navigateTo({ url: pageUrl });
-  },
+
+  onIconClickPage(event) {
+  const { index } = event.currentTarget.dataset;
+  const selectedItem = this.data.footerItems[index];
+
+  if (selectedItem.title === "Adquirir") {
+    this.makePhoneCall();
+  }
+},
+
+makePhoneCall() {
+  my.makePhoneCall({ number: '6017435558' });
+},
 
   onUnload() {}
 });
