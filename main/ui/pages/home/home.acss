@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .container-menu {
@@ -159,13 +161,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 4%;
   z-index: 3;
+  /* padding: 2% 3%; */
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px 10px 0px 0px;
 }
 
 .menu_footer__container {
+  margin: 0 4%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -174,12 +177,29 @@
 
 .menu_footer__items__cards-icon {
   display: flex;
-  width: 120rpx;
-  height: 120rpx;
+  height: 70rpx;
+  width: 70rpx;
+}
+
+.menu_footer__items__cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .menu_footer__items {
   display: flex;
+  padding: 4%;
+  margin-bottom: 10rpx;
+}
+
+.menu_footer__items-container {
+  display: flex;
+}
+
+.menu_footer__text {
+  font-weight: bold;
+  padding-top: 10rpx;
 }
 
 .container-popup-home-info {

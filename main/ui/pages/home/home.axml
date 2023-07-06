@@ -115,10 +115,10 @@
           <view class="menu_footer__items-container">
             <view class="menu_footer__items__cards">
               <image class="menu_footer__items__cards-icon" src="{{item.icon}}" />
+              <text class="menu_footer__text">{{item.title}}</text>
             </view>
-
           </view>
-          <!--<text class="menu_footer__text">{{item.title}}</text> -->
+
         </view>
       </block>
     </view>
