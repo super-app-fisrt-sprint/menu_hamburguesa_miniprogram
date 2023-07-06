@@ -177,8 +177,8 @@
 
 .menu_footer__items__cards-icon {
   display: flex;
-  height: 70rpx;
-  width: 70rpx;
+  height: 50rpx;
+  width: 50rpx;
 }
 
 .menu_footer__items__cards {
