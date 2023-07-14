@@ -62,22 +62,26 @@ Page({
       {
         icon: "/main/ui/assets/icons/inicio.svg",
         title: "Inicio",
-        pageUrl: "/pages/index/index"
+        pageUrl: "/pages/index/index",
+        isActive: true
       },
       {
         icon: "/main/ui/assets/icons/adquirir.svg",
         title: "Adquirir",
-        pageUrl: "/pages/index/index"
+        pageUrl: "/pages/index/index",
+        isActive: false
       },
       {
         icon: "/main/ui/assets/icons/chat.svg",
         title: "Chat",
-        pageUrl: "/pages/index/index"
+        pageUrl: "/pages/index/index",
+        isActive: false
       },
       {
         icon: "/main/ui/assets/icons/pedidos.svg",
         title: "Pedidos",
-        pageUrl: "/pages/index/index"
+        pageUrl: "/pages/index/index",
+        isActive: false
       }
     ]
   },
