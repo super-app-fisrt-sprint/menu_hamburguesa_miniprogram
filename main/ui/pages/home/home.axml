@@ -43,7 +43,9 @@
     </view>
     <view class="terms-container">
       <view class="politics-container">
-        <text>Términos y condiciones</text>
+        <view onTap="goToTerms">
+          <text >Términos y condiciones</text>
+        </view>
         <text style="padding-top:30rpx">Política de privacidad</text>
       </view>
       <divider lineHeight="2" lineColor="#B3B3B3" />

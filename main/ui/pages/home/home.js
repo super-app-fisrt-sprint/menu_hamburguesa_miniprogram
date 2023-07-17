@@ -9,6 +9,8 @@ Page({
   data: {
     position: "",
     basicVisible: false,
+    urlTerms:
+      "https://tienda.claro.com.co/wcsstore/Claro/images/contenidos/Terminos%20y%20Condiciones.pdf",
     access: [
       {
         icon: "/main/ui/assets/icons/moviles.svg",
@@ -130,6 +132,31 @@ Page({
     });
     this.setData({
       footerItems: footerItems
+    });
+  },
+  goToTerms() {
+    const { urlTerms } = this.data;
+    my.downloadFile({
+      url: urlTerms,
+      success({ apFilePath }) {
+        my.openDocument({
+          fileType: "pdf",
+          filePath: apFilePath,
+          success() {
+            console.log("Archivo PDF abierto correctamente");
+          },
+          fail(res) {
+            my.alert({
+              content: res.errorMessage || res.error
+            });
+          }
+        });
+      },
+      fail(res) {
+        my.alert({
+          content: res.errorMessage || res.error
+        });
+      }
     });
   },
 

@@ -5,6 +5,6 @@
   "divider": "antd-mini/es/Divider/index",
   "popup": "antd-mini/es/Popup/index",
   "icon": "antd-mini/es/Icon/index"
-},
-  "styleIsolation": "apply-shared"
+}
+
 }

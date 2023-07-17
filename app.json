@@ -2,8 +2,10 @@
   "subPackageBuildType": "shared",
   "pages": [
     "main/ui/pages/home/home",
-    "main/ui/pages/index/index"],
-   "window": {
+    "main/ui/pages/index/index",
+    "main/ui/pages/terms/terms"
+  ],
+  "window": {
     "defaultTitle": "",
     "titleBarColor": "#040F16",
     "gestureBack": "YES",
