@@ -9,6 +9,7 @@ Page({
   data: {
     position: "",
     basicVisible: false,
+    modalVisible: true,
     urlTerms:
       "https://tienda.claro.com.co/wcsstore/Claro/images/contenidos/Terminos%20y%20Condiciones.pdf",
     access: [
@@ -158,6 +159,34 @@ Page({
         });
       }
     });
+  },
+  handleClose() {
+    this.setData({
+      modalVisibleDescription: false,
+      modalVisible: true,
+      basicVisible: true
+    });
+  },
+  onCancelButtonTap() {
+    console.log("Cancelar");
+    this.setData({
+      modalVisible: false
+    });
+  },
+  onAcceptButtonTap() {
+    this.redirectLoginServices();
+    this.setData({
+      modalVisible: false
+    });
+  },
+  handleOpenModal() {
+    console.log("Entrando");
+    this.setData({
+      modalVisible: true
+    });
+  },
+  onSignOut() {
+    this.handleOpenModal();
   },
 
   onUnload() {}

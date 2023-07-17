@@ -292,13 +292,6 @@
   color: #187385;
 }
 
-.icon {
-  color: #222222;
-}
-
-.ant-modal-body-content {
-  color: #222222;
-}
 
 .container-user-access__icon {
   width: 50rpx;
@@ -344,5 +337,3 @@
 .ant-popup-transform-right {
   left: 0;
 }
-
-

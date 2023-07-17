@@ -35,7 +35,7 @@
           </block>
         </view>
       </view>
-      <view class="sign-out-container">
+      <view class="sign-out-container" onTap="onSignOut">
         <text>Cerrar sesión</text>
       </view>
 
@@ -54,6 +54,15 @@
       </view>
 
     </view>
+    <modal-accept-cancel
+      content="¿Estás seguro que deseas cerrar sesión en la aplicación?"
+      visible="{{modalVisible}}"
+      onClose="handleClose"
+      primaryButtonText="Cerrar sesión"
+      secondaryButtonText="Cancelar"
+      onPrimaryButtonTap="onAcceptButtonTap"
+      onSecondaryButtonTap="onCancelButtonTap"
+    />
 
 
 

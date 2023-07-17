@@ -1,0 +1,44 @@
+<view>
+  <view class="modal-container">
+    <modal
+      title="{{title}}"
+      content="{{content}}"
+      visible="{{visible}}"
+      onClose="handleClose"
+      primaryButtonText="{{primaryButtonText}}"
+      secondaryButtonText="{{secondaryButtonText}}"
+      onPrimaryButtonTap="onAcceptButtonTap"
+      onSecondaryButtonTap="onCancelButtonTap"
+    >
+      <!--<view class="container-modal" slot="header"><image id="icon-modal-cancel" mode="scaleToFill" src="../../assets/icons/roaming/warning-triangle-svgrepo-com.svg" /></view> -->
+
+
+      <view class="ant-modal-body-content" slot="content">
+
+        <!--<view a:if="{{ descriptionTitleVisible }}" class="description-title"><text >{{descriptionTitle}}</text></view> -->
+
+
+        <view class="body-content">
+          <icon class="icon-modal" type="InformationCircleOutline" />
+          <slot name="content">
+            <text class="body-content-text"> 
+              {{content}}
+            </text>
+
+          </slot>
+        </view>
+
+      </view>
+
+
+      <view class="modal-footer" slot="footer">
+        <button class="modal-button button-accept" onTap="onAcceptButtonTap">
+          {{primaryButtonText}}
+        </button>
+        <button class="modal-button button-cancel" onTap="onCancelButtonTap">
+          {{secondaryButtonText}}
+        </button>
+      </view>
+    </modal>
+  </view>
+</view>

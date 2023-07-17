@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "icon": "../../../../node_modules/antd-mini/es/Icon/index",
+    "modal": "../../../../node_modules/antd-mini/es/Modal/index"
+  }
+}
