@@ -10,9 +10,10 @@ module.exports = class GetAppVersionRepository {
       GetAppVersionRepository.instance = this;
     }
   }
-  async getAppVersionList(deviceSpect) {
+  async getAppVersionList(deviceSpect, data) {
     return await getAppVersionListDataSourceRemote.getAppVersionList(
-      deviceSpect
+      deviceSpect,
+      data
     );
   }
 };

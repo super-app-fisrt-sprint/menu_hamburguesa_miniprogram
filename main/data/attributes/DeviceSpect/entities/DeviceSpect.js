@@ -15,7 +15,7 @@ module.exports = class deviceSpect {
     this['X-MC-SO-PHONE-M'] = data['X-MC-SO-PHONE-M'];
     this['X-MC-APP-V'] = data['X-MC-APP-V'];
     this['X-MC-DEVICE-NAME'] = data['X-MC-DEVICE-NAME'];
-    this['X-MC-DEVIDE-ID'] = data['X-MC-DEVIDE-ID'];
+    this['X-MC-DEVICE-ID'] = data['X-MC-DEVICE-ID'];
     this['X-MC-USER-AGENT'] = data['X-MC-USER-AGENT'];
   }
 };

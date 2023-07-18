@@ -3,17 +3,16 @@ const AppVersionRepository = require("../data/attributes/AppVersion/repository/G
 
 async function getAppVersion(deviceSpect) {
   const appVersionRepository = new AppVersionRepository();
+  const versionApp = new ResponseAppVersion("15.4.0", "android");
+
   let result = { data: null, success: false };
   try {
-    const res = await appVersionRepository.getAppVersionList(deviceSpect);
-    if (res && res.data && res.data.error == 0 && res.data.response) {
-      let appVersionList = res.data.response.map(item => {
-        let version = new ResponseAppVersion();
-        version.updateParams({ version: item.version });
-        version.updateParams({ plataforma: item.plataforma });
-        version.updateParams({ is_hms: item.is_hms });
-      });
-      result.data = appVersionList;
+    const res = await appVersionRepository.getAppVersionList(
+      deviceSpect,
+      versionApp
+    );
+    console.log(res.data);
+    if (res && res.data && res.data.includes(`"mensaje":"Ok"`)) {
       result.success = true;
     } else {
       result.data = "No se pudo obtener la version correcta del app";

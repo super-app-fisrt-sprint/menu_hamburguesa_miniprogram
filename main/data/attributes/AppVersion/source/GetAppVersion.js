@@ -1,19 +1,25 @@
-module.exports.getAppVersionList = this.getAppVersionList;
+module.exports.getAppVersionList = getAppVersionList;
 
-function getAppVersionList(url, deviceSpect) {
+function getAppVersionList(url, deviceSpect, data) {
+  console.log(url, deviceSpect);
   return new Promise((resolve, reject) => {
     my.request({
       url: url,
       method: "GET",
+      data: {
+        version: data.version,
+        plataforma: data.plataforma
+      },
+      dataType: "application/json",
       headers: {
-        "X-MC-DEVIDE-ID": deviceSpect["X-MC-DEVIDE-ID"],
+        "X-MC-DEVICE-ID": deviceSpect["X-MC-DEVICE-ID"],
         "X-MC-USER-AGENT": deviceSpect["X-MC-USER-AGENT"]
       },
       success: res => {
         resolve(res);
       },
-      fail: res => {
-        reject(res);
+      fail: reject => {
+        reject(reject);
       }
     });
   });

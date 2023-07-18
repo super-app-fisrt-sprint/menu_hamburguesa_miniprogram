@@ -1,10 +1,40 @@
+const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
+const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
+
 Page({
   onLoad() {
+    //Cargo info y headers
+    const deviceString = `{"X-SESSION-ID":
+      "U2FsdGVkX1/qFo4mzwOB2Zdwn0Q5ZisOJW6nayt0UzuuRjoR2G9KtE39omStTlcYNNZEgcVgSYPZiNT/VObQJRvxLRs/MIcUnI8LCTaUl6ALJGo+7nFSUR0Q+c3WFABWJoDuye7YMW0PjC/gwH/TEVhv2m5GfxNwFCnHYL3MoG0Rlgjt0GsR8wpepRSG3vsk/GGFAU1TY1w7Fw56pXhPirH34Xq7/raM1Ka32umj0zQ/5T261DVrlGjVWpC/5a93ANqkyDqb8j8XwixxV9xgBu3w9GOqFxUGUMdaZdDtG8BSpjInsXcn+R2xqf3SVtxlB8ueJtEi2G4FSMB28CmPHMzRtwcqZrTA/Fw42huGqDCcSOu8ptf6a4kKfQY6aMVSFMZcgGxo1NMK470RFBu8X6FAN11M7ZMs4ATctGydZtTu4MhBBEvm4ytm/l0R/xzsUakmZvqKLN8Er4yNkEImklbKXb/Tr7BU01ST1TwPRJ+ZgBl/Zd8fAgAyudV4ZGhtG1bhTWYGqCoGxaTDuGWtdEwWFTOeB3D1qB91kvSrb20=",
+      "X-MC-LINE": "3103815747",
+      "X-MC-LOB": "3",
+      "Content-Type": "application/json; charset=UTF-8",
+      "X-MC-MAIL": "angie.copete@neoris.com",
+      "X-MC-SO": "android",
+      "X-Carrier": "claro",
+      "X-Wifi": true,
+      "X-MC-HE-V": "3",
+      "X-MC-SO-V": "9",
+      "Cache-Control": "no-cache",
+      "X-MC-SO-API": "28",
+      "X-MC-SO-PHONE-F": "samsung",
+      "X-MC-SO-PHONE-M": "SM-S908E",
+      "X-MC-APP-V": "15.4.0",
+      "X-MC-DEVICE-NAME": "samsungSM-S908E",
+      "X-MC-DEVICE-ID":
+      "qHn4rb8ClcRJ77whz5G97xXIzozYi9w0+hNsxpprHNsHxRO8zhdcekO2ETZs4UXX7zH/0RDm1o2J6wWMCy25Tiesg4BTYY94GkNK+EUdVGmDkHbknYAEoQROQmcC+ROKfmEXh/YzxDnm+MnIL7lX0nLNdLhp2WYSxDHUKfpUijs=",
+      "X-MC-USER-AGENT":
+      "eyJpcCI6IjE5Mi4xNjguMjMzLjE3MiIsInVzZXJBZ2VudCI6Ik1pQ2xhcm9BcHAvMC4wLjEgKHNhbXN1bmc7IFNNLUc5ODhOOyBcdTAwM2NhbmRyb2lkLzlcdTAwM2UpIn0="
+    }`;
+    //charge info login User in storage
+    DeviceSpectViewModel.CreateInfoDeviceStorage(deviceString);
+
     const { titleBarHeight, statusBarHeight } = my.getSystemInfoSync();
     this.setData({
       titleBarHeight,
       statusBarHeight
     });
+    // let deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
   },
   data: {
     position: "",
@@ -88,6 +118,7 @@ Page({
       }
     ]
   },
+
   navigateToMiniProgram(e) {
     const appId = e.target.dataset.appId;
     const index = e.target.dataset.index;
@@ -186,7 +217,16 @@ Page({
     });
   },
   onSignOut() {
-    this.handleOpenModal();
+    let deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
+    AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
+      if (res.success) {
+        my.reLaunch({
+          url: "/main/ui/pages/index/index"
+        });
+      } else {
+        console.error("Page error");
+      }
+    });
   },
 
   onUnload() {}

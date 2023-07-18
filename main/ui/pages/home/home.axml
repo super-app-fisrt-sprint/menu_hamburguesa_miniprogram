@@ -35,7 +35,7 @@
           </block>
         </view>
       </view>
-      <view class="sign-out-container" onTap="onSignOut">
+      <view class="sign-out-container" onTap="handleOpenModal">
         <text>Cerrar sesión</text>
       </view>
 
@@ -60,7 +60,7 @@
       onClose="handleClose"
       primaryButtonText="Cerrar sesión"
       secondaryButtonText="Cancelar"
-      onPrimaryButtonTap="onAcceptButtonTap"
+      onPrimaryButtonTap="onSignOut"
       onSecondaryButtonTap="onCancelButtonTap"
     />
 

@@ -21,7 +21,7 @@ function CreateDeviceSpectInStorage(key, data) {
         "X-MC-SO-PHONE-M": data["X-MC-SO-PHONE-M"],
         "X-MC-APP-V": data["X-MC-APP-V"],
         "X-MC-DEVICE-NAME": data["X-MC-DEVICE-NAME"],
-        "X-MC-DEVIDE-ID": data["X-MC-DEVIDE-ID"],
+        "X-MC-DEVICE-ID": data["X-MC-DEVICE-ID"],
         "X-MC-USER-AGENT": data["X-MC-USER-AGENT"]
       }
     });
