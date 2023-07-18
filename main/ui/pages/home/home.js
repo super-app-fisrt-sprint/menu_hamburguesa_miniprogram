@@ -9,7 +9,7 @@ Page({
   data: {
     position: "",
     basicVisible: false,
-    modalVisible: true,
+    modalVisible: false,
     urlTerms:
       "https://tienda.claro.com.co/wcsstore/Claro/images/contenidos/Terminos%20y%20Condiciones.pdf",
     access: [
