@@ -5,6 +5,9 @@ Page({
       titleBarHeight,
       statusBarHeight
     });
+    my.setNavigationBar({
+      title: ""
+    });
   },
   onReady() {
     // 页面加载完成

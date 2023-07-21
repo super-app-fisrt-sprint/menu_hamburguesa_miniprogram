@@ -292,7 +292,6 @@
   color: #187385;
 }
 
-
 .container-user-access__icon {
   width: 50rpx;
   height: 50rpx;
@@ -308,7 +307,7 @@
   margin-top: 60rpx;
   color: #187385;
   text-decoration: underline;
-  font-weight: lighter;
+  font-weight: bold;
   font-size: 30rpx;
 }
 

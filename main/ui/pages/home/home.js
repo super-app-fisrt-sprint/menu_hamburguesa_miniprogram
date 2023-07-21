@@ -34,7 +34,9 @@ Page({
       titleBarHeight,
       statusBarHeight
     });
-    // let deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
+    my.setNavigationBar({
+      title: ""
+    });
   },
   data: {
     position: "",

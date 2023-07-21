@@ -62,7 +62,7 @@
   border-radius: 40rpx;
   border: 1rpx solid;
   width: 310rpx;
-  margin-bottom: 40rpx;
+  margin-bottom: 50rpx;
   height: 50px;
 }
 
@@ -81,6 +81,7 @@
 .button-cancel {
   background-color: white;
   color: #da291c;
+  border: 3rpx solid #da291c;
 }
 
 .body-content {
