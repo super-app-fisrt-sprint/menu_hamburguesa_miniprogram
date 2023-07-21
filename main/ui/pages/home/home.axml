@@ -55,10 +55,10 @@
 
     </view>
     <modal-accept-cancel
-      content="¿Estás seguro que deseas cerrar sesión en la aplicación?"
+      content="¿Quiéres cerrar tu sesión?"
       visible="{{modalVisible}}"
       onClose="handleClose"
-      primaryButtonText="Cerrar sesión"
+      primaryButtonText="Aceptar"
       secondaryButtonText="Cancelar"
       onPrimaryButtonTap="onSignOut"
       onSecondaryButtonTap="onCancelButtonTap"
