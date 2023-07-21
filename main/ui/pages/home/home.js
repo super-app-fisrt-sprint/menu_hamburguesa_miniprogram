@@ -40,6 +40,7 @@ Page({
     position: "",
     basicVisible: false,
     modalVisible: false,
+    showLoading: "",
     urlTerms:
       "https://tienda.claro.com.co/wcsstore/Claro/images/contenidos/Terminos%20y%20Condiciones.pdf",
     access: [
@@ -166,6 +167,16 @@ Page({
       footerItems: footerItems
     });
   },
+  showLoadings() {
+    this.setData({
+      showLoading: true
+    });
+  },
+  hideLoading() {
+    this.setData({
+      showLoading: false
+    });
+  },
   goToTerms() {
     const { urlTerms } = this.data;
     my.downloadFile({
@@ -217,6 +228,7 @@ Page({
     });
   },
   onSignOut() {
+    this.showLoadings();
     let deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
       if (res.success) {
@@ -224,6 +236,7 @@ Page({
           url: "/main/ui/pages/index/index"
         });
       } else {
+        this.hideLoading();
         console.error("Page error");
       }
     });
