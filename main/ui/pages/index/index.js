@@ -5,7 +5,6 @@ Page({
       titleBarHeight,
       statusBarHeight
     });
-    this.getAsyncInformation();
   },
   onReady() {
     // 页面加载完成
