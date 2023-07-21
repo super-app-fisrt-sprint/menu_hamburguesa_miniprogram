@@ -81,11 +81,11 @@ Page({
         titleAccess: "Administrar perfiles",
         pageUrl: "/main/ui/pages/index/index"
       },
-      {
-        iconAccess: "/main/ui/assets/icons/edit.svg",
-        titleAccess: "Personalizar servicios",
-        pageUrl: "/main/ui/pages/index/index"
-      },
+      // {
+      //   iconAccess: "/main/ui/assets/icons/edit.svg",
+      //   titleAccess: "Personalizar servicios",
+      //   pageUrl: "/main/ui/pages/index/index"
+      // },
       {
         iconAccess: "/main/ui/assets/icons/user.svg",
         titleAccess: "Gestión de la cuenta",
@@ -228,10 +228,10 @@ Page({
     });
   },
   onSignOut() {
-    this.showLoadings();
     let deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
       if (res.success) {
+        this.showLoadings();
         my.reLaunch({
           url: "/main/ui/pages/index/index"
         });
