@@ -44,7 +44,7 @@ Page({
     modalVisible: false,
     showLoading: "",
     urlTerms:
-      "https://tienda.claro.com.co/wcsstore/Claro/images/contenidos/Terminos%20y%20Condiciones.pdf",
+      "https://miclaroempresas.com.co/documents/330416/0/Condiciones+Legales+de+Acceso+a+Mi+Claro+Empresas.pdf",
     access: [
       {
         icon: "/main/ui/assets/icons/moviles.svg",
