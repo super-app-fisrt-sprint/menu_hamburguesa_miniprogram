@@ -3,14 +3,15 @@ const getAppVersionListDataSourceRemote = new GetAppVersionListDataSourceRemote(
 
 module.exports = class GetAppVersionRepository {
   static instance;
-  constructor() {
+  constructor () {
     if (GetAppVersionRepository.instance) {
       return GetAppVersionRepository.instance;
     } else {
       GetAppVersionRepository.instance = this;
     }
   }
-  async getAppVersionList(deviceSpect, data) {
+
+  async getAppVersionList (deviceSpect, data) {
     return await getAppVersionListDataSourceRemote.getAppVersionList(
       deviceSpect,
       data

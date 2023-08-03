@@ -1,11 +1,11 @@
 const ResponseAppVersion = require("../data/attributes/AppVersion/entities/Version");
 const AppVersionRepository = require("../data/attributes/AppVersion/repository/GetAppVersionRepository");
 
-async function getAppVersion(deviceSpect) {
+async function getAppVersion (deviceSpect) {
   const appVersionRepository = new AppVersionRepository();
   const versionApp = new ResponseAppVersion("15.4.0", "android");
 
-  let result = { data: null, success: false };
+  const result = { data: null, success: false };
   try {
     const res = await appVersionRepository.getAppVersionList(
       deviceSpect,

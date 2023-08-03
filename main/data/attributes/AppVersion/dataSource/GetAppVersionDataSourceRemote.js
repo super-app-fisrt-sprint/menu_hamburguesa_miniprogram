@@ -3,14 +3,15 @@ const api = require("../../../config/remote/APIs");
 
 module.exports = class GetAppVersionListDataSource {
   static instance;
-  constructor() {
+  constructor () {
     if (GetAppVersionListDataSource.instance) {
       return GetAppVersionListDataSource.instance;
     } else {
       GetAppVersionListDataSource.instance = this;
     }
   }
-  async getAppVersionList(deviceSpect, data) {
+
+  async getAppVersionList (deviceSpect, data) {
     return await getAppVersionListSourceRemote.getAppVersionList(
       api.URL_BASE.URL_API_GET_VERSION_APP,
       deviceSpect,

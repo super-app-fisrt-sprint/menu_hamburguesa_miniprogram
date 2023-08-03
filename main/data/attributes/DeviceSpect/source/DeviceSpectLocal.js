@@ -1,10 +1,10 @@
 module.exports.CreateDeviceSpectInStorage = CreateDeviceSpectInStorage;
 module.exports.GetDeviceSpectInStorage = GetDeviceSpectInStorage;
 
-function CreateDeviceSpectInStorage(key, data) {
+function CreateDeviceSpectInStorage (key, data) {
   try {
     my.setStorage({
-      key: key,
+      key,
       data: {
         "X-SESSION-ID": data["X-SESSION-ID"],
         "X-MC-LINE": data["X-MC-LINE"],
@@ -31,9 +31,9 @@ function CreateDeviceSpectInStorage(key, data) {
   }
 }
 
-function GetDeviceSpectInStorage(key) {
+function GetDeviceSpectInStorage (key) {
   try {
-    let res = my.getStorageSync({ key: key });
+    const res = my.getStorageSync({ key });
     return res.data;
   } catch (error) {
     return error;

@@ -7,14 +7,15 @@ module.exports = class deviceSpectSourceLocal {
     if (deviceSpectSourceLocal.instance) {
       return deviceSpectSourceLocal.instance
     } else {
-        deviceSpectSourceLocal.instance = this
+      deviceSpectSourceLocal.instance = this
     }
   }
-  CreateDeviceSpectInStorage(data){
-    return  deviceSpectLocal.CreateDeviceSpectInStorage(key.TYPE.N_DEVICE_INFO,data);
-  }
-  GetDeviceSpectInStorage(){
-    return deviceSpectLocal.GetDeviceSpectInStorage(key.TYPE.N_DEVICE_INFO);
+
+  CreateDeviceSpectInStorage (data) {
+    return deviceSpectLocal.CreateDeviceSpectInStorage(key.TYPE.N_DEVICE_INFO, data);
   }
 
-} 
+  GetDeviceSpectInStorage () {
+    return deviceSpectLocal.GetDeviceSpectInStorage(key.TYPE.N_DEVICE_INFO);
+  }
+}

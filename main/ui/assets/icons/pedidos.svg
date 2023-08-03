@@ -1,13 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20.625" height="23.216" viewBox="0 0 20.625 23.216">
-  <defs>
-    <clipPath id="clip-path">
-      <rect id="Rectángulo_11534" data-name="Rectángulo 11534" width="20.625" height="23.216" transform="translate(-0.444 -0.367)" fill="#404040" stroke="#404040" stroke-width="0.5"/>
-    </clipPath>
-  </defs>
-  <g id="icono-principal-arma-tu-paquete" transform="translate(0.444 0.367)">
-    <g id="Enmascarar_grupo_22160" data-name="Enmascarar grupo 22160" clip-path="url(#clip-path)">
-      <path id="Trazado_35923" data-name="Trazado 35923" d="M18.391,5.635a.886.886,0,0,0-.425-.734,2.79,2.79,0,0,0-.739-.672L10.709.385a2.727,2.727,0,0,0-2.794,0L4.911,2.157a.894.894,0,0,0-.425.251L1.4,4.229a2.815,2.815,0,0,0-.751.69.888.888,0,0,0-.422.742A2.924,2.924,0,0,0,0,6.727v7.687a2.91,2.91,0,0,0,1.4,2.5l6.519,3.843a2.717,2.717,0,0,0,.945.324.81.81,0,0,0,.9,0,2.7,2.7,0,0,0,.945-.324l6.519-3.843a2.907,2.907,0,0,0,1.4-2.5V6.727a2.936,2.936,0,0,0-.233-1.091M8.536,1.413a1.047,1.047,0,0,1,.536-.149H9.067a1.055,1.055,0,0,1,.542.151L16.539,5.5,13.9,7.075,11.851,8.367,9.2,9.95,1.847,5.559ZM1.606,15.675a1.089,1.089,0,0,1-.525-.937V6.659l7.343,4.383V19.7Zm15.406.055-6.975,4.112V11l7.511-4.486v8.262a1.114,1.114,0,0,1-.536.955" transform="translate(0.556 0.633)" fill="#404040" stroke="#404040" stroke-width="0.5"/>
-      <path id="Trazado_35924" data-name="Trazado 35924" d="M13.339,6.7l6.543,3.845L17.83,11.838,11.316,7.949Z" transform="translate(-5.912 -3.106)" fill="#404040" stroke="#404040" stroke-width="0.5"/>
-    </g>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 20.6 23.2" style="enable-background:new 0 0 20.6 23.2;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);}
+	.st1{fill:#DA291C;stroke:#DA291C;stroke-width:0.5;}
+</style>
+<g id="icono-principal-arma-tu-paquete" transform="translate(0.444 0.367)">
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="-0.4" y="-0.4" width="20.6" height="23.2"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<g id="Enmascarar_grupo_22160" class="st0">
+			<path id="Trazado_35923" class="st1" d="M18.9,6.3c0-0.3-0.2-0.6-0.4-0.7c-0.2-0.3-0.5-0.5-0.7-0.7L11.3,1
+				c-0.9-0.5-1.9-0.5-2.8,0l-3,1.8C5.3,2.8,5.2,2.9,5,3L2,4.9C1.7,5,1.4,5.3,1.2,5.6C0.9,5.7,0.8,6,0.8,6.3C0.6,6.6,0.6,7,0.6,7.4
+				V15c0,1,0.5,2,1.4,2.5l6.5,3.8c0.3,0.2,0.6,0.3,0.9,0.3c0.3,0.2,0.6,0.2,0.9,0c0.3,0,0.7-0.2,0.9-0.3l6.5-3.8
+				c0.9-0.5,1.4-1.5,1.4-2.5V7.4C19.2,7,19.1,6.6,18.9,6.3 M9.1,2c0.2-0.1,0.3-0.1,0.5-0.1h0c0.2,0,0.4,0.1,0.5,0.2l6.9,4.1
+				l-2.6,1.6l-2,1.3l-2.7,1.6L2.4,6.2L9.1,2z M2.2,16.3c-0.3-0.2-0.5-0.6-0.5-0.9V7.3L9,11.7v8.7L2.2,16.3z M17.6,16.4l-7,4.1v-8.8
+				l7.5-4.5v8.3C18.1,15.8,17.9,16.2,17.6,16.4"/>
+			<path id="Trazado_35924" class="st1" d="M7.4,3.6L14,7.4l-2.1,1.3L5.4,4.8L7.4,3.6z"/>
+		</g>
+	</g>
+</g>
 </svg>

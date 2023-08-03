@@ -1,5 +1,5 @@
 module.exports = class deviceSpect {
-  constructor(data) {
+  constructor (data) {
     this['X-SESSION-ID'] = data['X-SESSION-ID'];
     this['X-MC-LINE'] = data['X-MC-LINE'];
     this['X-MC-LOB'] = data['X-MC-LOB'];

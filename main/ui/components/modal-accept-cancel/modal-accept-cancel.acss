@@ -27,8 +27,9 @@
 }
 
 .ant-modal-body {
-  padding-top: 10rpx;
-  width: 550rpx;
+  padding-top: 16px;
+  min-width: 253px;
+  min-height: 226px;
 }
 
 .ant-modal-body-title {
@@ -44,7 +45,8 @@
 }
 
 .icon-modal {
-  font-size: 65rpx;
+  width: 30px;
+  height: 30px;
   color: #1f97ae;
 }
 
@@ -59,28 +61,29 @@
 }
 
 .modal-button {
-  border-radius: 40rpx;
+  border-radius: 26px;
   border: 1rpx solid;
-  width: 310rpx;
-  margin-bottom: 50rpx;
-  height: 50px;
+  margin-bottom: 16px;
+  min-width: 162px;
 }
 
 .body-content-text {
-  padding-top: 30rpx;
+  padding-top: 20px;
   text-align: center;
-  font-size: 30rpx;
+  font-size: 16px;
   font-weight: lighter;
 }
 
 .button-accept {
   background-color: #da291c;
   color: white;
+  font-size: 16px;
 }
 
 .button-cancel {
   background-color: white;
   color: #da291c;
+  font-size: 16px;
   border: 3rpx solid #da291c;
 }
 

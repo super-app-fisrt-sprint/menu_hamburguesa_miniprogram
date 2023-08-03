@@ -14,8 +14,8 @@ Component({
           });
         });
       that.setData({
-        ["loadingImg.src"]: that.data.loadingImgSrc,
-        ["loadingImg.mode"]: "aspectFit",
+        "loadingImg.src": that.data.loadingImgSrc,
+        "loadingImg.mode": "aspectFit",
         showLoading: true
       });
     },

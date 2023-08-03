@@ -12,14 +12,14 @@ Component({
     onSecondaryButtonTap: () => {}
   },
   methods: {
-    handleClose() {
+    handleClose () {
       this.props.onClose();
     },
-    onAcceptButtonTap() {
+    onAcceptButtonTap () {
       this.props.onPrimaryButtonTap();
       this.handleClose();
     },
-    onCancelButtonTap() {
+    onCancelButtonTap () {
       this.handleClose();
       this.props.onSecondaryButtonTap();
     }

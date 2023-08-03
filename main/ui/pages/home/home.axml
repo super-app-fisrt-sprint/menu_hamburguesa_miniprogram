@@ -30,7 +30,10 @@
                 </view>
               </view>
               <text class="cards-menu__card-text-access">{{item.titleAccess}}</text>
-              <icon class="cards-menu__icon" type="RightOutline" />
+              <view class="cards-menu__icon__rigth">
+                <icon class="cards-menu__icon" type="RightOutline" />
+              </view>
+
             </view>
           </block>
         </view>
@@ -55,7 +58,7 @@
 
     </view>
     <modal-accept-cancel
-      content="¿Quiéres cerrar tu sesión?"
+      content="¿Quieres cerrar tu sesión?"
       visible="{{modalVisible}}"
       onClose="handleClose"
       primaryButtonText="Aceptar"
@@ -110,6 +113,7 @@
             </view>
           </view>
           <text class="cards-container__card-text-access">{{item.text}}</text>
+          <view a:if="{{item.hasBadge}}" class="badge-card">Nuevo</view>
         </view>
       </block>
     </view>

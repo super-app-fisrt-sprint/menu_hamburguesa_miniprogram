@@ -1,10 +1,11 @@
 module.exports = class Version {
   static instance;
-  constructor(version, plataforma) {
+  constructor (version, plataforma) {
     this.version = version;
     this.plataforma = plataforma;
   }
-  updateParams(params) {
+
+  updateParams (params) {
     Object.assign(this, params);
   }
 };
