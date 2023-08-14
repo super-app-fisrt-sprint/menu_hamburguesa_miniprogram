@@ -8,7 +8,7 @@
     <view class="container-menu-popup">
       <view class="container-popup__user">
         <icon class="icon-close-menu" type="CloseOutline" onTap="handlePopupClose" />
-        <text class="container-popup__name">Telmex</text>
+        <text class="container-popup__name cn-h1">Telmex</text>
         <text class="container-popup__document"> Nit: 800.198.456-1</text>
       </view>
 
@@ -93,7 +93,7 @@
 
   </view>
   <view class="menu-grid-access">
-    <view class="menu-grid-access__text">
+    <view class="menu-grid-access__text cn-h1">
       <text>Tus servicios</text>
     </view>
     <view class="menu-grid-access__container">

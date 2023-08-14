@@ -1,20 +1,22 @@
+@import "/node_modules/claro-superapp-components/app.acss";
+
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 page {
-  background: #f7f7f7;
-  font-family: Roboto, sans-serif;
+	background: #f7f7f7;
+	font-family: Roboto, sans-serif;
 }
 
 :root {
-  --main-bg-color: #fdfdff;
-  --rojo-base: #e03224;
-  --rojo-oscuro: #ac1422;
-  --gris: #00000029;
-  --bg-white: #ffffff;
-  --bg-lila: #F2F6026;
-  --color-font: #404040;
+	--main-bg-color: #fdfdff;
+	--rojo-base: #e03224;
+	--rojo-oscuro: #ac1422;
+	--gris: #00000029;
+	--bg-white: #ffffff;
+	--bg-lila: #F2F6026;
+	--color-font: #404040;
 }
