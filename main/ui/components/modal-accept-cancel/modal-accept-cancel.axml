@@ -20,7 +20,7 @@
 
         <view class="body-content">
           <!--<im class="icon-modal" type="InformationCircleOutline" /> -->
-          <image class="icon-modal" mode="scaleToFill" src="../../assets/icons/info.svg" />
+          <image class="icon-modal" mode="scaleToFill" src="/main/ui/assets/icons/info.svg" />
           <slot name="content">
             <text class="body-content-text">
               {{content}}

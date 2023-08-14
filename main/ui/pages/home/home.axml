@@ -53,7 +53,7 @@
       </view>
       <divider lineHeight="2" lineColor="#B3B3B3" />
       <view class="menu-app-version">
-        <text class="menu-app-version__text">Version 1.0.62</text>
+        <text class="menu-app-version__text">Versión: 1.0.62</text>
       </view>
 
     </view>
@@ -66,9 +66,6 @@
       onPrimaryButtonTap="onSignOut"
       onSecondaryButtonTap="onCancelButtonTap"
     />
-
-
-
   </popup>
 
 
