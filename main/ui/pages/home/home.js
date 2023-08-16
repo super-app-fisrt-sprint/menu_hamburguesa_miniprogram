@@ -241,15 +241,15 @@ Page({
     });
   },
   onSignOut() {
+    this.showLoadings();
     const deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
-      if (res.success) {
-        this.showLoadings();
+      this.hideLoading();
+      if (res.data) {
         my.reLaunch({
           url: "/main/ui/pages/index/index"
         });
       } else {
-        this.hideLoading();
         console.error("Page error");
       }
     });

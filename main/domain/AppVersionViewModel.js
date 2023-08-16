@@ -1,7 +1,7 @@
 const ResponseAppVersion = require("../data/attributes/AppVersion/entities/Version");
 const AppVersionRepository = require("../data/attributes/AppVersion/repository/GetAppVersionRepository");
 
-async function getAppVersion (deviceSpect) {
+async function getAppVersion(deviceSpect) {
   const appVersionRepository = new AppVersionRepository();
   const versionApp = new ResponseAppVersion("15.4.0", "android");
 
@@ -14,6 +14,7 @@ async function getAppVersion (deviceSpect) {
     console.log(res.data);
     if (res && res.data && res.data.includes(`"mensaje":"Ok"`)) {
       result.success = true;
+      result.data = res.data;
     } else {
       result.data = "No se pudo obtener la version correcta del app";
     }

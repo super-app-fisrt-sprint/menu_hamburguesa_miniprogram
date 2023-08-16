@@ -1,4 +1,4 @@
-<view class="container-menu">
+<view class="container-menu" a:if="{{!showLoading}}">
   <popup
     visible="{{basicVisible}}"
     position="{{position}}"
@@ -140,5 +140,5 @@
       </block>
     </view>
   </view>
-  <loading-component a:if="{{showLoading}}" />
 </view>
+<loading-component a:if="{{showLoading}}" />
