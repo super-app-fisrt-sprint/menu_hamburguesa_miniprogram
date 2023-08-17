@@ -1,4 +1,4 @@
-@import "/node_modules/claro-superapp-components/app.acss";
+@import "claro-superapp-components/app.acss";
 
 * {
 	box-sizing: border-box;
