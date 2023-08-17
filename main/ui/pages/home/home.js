@@ -5,6 +5,11 @@ Page({
       titleBarHeight,
       statusBarHeight
     });
+
+    my.setNavigationBar(
+      {
+        title: ""
+      });
   },
   data: {
     position: "",
