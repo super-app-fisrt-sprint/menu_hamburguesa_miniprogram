@@ -9,10 +9,11 @@ module.exports = {
     Page: "readonly",
     App: "readonly",
     Component: "readonly",
-    my: "readonly"
+    my: "readonly",
+    getApp: "writable"
   },
   parserOptions: {
-    ecmaVersion: 2018
+    ecmaVersion: 2022
   },
   rules: {
     "no-var": "error",

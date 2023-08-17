@@ -3,9 +3,8 @@
 <view class="container" style="padding-top: {{titleBarHeight + statusBarHeight + 25}}px">
   <view class="container__info">
     <text>
-      Este es un ejemplo de redirección de página, estamos atentos a la actualización del mismo en los próximos sprints.
+      Este es un ejemplo de redirección de página, estamos a la espera de
+      la actualización del mismo en los próximos sprints.
     </text>
   </view>
-
-
 </view>
