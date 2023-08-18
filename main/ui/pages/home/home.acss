@@ -216,6 +216,7 @@
 	margin-top: 200px;
 	color: #404040;
 }
+
 .ant-popup-content {
 	display: flex;
 	flex-direction: column;
@@ -246,14 +247,14 @@
 
 .container-popup__name {
 	display: flex;
-	font-size: 50rpx;
+	font-size: 20px;
 	color: #187385;
 }
 
 .container-popup__document {
 	padding-top: 20rpx;
-	font-size: 30rpx;
-	color: #040f16;
+	font-size: 14px;
+	color: #404040;
 }
 
 .container-user-access__cards {
@@ -273,8 +274,9 @@
 	padding-left: 20px;
 	font-size: 16px;
 	font-weight: bold;
-	color: #000;
+	color: #2D2D2D;
 }
+
 .menu-grid-access__cards-popup {
 	margin-top: 50rpx;
 	width: 650rpx;
@@ -329,7 +331,7 @@
 	color: #187385;
 	text-decoration: underline;
 	padding: 10rpx 0;
-	font-size: 30rpx;
+	font-size: 14px;
 }
 
 .menu-app-version {
@@ -340,6 +342,7 @@
 .menu-app-version__text {
 	margin: auto;
 	color: #b3b3b3;
+	font-size: 12px;
 }
 
 .ant-popup-transform-right {
@@ -356,6 +359,7 @@
 	border-radius: 9px;
 	font-size: 8px;
 }
+
 .cards-menu__icon__rigth {
 	display: flex;
 	margin-left: auto;
