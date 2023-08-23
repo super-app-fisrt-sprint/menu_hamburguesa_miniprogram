@@ -2,7 +2,6 @@ module.exports.CreateDeviceSpectInStorage = CreateDeviceSpectInStorage;
 module.exports.GetDeviceSpectInStorage = GetDeviceSpectInStorage;
 
 function CreateDeviceSpectInStorage(key, data) {
-  debugger
   try {
     my.setStorage({
       key,

@@ -2,7 +2,6 @@ const DeviceSpectRepository = require("../data/attributes/DeviceSpect/repository
 const InfoDevice = require("../data/attributes/DeviceSpect/entities/DeviceSpect");
 
 function CreateInfoDeviceStorage(jsonString) {
-  debugger;
   const infoDevice = new InfoDevice(JSON.parse(jsonString));
   const userServiceRepository = new DeviceSpectRepository();
   const res = userServiceRepository.CreateDeviceSpectSourceLocal(infoDevice);
