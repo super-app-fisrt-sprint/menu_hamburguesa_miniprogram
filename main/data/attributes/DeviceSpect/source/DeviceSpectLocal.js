@@ -1,7 +1,8 @@
 module.exports.CreateDeviceSpectInStorage = CreateDeviceSpectInStorage;
 module.exports.GetDeviceSpectInStorage = GetDeviceSpectInStorage;
 
-function CreateDeviceSpectInStorage (key, data) {
+function CreateDeviceSpectInStorage(key, data) {
+  debugger
   try {
     my.setStorage({
       key,
@@ -31,7 +32,7 @@ function CreateDeviceSpectInStorage (key, data) {
   }
 }
 
-function GetDeviceSpectInStorage (key) {
+function GetDeviceSpectInStorage(key) {
   try {
     const res = my.getStorageSync({ key });
     return res.data;

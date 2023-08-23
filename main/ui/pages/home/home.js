@@ -2,14 +2,14 @@ const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 
 Page({
-  onLaunch(options) {
-    const { query, referrerInfo: { extraData } = {} } = options;
-    console.log("query:", query);
-    console.log("extraData:", extraData);
-  },
-  onLoad(query, options) {
-    console.log("query:", query);
-    console.log("options", options);
+  // onLaunch(options) {
+  //   const { query, referrerInfo: { extraData } = {} } = options;
+  //   console.log("query:", query);
+  //   console.log("extraData:", extraData);
+  // },
+  onLoad() {
+    // console.log("query:", query);
+    // console.log("options", options);
     // Cargo info y headers
     const deviceString = `{"X-SESSION-ID":
       "U2FsdGVkX1/qFo4mzwOB2Zdwn0Q5ZisOJW6nayt0UzuuRjoR2G9KtE39omStTlcYNNZEgcVgSYPZiNT/VObQJRvxLRs/MIcUnI8LCTaUl6ALJGo+7nFSUR0Q+c3WFABWJoDuye7YMW0PjC/gwH/TEVhv2m5GfxNwFCnHYL3MoG0Rlgjt0GsR8wpepRSG3vsk/GGFAU1TY1w7Fw56pXhPirH34Xq7/raM1Ka32umj0zQ/5T261DVrlGjVWpC/5a93ANqkyDqb8j8XwixxV9xgBu3w9GOqFxUGUMdaZdDtG8BSpjInsXcn+R2xqf3SVtxlB8ueJtEi2G4FSMB28CmPHMzRtwcqZrTA/Fw42huGqDCcSOu8ptf6a4kKfQY6aMVSFMZcgGxo1NMK470RFBu8X6FAN11M7ZMs4ATctGydZtTu4MhBBEvm4ytm/l0R/xzsUakmZvqKLN8Er4yNkEImklbKXb/Tr7BU01ST1TwPRJ+ZgBl/Zd8fAgAyudV4ZGhtG1bhTWYGqCoGxaTDuGWtdEwWFTOeB3D1qB91kvSrb20=",
