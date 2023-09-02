@@ -7,7 +7,7 @@ Page({
   //   console.log("query:", query);
   //   console.log("extraData:", extraData);
   // },
-  onLoad() {
+  onLoad () {
     // console.log("query:", query);
     // console.log("options", options);
     // Cargo info y headers
@@ -135,7 +135,7 @@ Page({
     ]
   },
 
-  navigateToMiniProgram(e) {
+  navigateToMiniProgram (e) {
     const appId = e.target.dataset.appId;
     const index = e.target.dataset.index;
     console.log(
@@ -147,32 +147,32 @@ Page({
       extraData: {
         data1: "test"
       },
-      success(res) {
+      success (res) {
         console.log("Navigated to mini program successfully", res);
       },
-      fail(err) {
+      fail (err) {
         console.error("Failed to navigate to mini program", err);
       }
     });
   },
-  handleShowMenu(e) {
+  handleShowMenu (e) {
     const { position } = e.target.dataset;
     this.setData({
       position,
       basicVisible: true
     });
   },
-  handlePopupClose() {
+  handlePopupClose () {
     this.setData({
       basicVisible: false
     });
   },
-  onIconClick(e) {
+  onIconClick (e) {
     const index = e.target.dataset.index;
     const pageUrl = this.data.menuAccess[index].pageUrl;
     my.navigateTo({ url: pageUrl });
   },
-  onFooterItemClick(e) {
+  onFooterItemClick (e) {
     const { index } = e.currentTarget.dataset;
     const { footerItems } = this.data;
     footerItems.forEach((item, i) => {
@@ -182,44 +182,44 @@ Page({
       footerItems
     });
   },
-  showLoadings() {
+  showLoadings () {
     this.setData({
       showLoading: true
     });
   },
-  hideLoading() {
+  hideLoading () {
     this.setData({
       showLoading: false
     });
   },
-  goToTerms() {
+  goToTerms () {
     const { urlTerms } = this.data;
     my.downloadFile({
       url: urlTerms,
-      success({ apFilePath }) {
+      success ({ apFilePath }) {
         my.openDocument({
           fileType: "pdf",
           filePath: apFilePath,
-          success() {
+          success () {
             console.info("Archivo PDF abierto correctamente");
           },
-          fail(res) {
+          fail (res) {
             my.alert({
               content: res.errorMessage || res.error
             });
           }
         });
-      },
+      }
     });
   },
-  handleClose() {
+  handleClose () {
     this.setData({
       modalVisibleDescription: false,
       modalVisible: true,
       basicVisible: true
     });
   },
-  onCancelButtonTap() {
+  onCancelButtonTap () {
     console.log("Cancelar");
     my.redirectTo({
       url: '/main/ui/pages/home/home'
@@ -228,19 +228,19 @@ Page({
       modalVisible: false
     });
   },
-  onAcceptButtonTap() {
+  onAcceptButtonTap () {
     this.redirectLoginServices();
     this.setData({
       modalVisible: false
     });
   },
-  handleOpenModal() {
+  handleOpenModal () {
     console.log("Entrando");
     this.setData({
       modalVisible: true
     });
   },
-  onSignOut() {
+  onSignOut () {
     this.showLoadings();
     const deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
@@ -255,5 +255,5 @@ Page({
     });
   },
 
-  onUnload() { }
+  onUnload () { }
 });

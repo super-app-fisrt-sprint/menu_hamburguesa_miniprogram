@@ -2,7 +2,6 @@ const DeviceSpectRepository = require("../main/data/attributes/DeviceSpect/repos
 const InfoDevice = require("../main/data/attributes/DeviceSpect/entities/DeviceSpect");
 const { CreateInfoDeviceStorage, GetInfoDeviceStorage } = require("../main/domain/DeviceSpectViewModel");
 
-
 // Mocked JSON data
 const jsonString = `{
   "deviceId": "device123",

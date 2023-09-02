@@ -3,7 +3,7 @@ const AppVersionRepository = require("../data/attributes/AppVersion/repository/G
 
 async function getAppVersion (deviceSpect) {
   const appVersionRepository = new AppVersionRepository();
-  const versionApp = new ResponseAppVersion("15.4.0", "android");
+  const versionApp = new ResponseAppVersion("15.7.0", "android");
 
   const result = { data: null, success: false };
   try {
