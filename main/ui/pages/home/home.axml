@@ -1,4 +1,4 @@
-<view class="container-menu" a:if="{{!showLoading}}">
+<view a:if="{{!showLoading}}" class="container-menu">
   <popup
     visible="{{basicVisible}}"
     position="{{position}}"

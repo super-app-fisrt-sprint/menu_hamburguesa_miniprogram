@@ -2,14 +2,16 @@ const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 
 Page({
-  // onLaunch(options) {
-  //   const { query, referrerInfo: { extraData } = {} } = options;
-  //   console.log("query:", query);
-  //   console.log("extraData:", extraData);
-  // },
-  onLoad () {
-    // console.log("query:", query);
-    // console.log("options", options);
+  onLaunch() {
+    const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
+    // const { query, referrerInfo: { extraData } = {} } = options;
+    my.alert({
+      title: 'Prueba data',
+      content: `query: ${JSON.stringify(query) || ''}\nextraData: ${JSON.stringify(extraData) || ''}`,
+    });
+
+  },
+  onLoad() {
     // Cargo info y headers
     const deviceString = `{"X-SESSION-ID":
       "U2FsdGVkX1/qFo4mzwOB2Zdwn0Q5ZisOJW6nayt0UzuuRjoR2G9KtE39omStTlcYNNZEgcVgSYPZiNT/VObQJRvxLRs/MIcUnI8LCTaUl6ALJGo+7nFSUR0Q+c3WFABWJoDuye7YMW0PjC/gwH/TEVhv2m5GfxNwFCnHYL3MoG0Rlgjt0GsR8wpepRSG3vsk/GGFAU1TY1w7Fw56pXhPirH34Xq7/raM1Ka32umj0zQ/5T261DVrlGjVWpC/5a93ANqkyDqb8j8XwixxV9xgBu3w9GOqFxUGUMdaZdDtG8BSpjInsXcn+R2xqf3SVtxlB8ueJtEi2G4FSMB28CmPHMzRtwcqZrTA/Fw42huGqDCcSOu8ptf6a4kKfQY6aMVSFMZcgGxo1NMK470RFBu8X6FAN11M7ZMs4ATctGydZtTu4MhBBEvm4ytm/l0R/xzsUakmZvqKLN8Er4yNkEImklbKXb/Tr7BU01ST1TwPRJ+ZgBl/Zd8fAgAyudV4ZGhtG1bhTWYGqCoGxaTDuGWtdEwWFTOeB3D1qB91kvSrb20=",
@@ -135,7 +137,7 @@ Page({
     ]
   },
 
-  navigateToMiniProgram (e) {
+  navigateToMiniProgram(e) {
     const appId = e.target.dataset.appId;
     const index = e.target.dataset.index;
     console.log(
@@ -147,32 +149,32 @@ Page({
       extraData: {
         data1: "test"
       },
-      success (res) {
+      success(res) {
         console.log("Navigated to mini program successfully", res);
       },
-      fail (err) {
+      fail(err) {
         console.error("Failed to navigate to mini program", err);
       }
     });
   },
-  handleShowMenu (e) {
+  handleShowMenu(e) {
     const { position } = e.target.dataset;
     this.setData({
       position,
       basicVisible: true
     });
   },
-  handlePopupClose () {
+  handlePopupClose() {
     this.setData({
       basicVisible: false
     });
   },
-  onIconClick (e) {
+  onIconClick(e) {
     const index = e.target.dataset.index;
     const pageUrl = this.data.menuAccess[index].pageUrl;
     my.navigateTo({ url: pageUrl });
   },
-  onFooterItemClick (e) {
+  onFooterItemClick(e) {
     const { index } = e.currentTarget.dataset;
     const { footerItems } = this.data;
     footerItems.forEach((item, i) => {
@@ -182,28 +184,28 @@ Page({
       footerItems
     });
   },
-  showLoadings () {
+  showLoadings() {
     this.setData({
       showLoading: true
     });
   },
-  hideLoading () {
+  hideLoading() {
     this.setData({
       showLoading: false
     });
   },
-  goToTerms () {
+  goToTerms() {
     const { urlTerms } = this.data;
     my.downloadFile({
       url: urlTerms,
-      success ({ apFilePath }) {
+      success({ apFilePath }) {
         my.openDocument({
           fileType: "pdf",
           filePath: apFilePath,
-          success () {
+          success() {
             console.info("Archivo PDF abierto correctamente");
           },
-          fail (res) {
+          fail(res) {
             my.alert({
               content: res.errorMessage || res.error
             });
@@ -212,14 +214,14 @@ Page({
       }
     });
   },
-  handleClose () {
+  handleClose() {
     this.setData({
       modalVisibleDescription: false,
       modalVisible: true,
       basicVisible: true
     });
   },
-  onCancelButtonTap () {
+  onCancelButtonTap() {
     console.log("Cancelar");
     my.redirectTo({
       url: '/main/ui/pages/home/home'
@@ -228,19 +230,19 @@ Page({
       modalVisible: false
     });
   },
-  onAcceptButtonTap () {
+  onAcceptButtonTap() {
     this.redirectLoginServices();
     this.setData({
       modalVisible: false
     });
   },
-  handleOpenModal () {
+  handleOpenModal() {
     console.log("Entrando");
     this.setData({
       modalVisible: true
     });
   },
-  onSignOut () {
+  onSignOut() {
     this.showLoadings();
     const deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
@@ -255,5 +257,5 @@ Page({
     });
   },
 
-  onUnload () { }
+  onUnload() { }
 });
