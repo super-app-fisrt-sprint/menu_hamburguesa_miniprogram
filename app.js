@@ -3,7 +3,7 @@ const RefreshTokenViewModel = require("/main/domain/RefreshTokenViewModel");
 App({
   onShow(options) {
     
-    let enviromentDev = true;
+    let enviromentDev = false;
 
     const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
     let receivedData = extraData;
@@ -19,6 +19,12 @@ App({
     headersUpdated = RefreshTokenViewModel.changeValueHeader("X-SESSION-ID", receivedData.response[1].data.response.cuentas[0].token);
     headersUpdated = RefreshTokenViewModel.changeValueHeader("X-MC-MAIL", receivedData.response[1].data.response.usuario.UserProfileID);
     RefreshTokenViewModel.refreshToken(headersUpdated).then(() => { });
+   }else
+   {
+    my.alert(
+      {
+        title: "No hay data recibida"
+      })
    }
     
   },
