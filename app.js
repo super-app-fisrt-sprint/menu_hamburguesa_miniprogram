@@ -19,7 +19,14 @@ App({
     headersUpdated = RefreshTokenViewModel.changeValueHeader("X-SESSION-ID", receivedData.response[1].data.response.cuentas[0].token);
     headersUpdated = RefreshTokenViewModel.changeValueHeader("X-MC-MAIL", receivedData.response[1].data.response.usuario.UserProfileID);
     RefreshTokenViewModel.refreshToken(headersUpdated).then(() => { });
-   }else
+
+    my.alert(
+      {
+        title: "Data recibida, devicespect actualizado " + headersUpdated["X-MC-MAIL"]
+      });
+
+   }
+   else
    {
     my.alert(
       {
