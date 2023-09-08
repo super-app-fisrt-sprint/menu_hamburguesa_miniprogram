@@ -6,23 +6,22 @@ App({
     let enviromentDev = false;
 
     const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
-    let receivedData = extraData;
-    if(enviromentDev)
-    {
-      receivedData = JSON.parse(this.globalData);
-    }
     
+    let receivedData =  enviromentDev ? JSON.parse(this.globalData) : extraData;
+
     let headersUpdated;
 
    if(receivedData)
    {
     headersUpdated = RefreshTokenViewModel.changeValueHeader("X-SESSION-ID", receivedData.response[1].data.response.cuentas[0].token);
     headersUpdated = RefreshTokenViewModel.changeValueHeader("X-MC-MAIL", receivedData.response[1].data.response.usuario.UserProfileID);
+
+
     RefreshTokenViewModel.refreshToken(headersUpdated).then(() => { });
 
     my.alert(
       {
-        title: "Data recibida, devicespect actualizado " + headersUpdated["X-MC-MAIL"]
+        content: "Data recibida, devicespect actualizado " + headersUpdated["X-MC-MAIL"]
       });
 
    }
