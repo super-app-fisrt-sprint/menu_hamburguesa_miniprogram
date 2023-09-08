@@ -41,4 +41,8 @@ module.exports = class AutoRefreshDataSource {
   changeHeaderStorage (header, data) {
     return changeHeaderLocal.changeHeaderLocal(key.TYPE.N_DEVICE_INFO, header, data);
   }
+
+  changeInfoStorage (property, data) {
+    return changeHeaderLocal.changeHeaderLocal(key.TYPE.N_USER_INFO_LOGIN, property, data);
+  }
 };

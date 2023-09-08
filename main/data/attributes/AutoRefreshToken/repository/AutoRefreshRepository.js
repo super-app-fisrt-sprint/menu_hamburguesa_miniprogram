@@ -41,4 +41,14 @@ module.exports = class AutoRefreshRepository {
   changeHeaderLocal (header, data) {
     return autoRefreshDataSourceRemote.changeHeaderStorage(header, data);
   }
+
+  /**
+   * Llama al método ChangeHeadEstorage de la instancia AutorefreshDataSourCeremote con los parámetros de encabezado y datos.
+   * @param {any} prop - La informacion a cambiar.
+   * @param {any} data -Los datos que se utilizarán en el método.
+   * @returns {any} El resultado del método ChangeHeadEstorage.
+   */
+  changeInfoLoginLocal (prop, data) {
+    return autoRefreshDataSourceRemote.changeInfoStorage(prop, data);
+  }
 };

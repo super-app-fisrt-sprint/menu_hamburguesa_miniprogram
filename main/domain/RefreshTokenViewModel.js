@@ -37,5 +37,19 @@ function changeValueHeader (key, value) {
   return result;
 }
 
+function changeValueInfo (key, value) {
+  const tokenRepository = new AutoRefreshRepository();
+  let result;
+  try {
+    result = tokenRepository.changeInfoLoginLocal(key, value);
+  } catch (error) {
+    // console.error("Error changing the token header", error);
+  }
+  return result;
+}
+
 module.exports.refreshToken = refreshToken;
 module.exports.changeValueHeader = changeValueHeader;
+module.exports.changeValueInfo = changeValueInfo;
+
+
