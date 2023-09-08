@@ -13,17 +13,17 @@ App({
 
    if(receivedData)
    {
-    //DevicesSpect
+    // DevicesSpect
     headersUpdated = RefreshTokenViewModel.changeValueHeader("X-SESSION-ID", receivedData.response[1].data.response.cuentas[0].token);
     headersUpdated = RefreshTokenViewModel.changeValueHeader("X-MC-MAIL", receivedData.response[1].data.response.usuario.UserProfileID);
 
-
-    //LoginInfo
-    headersUpdated = RefreshTokenViewModel.changeValueInfo("nombre", receivedData.response[1].data.response.usuario.nombre);
-    headersUpdated = RefreshTokenViewModel.changeValueInfo("email", receivedData.response[1].data.response.usuario.UserProfileID);
-    headersUpdated = RefreshTokenViewModel.changeValueInfo("apellido", receivedData.response[1].data.response.usuario.apellido);
-    headersUpdated = RefreshTokenViewModel.changeValueInfo("DocumentNumber", receivedData.response[1].data.response.usuario.DocumentNumber);
-    headersUpdated = RefreshTokenViewModel.changeValueInfo("DocumentType", receivedData.response[1].data.response.usuario.DocumentType);
+    // LoginInfo
+    const usuario = receivedData.response[1].data.response.usuario;
+    headersUpdated = RefreshTokenViewModel.changeValueInfo("nombre", usuario.nombre);
+    headersUpdated = RefreshTokenViewModel.changeValueInfo("email", usuario.UserProfileID);
+    headersUpdated = RefreshTokenViewModel.changeValueInfo("apellido", usuario.apellido);
+    headersUpdated = RefreshTokenViewModel.changeValueInfo("DocumentNumber", usuario.DocumentNumber);
+    headersUpdated = RefreshTokenViewModel.changeValueInfo("DocumentType", usuario.DocumentType);
 
     RefreshTokenViewModel.refreshToken(headersUpdated).then(() => { });
    }
