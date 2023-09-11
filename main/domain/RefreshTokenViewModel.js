@@ -51,5 +51,3 @@ function changeValueInfo (key, value) {
 module.exports.refreshToken = refreshToken;
 module.exports.changeValueHeader = changeValueHeader;
 module.exports.changeValueInfo = changeValueInfo;
-
-
