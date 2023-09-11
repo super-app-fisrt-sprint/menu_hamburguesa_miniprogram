@@ -1,6 +1,6 @@
 module.exports.getAppVersionList = getAppVersionList;
 
-function getAppVersionList (url, deviceSpect, data) {
+function getAppVersionList(url, deviceSpect, data) {
   console.log(url, deviceSpect);
   return new Promise((resolve, reject) => {
     my.request({
