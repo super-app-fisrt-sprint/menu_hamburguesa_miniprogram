@@ -6,7 +6,7 @@
  */
 module.exports.autoRefresh = autoRefresh;
 
-function autoRefresh(url, deviceSpect) {
+function autoRefresh (url, deviceSpect) {
   return new Promise((resolve, reject) => {
     my.request({
       url,

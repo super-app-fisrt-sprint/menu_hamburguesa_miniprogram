@@ -9,15 +9,20 @@ const AutoRefreshRepository = require("../data/attributes/AutoRefreshToken/repos
 
 async function refreshToken (deviceSpect) {
   const tokenRepository = new AutoRefreshRepository();
-
+  const result = { data: null, success: false };
   try {
     const resToken = await tokenRepository.autoRefresh(deviceSpect);
     if (resToken && resToken.data && resToken.data.error === 0 && resToken.data.response) {
-      this.changeValueHeader("X-SESSION-ID", resToken.data.response.cuenta.token);
+      const tokenRenovated = this.changeValueHeader("X-SESSION-ID", resToken.data.response.cuenta.token);
+      if (tokenRenovated.success) {
+        result.data = tokenRenovated.data;
+        result.success = true;
+      }
     }
   } catch (error) {
     // console.error("Error refrescando el token", error);
   }
+  return result;
 }
 
 /**
@@ -28,9 +33,10 @@ async function refreshToken (deviceSpect) {
 
 function changeValueHeader (key, value) {
   const tokenRepository = new AutoRefreshRepository();
-  let result;
+  const result = { data: null, success: false };
   try {
-    result = tokenRepository.changeHeaderLocal(key, value);
+    result.data = tokenRepository.changeHeaderLocal(key, value);
+    result.success = true;
   } catch (error) {
     // console.error("Error changing the token header", error);
   }
@@ -39,9 +45,10 @@ function changeValueHeader (key, value) {
 
 function changeValueInfo (key, value) {
   const tokenRepository = new AutoRefreshRepository();
-  let result;
+  const result = { data: null, success: false };
   try {
-    result = tokenRepository.changeInfoLoginLocal(key, value);
+    result.data = tokenRepository.changeInfoLoginLocal(key, value);
+    result.success = true;
   } catch (error) {
     // console.error("Error changing the token header", error);
   }
