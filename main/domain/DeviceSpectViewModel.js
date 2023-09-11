@@ -13,12 +13,10 @@ function GetInfoDeviceStorage() {
   return response;
 }
 
-
-
 function CreateInfoDeviceStorage(data) {
   let headersUpdated;
   if (data) {
-    let extraData = data[1].data.response
+    let extraData = data.response[1].data.response
 
     // LoginInfo
     const usuario = extraData.usuario;
