@@ -1,7 +1,5 @@
 const DeviceSpectRepository = require("../main/data/attributes/DeviceSpect/repository/DeviceSpectRepository");
 const AutoRefreshRepository = require("../main/data/attributes/AutoRefreshToken/repository/AutoRefreshRepository");
-const InfoDevice = require("../main/data/attributes/DeviceSpect/entities/DeviceSpect");
-const RefreshTokenViewModel = require("../main/domain/RefreshTokenViewModel");
 const { CreateInfoDeviceStorage, GetInfoDeviceStorage } = require("../main/domain/DeviceSpectViewModel");
 
 // Mocked data
@@ -10,7 +8,7 @@ const mockData = {
     {
       data: {
         response: {
-          
+
         }
       }
     },
@@ -34,13 +32,10 @@ const mockData = {
     }
   ]
 };
-const mockChangeValue = { success : true, data: null};
-
-const mockChangeValueFalse = { success : false, data: null};
+const mockChangeValue = { success: true, data: null };
 
 describe('CreateInfoDeviceStorage', () => {
-  test('should update login info and headers',async () => {
-
+  test('should update login info and headers', async () => {
     const tokenRepository = new AutoRefreshRepository();
 
     tokenRepository.changeHeaderLocal = jest.fn().mockResolvedValue(mockChangeValue);
@@ -56,11 +51,11 @@ describe('CreateInfoDeviceStorage', () => {
 
     // Check that headers are updated
     expect(tokenRepository.changeHeaderLocal).toHaveBeenCalledWith("X-SESSION-ID", "token123");
-    expect(tokenRepository.changeHeaderLocal).toHaveBeenCalledWith("X-MC-MAIL", "john@example.com");  
+    expect(tokenRepository.changeHeaderLocal).toHaveBeenCalledWith("X-MC-MAIL", "john@example.com");
     expect(result.success).toBe(true);
   });
 
-  test('should fail with parameter in null',async () => {
+  test('should fail with parameter in null', async () => {
     const result = await CreateInfoDeviceStorage(null);
     expect(result.success).toBe(false);
   });

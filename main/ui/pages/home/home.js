@@ -138,10 +138,8 @@ Page({
 
   navigateToMiniProgram (e) {
     const appId = e.target.dataset.appId;
-    const index = e.target.dataset.index;
-    console.log(
-      `Navigating to mini program with appId: ${appId} at index: ${index}`
-    );
+    // const index = e.target.dataset.index;
+
     my.navigateToMiniProgram({
       appId,
       path: "pages/home/home",
@@ -149,10 +147,10 @@ Page({
         data1: "test"
       },
       success (res) {
-        console.log("Navigated to mini program successfully", res);
+
       },
       fail (err) {
-        console.error("Failed to navigate to mini program", err);
+
       }
     });
   },
@@ -202,7 +200,7 @@ Page({
           fileType: "pdf",
           filePath: apFilePath,
           success () {
-            console.info("Archivo PDF abierto correctamente");
+
           },
           fail (res) {
             my.alert({
@@ -221,7 +219,6 @@ Page({
     });
   },
   onCancelButtonTap () {
-    console.log("Cancelar");
     my.redirectTo({
       url: '/main/ui/pages/home/home'
     });
@@ -236,7 +233,6 @@ Page({
     });
   },
   handleOpenModal () {
-    console.log("Entrando");
     this.setData({
       modalVisible: true
     });
@@ -251,10 +247,10 @@ Page({
           data1: "test"
         },
         success: (res) => {
-          console.log(JSON.stringify(res))
+
         },
         fail: (res) => {
-          console.log(JSON.stringify(res))
+
         }
       });
     });

@@ -2,10 +2,8 @@ const AutoRefreshRepository = require("../main/data/attributes/AutoRefreshToken/
 const {
   refreshToken,
   changeValueHeader,
-  changeValueInfo,
+  changeValueInfo
 } = require("../main/domain/RefreshTokenViewModel");
-
-
 
 // Mocked response data
 const mockAutoRefreshResponse = {
@@ -13,10 +11,10 @@ const mockAutoRefreshResponse = {
     error: 0,
     response: {
       cuenta: {
-        token: "new-token",
-      },
-    },
-  },
+        token: "new-token"
+      }
+    }
+  }
 };
 const mockChangeValue = "new-token";
 
@@ -33,9 +31,11 @@ describe('refreshToken', () => {
 
     // Act
     const result = await refreshToken(deviceSpect);
-    
+
     // Assert
     expect(spyAutoRefresh).toHaveBeenCalledWith(deviceSpect);
+    expect(spyAutoRefreshLocal).toHaveBeenCalledWith("X-SESSION-ID", "new-token");
+
     expect(result.success).toBe(true);
     expect(result.data).toBe(expectedNewToken);
   });

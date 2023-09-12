@@ -2,10 +2,6 @@ module.exports = class APIs {
   static get URL_BASE () {
     return URL_BASE;
   }
-
-  static get HEADER_PARAMS () {
-    return HEADER_PARAMS;
-  }
 };
 
 const URL_BASE = {

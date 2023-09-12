@@ -13,15 +13,11 @@ async function refreshToken (deviceSpect) {
   try {
     const resToken = await tokenRepository.autoRefresh(deviceSpect);
     if (resToken && resToken.data && resToken.data.error === 0 && resToken.data.response) {
-     
-      
       tokenRepository.changeHeaderLocal("X-SESSION-ID", resToken.data.response.cuenta.token)
-      .then((headersupdated) => 
-      {
-        result.data = headersupdated;
-        result.success = true;
-      });
-      
+        .then((headersupdated) => {
+          result.data = headersupdated;
+          result.success = true;
+        });
     }
   } catch (error) {
     // console.error("Error refrescando el token", error);

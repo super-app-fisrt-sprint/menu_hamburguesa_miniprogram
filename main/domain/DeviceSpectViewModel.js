@@ -1,9 +1,7 @@
 const DeviceSpectRepository = require("../data/attributes/DeviceSpect/repository/DeviceSpectRepository");
 const AutoRefreshRepository = require("../data/attributes/AutoRefreshToken/repository/AutoRefreshRepository");
-const InfoDevice = require("../data/attributes/DeviceSpect/entities/DeviceSpect");
-const RefreshTokenViewModel = require("../domain/RefreshTokenViewModel")
 
-function GetInfoDeviceStorage() {
+function GetInfoDeviceStorage () {
   let response = null;
   try {
     const userServiceRepository = new DeviceSpectRepository();
@@ -14,13 +12,12 @@ function GetInfoDeviceStorage() {
   return response;
 }
 
-function CreateInfoDeviceStorage(data) {
-  let result = {
+function CreateInfoDeviceStorage (data) {
+  const result = {
     data: null,
     success: false
   };
   try {
-
     let headersUpdated;
     let loginInfoUpdated;
     const tokenRepository = new AutoRefreshRepository();
