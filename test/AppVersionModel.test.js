@@ -6,7 +6,7 @@ it('Debería devolver una respuesta exitosa con la versión de aplicación corre
   // Arrange
   const mockDeviceSpect = {};
   const mockAppVersionRepository = new AppVersionRepository();
-  const mockAppVersion = new ResponseAppVersion("15.7.0", "android");
+  const mockAppVersion = new ResponseAppVersion("15.9.0", "android");
   const expectedResponse = { data: '{"mensaje":"Ok"}', success: true };
   mockAppVersionRepository.getAppVersionList = jest.fn().mockResolvedValue({ data: '{"mensaje":"Ok"}' });
 
@@ -23,7 +23,7 @@ it('debe devolver un objeto de resultado con éxito = true y data = res.data cua
   // Arrange
   const mockDeviceSpect = {};
   const mockAppVersionRepository = new AppVersionRepository();
-  const mockAppVersion = new ResponseAppVersion("15.7.0", "android");
+  const mockAppVersion = new ResponseAppVersion("15.9.0", "android");
   const expectedResponse = { data: '{"mensaje":"Ok"}', success: true };
   mockAppVersionRepository.getAppVersionList = jest.fn().mockResolvedValue({ data: '{"mensaje":"Ok"}' });
 
@@ -40,7 +40,7 @@ it('Debe devolver un objeto de resultado con éxito = falso y data = "no se pudo
   // Arrange
   const mockDeviceSpect = {};
   const mockAppVersionRepository = new AppVersionRepository();
-  const mockAppVersion = new ResponseAppVersion("15.7.0", "android");
+  const mockAppVersion = new ResponseAppVersion("15.9.0", "android");
   const expectedResponse = { data: "No se pudo obtener la version correcta del app", success: false };
   mockAppVersionRepository.getAppVersionList = jest.fn().mockResolvedValue({ data: '{"mensaje":"Error"}' });
 

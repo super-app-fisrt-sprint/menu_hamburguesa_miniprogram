@@ -11,7 +11,6 @@ async function getAppVersion (deviceSpect) {
       deviceSpect,
       versionApp
     );
-    console.log(res.data);
     if (res && res.data && res.data.includes(`"mensaje":"Ok"`)) {
       result.success = true;
       result.data = res.data;
