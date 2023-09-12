@@ -8,8 +8,8 @@
     <view class="container-menu-popup">
       <view class="container-popup__user">
         <icon class="icon-close-menu" type="CloseOutline" onTap="handlePopupClose" />
-        <text class="container-popup__name cn-h1">Telmex</text>
-        <text class="container-popup__document"> Nit: 800.198.456-1</text>
+        <text class="container-popup__name cn-h1">{{nombre}}</text>
+        <text class="container-popup__document"> Nit: {{nit}}</text>
       </view>
 
       <view class="container-user-menu-access">
@@ -76,7 +76,7 @@
     <view class="menu-header__info">
 
       <view class="menu-header__info__horizontal">
-        <text class="menu-header_info__text_name">Telmex</text>
+        <text class="menu-header_info__text_name">{{nombre}}</text>
         <image
           data-position="right"
           onTap="handleShowMenu"
@@ -86,7 +86,7 @@
       </view>
 
       <divider lineHeight="2" lineColor="#ffffff" />
-      <text class="menu-header_info__text_nit">Nit: 800.198.456-1</text>
+      <text class="menu-header_info__text_nit">Nit: {{nit}}</text>
     </view>
 
 
