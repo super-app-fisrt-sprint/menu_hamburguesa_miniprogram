@@ -40,13 +40,14 @@ function CreateInfoDeviceStorage (data) {
         "X-MC-DEVICE-ID": "sdSS5V/uzNMk7u+w5J7jrLK82uPH+QeVMag0lGPgjM/XZ5KOc7MKnHFsFNb8kPQtil3fH8ewmXvXD88huw4LGecaguoggK6aWSq+o3TmC0uyWNagvvJpl2R8VGwFdiil/JDQXF/JXv5Jm8nA+lr0TEMDDWqfc5bEtnOvX9mmmaQ="
       };
 
-      for (const key in infoLogin) {
-        loginInfoUpdated = tokenRepository.changeInfoLoginLocal(key, infoLogin[key]);
-      }
-      for (const key in deviceSpect) {
-        headersUpdated = tokenRepository.changeHeaderLocal(key, deviceSpect[key]);
-      }
-
+      loginInfoUpdated = Object.keys(infoLogin).forEach((key) => {
+        tokenRepository.changeInfoLoginLocal(key, infoLogin[key]);
+      });
+      
+      headersUpdated = Object.keys(deviceSpect).forEach((key) => {
+        tokenRepository.changeHeaderLocal(key, deviceSpect[key]);
+      });
+      
       result.success = true;
       result.data = {
         infologin: loginInfoUpdated,
