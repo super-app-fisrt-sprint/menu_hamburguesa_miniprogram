@@ -32,6 +32,14 @@ const mockData = {
     }
   ]
 };
+
+const deviceData = 
+{
+  platform: "android",
+  brand: "xiaomi",
+  system: "9"
+}
+
 const mockChangeValue = { success: true, data: null };
 
 describe('CreateInfoDeviceStorage', () => {
@@ -41,7 +49,7 @@ describe('CreateInfoDeviceStorage', () => {
     tokenRepository.changeHeaderLocal = jest.fn().mockResolvedValue(mockChangeValue);
     tokenRepository.changeInfoLoginLocal = jest.fn().mockResolvedValue(mockChangeValue);
 
-    const result = await CreateInfoDeviceStorage(mockData);
+    const result = await CreateInfoDeviceStorage(mockData,deviceData);
     // Check that login info is updated
     expect(tokenRepository.changeInfoLoginLocal).toHaveBeenCalledWith("nombre", "John");
     expect(tokenRepository.changeInfoLoginLocal).toHaveBeenCalledWith("email", "john@example.com");
@@ -68,7 +76,7 @@ describe('CreateInfoDeviceStorage', () => {
       throw new Error('Error updating info');
     });
 
-    const result = CreateInfoDeviceStorage(mockData);
+    const result = CreateInfoDeviceStorage(mockData,deviceData);
 
     // Ensure the result indicates failure
     expect(result.success).toBe(false);
