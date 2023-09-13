@@ -1,7 +1,7 @@
 const DeviceSpectRepository = require("../data/attributes/DeviceSpect/repository/DeviceSpectRepository");
 const AutoRefreshRepository = require("../data/attributes/AutoRefreshToken/repository/AutoRefreshRepository");
 
-function GetInfoDeviceStorage () {
+function getInfoDeviceStorage () {
   let response = null;
   try {
     const userServiceRepository = new DeviceSpectRepository();
@@ -70,4 +70,4 @@ function CreateInfoDeviceStorage (data, deviceData) {
 }
 
 module.exports.CreateInfoDeviceStorage = CreateInfoDeviceStorage;
-module.exports.GetInfoDeviceStorage = GetInfoDeviceStorage;
+module.exports.getInfoDeviceStorage = getInfoDeviceStorage;

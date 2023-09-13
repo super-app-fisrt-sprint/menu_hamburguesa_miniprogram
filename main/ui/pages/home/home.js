@@ -1,5 +1,6 @@
 const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
+const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
 
 Page({
   onLaunch () {
@@ -13,6 +14,12 @@ Page({
   onLoad () {
     const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
     const { titleBarHeight, statusBarHeight } = my.getSystemInfoSync();
+
+    const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
+    // Services GETANYMACCLIST and GETCOUNTMASTERLINES
+
+    RefreshTokenViewModel.refreshToken(deviceSpect).then(() => {
+    });
 
     this.setData(
       {
@@ -42,7 +49,8 @@ Page({
         icon: "/main/ui/assets/icons/moviles.svg",
         text: "Soluciones\nmóviles",
         hasBadge: false,
-        appId: "3482020158910265"
+        appId: "3482020164783758",
+        pageUrl: "main/ui/pages/mobileSolutionsIndex/mobileSolutionsIndex"
       },
       {
         icon: "/main/ui/assets/icons/banda-ancha.svg",
@@ -121,14 +129,17 @@ Page({
   },
 
   navigateToMiniProgram (e) {
+
     const appId = e.target.dataset.appId;
-    // const index = e.target.dataset.index;
+    const pageUrl = e.target.dataset.pageUrl;
+
+    const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
 
     my.navigateToMiniProgram({
       appId,
-      path: "pages/home/home",
+      path: pageUrl,
       extraData: {
-        data1: "test"
+        extraData
       },
       success (res) {
 

@@ -1,6 +1,6 @@
 const DeviceSpectRepository = require("../main/data/attributes/DeviceSpect/repository/DeviceSpectRepository");
 const AutoRefreshRepository = require("../main/data/attributes/AutoRefreshToken/repository/AutoRefreshRepository");
-const { CreateInfoDeviceStorage, GetInfoDeviceStorage } = require("../main/domain/DeviceSpectViewModel");
+const { CreateInfoDeviceStorage, getInfoDeviceStorage } = require("../main/domain/DeviceSpectViewModel");
 
 // Mocked data
 const mockData = {
@@ -33,7 +33,7 @@ const mockData = {
   ]
 };
 
-const deviceData = 
+const deviceData =
 {
   platform: "android",
   brand: "xiaomi",
@@ -49,7 +49,7 @@ describe('CreateInfoDeviceStorage', () => {
     tokenRepository.changeHeaderLocal = jest.fn().mockResolvedValue(mockChangeValue);
     tokenRepository.changeInfoLoginLocal = jest.fn().mockResolvedValue(mockChangeValue);
 
-    const result = await CreateInfoDeviceStorage(mockData,deviceData);
+    const result = await CreateInfoDeviceStorage(mockData, deviceData);
     // Check that login info is updated
     expect(tokenRepository.changeInfoLoginLocal).toHaveBeenCalledWith("nombre", "John");
     expect(tokenRepository.changeInfoLoginLocal).toHaveBeenCalledWith("email", "john@example.com");
@@ -76,20 +76,20 @@ describe('CreateInfoDeviceStorage', () => {
       throw new Error('Error updating info');
     });
 
-    const result = CreateInfoDeviceStorage(mockData,deviceData);
+    const result = CreateInfoDeviceStorage(mockData, deviceData);
 
     // Ensure the result indicates failure
     expect(result.success).toBe(false);
   });
 });
 
-describe('GetInfoDeviceStorage', () => {
+describe('getInfoDeviceStorage', () => {
   test('should retrieve device info from the repository', () => {
     const deviceSpectRepository = new DeviceSpectRepository();
     const storedInfoDevice = { /* Mocked stored device info */ };
     const spyGetDeviceSpectSourceLocal = jest.spyOn(deviceSpectRepository, 'GetDeviceSpectSourceLocal').mockReturnValue(storedInfoDevice);
 
-    const response = GetInfoDeviceStorage();
+    const response = getInfoDeviceStorage();
 
     expect(spyGetDeviceSpectSourceLocal).toHaveBeenCalled();
     expect(response).toEqual(storedInfoDevice);
@@ -100,7 +100,7 @@ describe('GetInfoDeviceStorage', () => {
     deviceRepository.GetDeviceSpectSourceLocal.mockImplementation(() => {
       throw new Error('Error updating info');
     });
-    const response = GetInfoDeviceStorage();
+    const response = getInfoDeviceStorage();
     expect(response).toBeNull();
   });
 });
