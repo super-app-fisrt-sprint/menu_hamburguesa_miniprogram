@@ -18,7 +18,8 @@ Page({
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     // Services GETANYMACCLIST and GETCOUNTMASTERLINES
 
-    RefreshTokenViewModel.refreshToken(deviceSpect).then(() => {
+    RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {
+
     });
 
     this.setData(
@@ -129,7 +130,6 @@ Page({
   },
 
   navigateToMiniProgram (e) {
-
     const appId = e.target.dataset.appId;
     const pageUrl = e.target.dataset.pageUrl;
 

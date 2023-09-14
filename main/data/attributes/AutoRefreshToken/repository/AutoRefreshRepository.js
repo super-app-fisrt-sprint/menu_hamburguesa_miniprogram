@@ -38,7 +38,7 @@ module.exports = class AutoRefreshRepository {
    * @param {any} data -Los datos que se utilizarán en el método.
    * @returns {any} El resultado del método ChangeHeadEstorage.
    */
-  changeHeaderLocal (header, data) {
+  async changeHeaderLocal (header, data) {
     return autoRefreshDataSourceRemote.changeHeaderStorage(header, data);
   }
 
@@ -48,7 +48,7 @@ module.exports = class AutoRefreshRepository {
    * @param {any} data -Los datos que se utilizarán en el método.
    * @returns {any} El resultado del método ChangeHeadEstorage.
    */
-  changeInfoLoginLocal (prop, data) {
+  async changeInfoLoginLocal (prop, data) {
     return autoRefreshDataSourceRemote.changeInfoStorage(prop, data);
   }
 };
