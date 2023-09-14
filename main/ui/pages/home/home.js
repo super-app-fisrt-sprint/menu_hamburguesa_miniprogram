@@ -49,7 +49,7 @@ Page({
         icon: "/main/ui/assets/icons/moviles.svg",
         text: "Soluciones\nmóviles",
         hasBadge: false,
-        appId: "3482020164783758",
+        appId: "3482020171730167",
         pageUrl: "main/ui/pages/mobileSolutionsIndex/mobileSolutionsIndex"
       },
       {
