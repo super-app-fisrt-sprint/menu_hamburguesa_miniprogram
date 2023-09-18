@@ -57,13 +57,15 @@ Page({
         icon: "/main/ui/assets/icons/banda-ancha.svg",
         text: "Soluciones\nfijas HFC",
         hasBadge: false,
-        appId: ""
+        appId: "3482020171847560",
+        pageUrl: "main/ui/pages/permanent-services/permanent-services"
       },
       {
         icon: "/main/ui/assets/icons/fibra-optica.svg",
         text: "Soluciones\nfijas FO",
         hasBadge: false,
-        appId: ""
+        appId: "3482020171733540",
+        pageUrl: "main/ui/pages/mobileSolutions/mobileSolutions"
       },
       {
         icon: "/main/ui/assets/icons/historial.svg",
