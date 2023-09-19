@@ -50,7 +50,7 @@ Page({
         icon: "/main/ui/assets/icons/moviles.svg",
         text: "Soluciones\nmóviles",
         hasBadge: false,
-        appId: "3482020171730167",
+        appId: "3482020171845787",
         pageUrl: "main/ui/pages/mobileSolutionsIndex/mobileSolutionsIndex"
       },
       {
@@ -136,13 +136,11 @@ Page({
     const pageUrl = e.target.dataset.pageUrl;
 
     const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
-
+    const dataMiniprogram = extraData.response;
     my.navigateToMiniProgram({
       appId,
       path: pageUrl,
-      extraData: {
-        extraData
-      },
+      extraData: { response: dataMiniprogram },
       success (res) {
 
       },
