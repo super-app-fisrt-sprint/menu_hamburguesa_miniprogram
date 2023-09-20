@@ -135,6 +135,8 @@ Page({
     const appId = e.target.dataset.appId;
     const pageUrl = e.target.dataset.pageUrl;
 
+
+    
     const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
     const dataMiniprogram = extraData.response;
     my.navigateToMiniProgram({
