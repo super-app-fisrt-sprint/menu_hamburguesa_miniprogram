@@ -234,7 +234,7 @@ Page({
   },
   onSignOut () {
     this.showLoadings();
-    const deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
+    const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
       this.hideLoading();
       my.navigateBackMiniProgram({
