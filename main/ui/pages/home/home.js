@@ -77,13 +77,13 @@ Page({
         icon: "/main/ui/assets/icons/pagos.svg",
         text: "Administrar\npagos",
         hasBadge: true,
-        appId: ""
+        appId: "3482020171735889"
       },
       {
         icon: "/main/ui/assets/icons/equipos.svg",
         text: "Equipos\nfinanciados",
         hasBadge: true,
-        appId: ""
+        appId: "3482020171741569"
       }
     ],
     menuAccess: [
@@ -139,6 +139,8 @@ Page({
     
     const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
     const dataMiniprogram = extraData.response;
+
+    
     my.navigateToMiniProgram({
       appId,
       path: pageUrl,
