@@ -77,13 +77,15 @@ Page({
         icon: "/main/ui/assets/icons/pagos.svg",
         text: "Administrar\npagos",
         hasBadge: true,
-        appId: "3482020171735889"
+        appId: "3482020171735889",
+        pageUrl: "ui/pages/splash/index"
       },
       {
         icon: "/main/ui/assets/icons/equipos.svg",
         text: "Equipos\nfinanciados",
         hasBadge: true,
-        appId: "3482020171741569"
+        appId: "3482020171741569",
+        pageUrl: "ui/pages/splash/index"
       }
     ],
     menuAccess: [
