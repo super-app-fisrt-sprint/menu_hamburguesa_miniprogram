@@ -71,7 +71,8 @@ Page({
         icon: "/main/ui/assets/icons/historial.svg",
         text: "Consulta\ntu factura",
         hasBadge: true,
-        appId: ""
+        appId: "3482020171743017",
+        pageUrl: "ui/pages/splash/index"
       },
       {
         icon: "/main/ui/assets/icons/pagos.svg",
