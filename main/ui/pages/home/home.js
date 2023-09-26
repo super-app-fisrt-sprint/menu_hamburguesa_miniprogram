@@ -3,7 +3,7 @@ const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
 
 Page({
-  onLaunch () {
+  onLaunch() {
     const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
     // const { query, referrerInfo: { extraData } = {} } = options;
     my.alert({
@@ -11,7 +11,7 @@ Page({
       content: `query: ${JSON.stringify(query) || ''}\nextraData: ${JSON.stringify(extraData) || ''}`
     });
   },
-  onLoad () {
+  onLoad() {
     const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
     const { titleBarHeight, statusBarHeight } = my.getSystemInfoSync();
 
@@ -95,11 +95,6 @@ Page({
         titleAccess: "Administrar perfiles",
         pageUrl: "/main/ui/pages/index/index"
       },
-      // {
-      //   iconAccess: "/main/ui/assets/icons/edit.svg",
-      //   titleAccess: "Personalizar servicios",
-      //   pageUrl: "/main/ui/pages/index/index"
-      // },
       {
         iconAccess: "/main/ui/assets/icons/user.svg",
         titleAccess: "Gestión de la cuenta",
@@ -108,103 +103,129 @@ Page({
     ],
     footerItems: [
       {
-        icon: "/main/ui/assets/icons/inicio.svg",
+        icon: "/main/ui/assets/icons/claro.svg",
+        iconActive: "/main/ui/assets/icons/claro-active.svg",
         title: "Inicio",
         pageUrl: "/pages/index/index",
-        isActive: true
+        isActive: true,
+        appId: "",
+        path: ""
       },
       {
         icon: "/main/ui/assets/icons/adquirir.svg",
+        iconActive: "/main/ui/assets/icons/adquirir-active.svg",
         title: "Adquirir",
         pageUrl: "/pages/index/index",
-        isActive: false
+        isActive: false,
+        appId: "",
+        path: ""
       },
       {
-        icon: "/main/ui/assets/icons/chat.svg",
+        icon: "/main/ui/assets/icons/whatsapp.svg",
+        iconActive: "/main/ui/assets/icons/whatsapp-active.svg",
         title: "Chat",
         pageUrl: "/pages/index/index",
-        isActive: false
+        isActive: false,
+        appId: "3482020171623399",
+        path: "/main/ui/pages/chatService/chatService"
       },
       {
         icon: "/main/ui/assets/icons/pedidos.svg",
+        iconActive: "/main/ui/assets/icons/pedidos-active.svg",
         title: "Pedidos",
         pageUrl: "/pages/index/index",
-        isActive: false
-      }
-    ]
+        isActive: false,
+        appId: "",
+        path: ""
+      },
+
+    ],
   },
 
-  navigateToMiniProgram (e) {
+  navigateToMiniProgram(e) {
     const appId = e.target.dataset.appId;
     const pageUrl = e.target.dataset.pageUrl;
 
 
-    
+
     const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
     const dataMiniprogram = extraData.response;
 
-    
+
     my.navigateToMiniProgram({
       appId,
       path: pageUrl,
       extraData: { response: dataMiniprogram },
-      success (res) {
+      success(res) {
 
       },
-      fail (err) {
+      fail(err) {
 
       }
     });
   },
-  handleShowMenu (e) {
+  handleShowMenu(e) {
     const { position } = e.target.dataset;
     this.setData({
       position,
       basicVisible: true
     });
   },
-  handlePopupClose () {
+  handlePopupClose() {
     this.setData({
       basicVisible: false
     });
   },
-  onIconClick (e) {
+  onIconClick(e) {
     const index = e.target.dataset.index;
     const pageUrl = this.data.menuAccess[index].pageUrl;
     my.navigateTo({ url: pageUrl });
   },
-  onFooterItemClick (e) {
-    const { index } = e.currentTarget.dataset;
+  onFooterItemClick(e) {
+    const { index, appId, path } = e.currentTarget.dataset;
     const { footerItems } = this.data;
     footerItems.forEach((item, i) => {
       item.isActive = i === index;
+    });
+    my.navigateToMiniProgram({
+      appId: appId,
+      path: path,
+      extraData: {
+        data1: "test"
+      },
+      success: function (res) {
+        console.log(res);
+      },
+      fail: function (err) {
+        console.log(err);
+      }
     });
     this.setData({
       footerItems
     });
   },
-  showLoadings () {
+  showLoadings() {
     this.setData({
       showLoading: true
     });
   },
-  hideLoading () {
+  hideLoading() {
     this.setData({
       showLoading: false
     });
   },
-  goToTerms () {
+  goToTerms() {
     const { urlTerms } = this.data;
     my.downloadFile({
       url: urlTerms,
-      success ({ apFilePath }) {
+      success({ apFilePath }) {
         my.openDocument({
           fileType: "pdf",
           filePath: apFilePath,
-          success () {
+          success() {
 
           },
-          fail (res) {
+          fail(res) {
             my.alert({
               content: res.errorMessage || res.error
             });
@@ -213,14 +234,14 @@ Page({
       }
     });
   },
-  handleClose () {
+  handleClose() {
     this.setData({
       modalVisibleDescription: false,
       modalVisible: true,
       basicVisible: true
     });
   },
-  onCancelButtonTap () {
+  onCancelButtonTap() {
     my.redirectTo({
       url: '/main/ui/pages/home/home'
     });
@@ -228,18 +249,18 @@ Page({
       modalVisible: false
     });
   },
-  onAcceptButtonTap () {
+  onAcceptButtonTap() {
     this.redirectLoginServices();
     this.setData({
       modalVisible: false
     });
   },
-  handleOpenModal () {
+  handleOpenModal() {
     this.setData({
       modalVisible: true
     });
   },
-  onSignOut () {
+  onSignOut() {
     this.showLoadings();
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
@@ -258,5 +279,5 @@ Page({
     });
   },
 
-  onUnload () { }
+  onUnload() { }
 });
