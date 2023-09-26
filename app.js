@@ -4,13 +4,11 @@ App({
     
     const { referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
 
-    my.clearStorageSync();
-    my.alert({content: {extraData: extraData}});
+    const data = extraData;
+    my.alert({content: {extraData: data}});
 
     const deviceData = my.getSystemInfoSync();
-    DeviceSpectModel.CreateInfoDeviceStorage(extraData, deviceData);
-    
-    
-    my.setStorageSync({ key: 'extraData', data: extraData });
+    DeviceSpectModel.CreateInfoDeviceStorage(data, deviceData);
+    my.setStorageSync({ key: 'extraData', data: data });
   }
 });
