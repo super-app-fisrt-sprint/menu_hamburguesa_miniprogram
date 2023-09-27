@@ -187,19 +187,25 @@ Page({
     footerItems.forEach((item, i) => {
       item.isActive = i === index;
     });
-    my.navigateToMiniProgram({
-      appId: appId,
-      path: path,
-      extraData: {
-        data1: "test"
-      },
-      success: function (res) {
-        console.log(res);
-      },
-      fail: function (err) {
-        console.log(err);
-      }
-    });
+    if(index === 1)
+    {
+      this.makePhoneCall();
+    }else
+    {
+      my.navigateToMiniProgram({
+        appId: appId,
+        path: path,
+        extraData: {
+          data1: "test"
+        },
+        success: function (res) {
+          console.log(res);
+        },
+        fail: function (err) {
+          console.log(err);
+        }
+      });
+    }
     this.setData({
       footerItems
     });
@@ -278,6 +284,8 @@ Page({
       });
     });
   },
-
+  makePhoneCall() {
+    my.makePhoneCall({ number: '6017435558' });
+  },
   onUnload() { }
 });
