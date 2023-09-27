@@ -126,7 +126,7 @@ Page({
         title: "Chat",
         pageUrl: "/pages/index/index",
         isActive: false,
-        appId: "3482020171623399",
+        appId: "3482020173007315",
         path: "/main/ui/pages/chatService/chatService"
       },
       {
