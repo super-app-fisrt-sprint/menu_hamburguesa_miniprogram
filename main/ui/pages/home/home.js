@@ -135,8 +135,8 @@ Page({
         title: "Pedidos",
         pageUrl: "/pages/index/index",
         isActive: false,
-        appId: "",
-        path: ""
+        appId: "3482020173097468",
+        path: "/main/ui/pages/orders/orders"
       },
 
     ],
