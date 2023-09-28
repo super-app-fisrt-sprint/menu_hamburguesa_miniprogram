@@ -187,11 +187,9 @@ Page({
     footerItems.forEach((item, i) => {
       item.isActive = i === index;
     });
-    if(index === 1)
-    {
+    if (index === 1) {
       this.makePhoneCall();
-    }else
-    {
+    } else {
       my.navigateToMiniProgram({
         appId: appId,
         path: path,
