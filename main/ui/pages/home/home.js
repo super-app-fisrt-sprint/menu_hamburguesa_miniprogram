@@ -2,16 +2,21 @@ const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 
 Page({
-  onLaunch(options) {
-    const { query, referrerInfo: { extraData } = {} } = options;
-    console.log("query:", query);
-    console.log("extraData:", extraData);
-  },
-  onLoad(query, options) {
-    console.log("query:", query);
-    console.log("options", options);
-    // Cargo info y headers
-    const deviceString = `{"X-SESSION-ID":
+	onLaunch(options) {
+		const {
+			query,
+			referrerInfo: {
+				extraData
+			} = {}
+		} = options;
+		console.log("query:", query);
+		console.log("extraData:", extraData);
+	},
+	onLoad(query, options) {
+		console.log("query:", query);
+		console.log("options", options);
+		// Cargo info y headers
+		const deviceString = `{"X-SESSION-ID":
       "U2FsdGVkX1/qFo4mzwOB2Zdwn0Q5ZisOJW6nayt0UzuuRjoR2G9KtE39omStTlcYNNZEgcVgSYPZiNT/VObQJRvxLRs/MIcUnI8LCTaUl6ALJGo+7nFSUR0Q+c3WFABWJoDuye7YMW0PjC/gwH/TEVhv2m5GfxNwFCnHYL3MoG0Rlgjt0GsR8wpepRSG3vsk/GGFAU1TY1w7Fw56pXhPirH34Xq7/raM1Ka32umj0zQ/5T261DVrlGjVWpC/5a93ANqkyDqb8j8XwixxV9xgBu3w9GOqFxUGUMdaZdDtG8BSpjInsXcn+R2xqf3SVtxlB8ueJtEi2G4FSMB28CmPHMzRtwcqZrTA/Fw42huGqDCcSOu8ptf6a4kKfQY6aMVSFMZcgGxo1NMK470RFBu8X6FAN11M7ZMs4ATctGydZtTu4MhBBEvm4ytm/l0R/xzsUakmZvqKLN8Er4yNkEImklbKXb/Tr7BU01ST1TwPRJ+ZgBl/Zd8fAgAyudV4ZGhtG1bhTWYGqCoGxaTDuGWtdEwWFTOeB3D1qB91kvSrb20=",
       "X-MC-LINE": "3103815747",
       "X-MC-LOB": "3",
@@ -33,235 +38,251 @@ Page({
       "X-MC-USER-AGENT":
       "eyJpcCI6IjE5Mi4xNjguMjMzLjE3MiIsInVzZXJBZ2VudCI6Ik1pQ2xhcm9BcHAvMC4wLjEgKHNhbXN1bmc7IFNNLUc5ODhOOyBcdTAwM2NhbmRyb2lkLzlcdTAwM2UpIn0="
     }`;
-    // charge info login User in storage
-    DeviceSpectViewModel.CreateInfoDeviceStorage(deviceString);
+		// charge info login User in storage
+		DeviceSpectViewModel.CreateInfoDeviceStorage(deviceString);
 
-    const { titleBarHeight, statusBarHeight } = my.getSystemInfoSync();
-    this.setData({
-      titleBarHeight,
-      statusBarHeight
-    });
-    my.setNavigationBar({
-      title: ""
-    });
-  },
-  data: {
-    position: "",
-    basicVisible: false,
-    modalVisible: false,
-    showLoading: "",
-    urlTerms:
-      "https://miclaroempresas.com.co/documents/330416/0/Condiciones+Legales+de+Acceso+a+Mi+Claro+Empresas.pdf",
-    access: [
-      {
-        icon: "/main/ui/assets/icons/moviles.svg",
-        text: "Soluciones\nmóviles",
-        hasBadge: false,
-        appId: "3482020158910265"
-      },
-      {
-        icon: "/main/ui/assets/icons/banda-ancha.svg",
-        text: "Soluciones\nfijas HFC",
-        hasBadge: false,
-        appId: ""
-      },
-      {
-        icon: "/main/ui/assets/icons/fibra-optica.svg",
-        text: "Soluciones\nfijas FO",
-        hasBadge: false,
-        appId: ""
-      },
-      {
-        icon: "/main/ui/assets/icons/historial.svg",
-        text: "Consulta\ntu factura",
-        hasBadge: true,
-        appId: ""
-      },
-      {
-        icon: "/main/ui/assets/icons/pagos.svg",
-        text: "Administrar\npagos",
-        hasBadge: true,
-        appId: ""
-      },
-      {
-        icon: "/main/ui/assets/icons/equipos.svg",
-        text: "Equipos\nfinanciados",
-        hasBadge: true,
-        appId: ""
-      }
-    ],
-    menuAccess: [
-      {
-        iconAccess: "/main/ui/assets/icons/users.svg",
-        titleAccess: "Administrar perfiles",
-        pageUrl: "/main/ui/pages/index/index"
-      },
-      // {
-      //   iconAccess: "/main/ui/assets/icons/edit.svg",
-      //   titleAccess: "Personalizar servicios",
-      //   pageUrl: "/main/ui/pages/index/index"
-      // },
-      {
-        iconAccess: "/main/ui/assets/icons/user.svg",
-        titleAccess: "Gestión de la cuenta",
-        pageUrl: "/main/ui/pages/index/index"
-      }
-    ],
-    footerItems: [
-      {
-        icon: "/main/ui/assets/icons/inicio.svg",
-        title: "Inicio",
-        pageUrl: "/pages/index/index",
-        isActive: true
-      },
-      {
-        icon: "/main/ui/assets/icons/adquirir.svg",
-        title: "Adquirir",
-        pageUrl: "/pages/index/index",
-        isActive: false
-      },
-      {
-        icon: "/main/ui/assets/icons/chat.svg",
-        title: "Chat",
-        pageUrl: "/pages/index/index",
-        isActive: false
-      },
-      {
-        icon: "/main/ui/assets/icons/pedidos.svg",
-        title: "Pedidos",
-        pageUrl: "/pages/index/index",
-        isActive: false
-      }
-    ]
-  },
+		const {
+			titleBarHeight,
+			statusBarHeight
+		} = my.getSystemInfoSync();
+		this.setData({
+			titleBarHeight,
+			statusBarHeight
+		});
+		my.setNavigationBar({
+			title: ""
+		});
+	},
+	data: {
+		position: "",
+		basicVisible: false,
+		modalVisible: false,
+		showLoading: "",
+		urlTerms: "https://miclaroempresas.com.co/documents/330416/0/Condiciones+Legales+de+Acceso+a+Mi+Claro+Empresas.pdf",
+		access: [{
+				icon: "/main/ui/assets/icons/moviles.svg",
+				text: "Soluciones\nmóviles",
+				hasBadge: false,
+				appId: "3482020158910265"
+			},
+			{
+				icon: "/main/ui/assets/icons/banda-ancha.svg",
+				text: "Soluciones\nfijas HFC",
+				hasBadge: false,
+				appId: ""
+			},
+			{
+				icon: "/main/ui/assets/icons/fibra-optica.svg",
+				text: "Soluciones\nfijas FO",
+				hasBadge: false,
+				appId: ""
+			},
+			{
+				icon: "/main/ui/assets/icons/historial.svg",
+				text: "Consulta\ntu factura",
+				hasBadge: true,
+				appId: ""
+			},
+			{
+				icon: "/main/ui/assets/icons/pagos.svg",
+				text: "Administrar\npagos",
+				hasBadge: true,
+				appId: ""
+			},
+			{
+				icon: "/main/ui/assets/icons/equipos.svg",
+				text: "Equipos\nfinanciados",
+				hasBadge: true,
+				appId: ""
+			}
+		],
+		menuAccess: [{
+				iconAccess: "/main/ui/assets/icons/users.svg",
+				titleAccess: "Administrar perfiles",
+				pageUrl: "/main/ui/pages/index/index"
+			},
+			// {
+			//   iconAccess: "/main/ui/assets/icons/edit.svg",
+			//   titleAccess: "Personalizar servicios",
+			//   pageUrl: "/main/ui/pages/index/index"
+			// },
+			{
+				iconAccess: "/main/ui/assets/icons/user.svg",
+				titleAccess: "Gestión de la cuenta",
+				pageUrl: "/main/ui/pages/index/index"
+			}
+		],
+		footerItems: [{
+				icon: "/main/ui/assets/icons/inicio.svg",
+				title: "Inicio",
+				pageUrl: "/pages/index/index",
+				isActive: true
+			},
+			{
+				icon: "/main/ui/assets/icons/adquirir.svg",
+				title: "Adquirir",
+				pageUrl: "/pages/index/index",
+				isActive: false
+			},
+			{
+				icon: "/main/ui/assets/icons/chat.svg",
+				title: "Chat",
+				pageUrl: "/pages/index/index",
+				isActive: false
+			},
+			{
+				icon: "/main/ui/assets/icons/pedidos.svg",
+				title: "Pedidos",
+				pageUrl: "/pages/index/index",
+				isActive: false
+			}
+		],
+    webView: ""
+	},
 
-  navigateToMiniProgram(e) {
-    const appId = e.target.dataset.appId;
-    const index = e.target.dataset.index;
-    console.log(
-      `Navigating to mini program with appId: ${appId} at index: ${index}`
-    );
-    my.navigateToMiniProgram({
-      appId,
-      path: "pages/home/home",
-      extraData: {
-        data1: "test"
-      },
-      success(res) {
-        console.log("Navigated to mini program successfully", res);
-      },
-      fail(err) {
-        console.error("Failed to navigate to mini program", err);
-      }
-    });
-  },
-  handleShowMenu(e) {
-    const { position } = e.target.dataset;
-    this.setData({
-      position,
-      basicVisible: true
-    });
-  },
-  handlePopupClose() {
-    this.setData({
-      basicVisible: false
-    });
-  },
-  onIconClick(e) {
-    const index = e.target.dataset.index;
-    const pageUrl = this.data.menuAccess[index].pageUrl;
-    my.navigateTo({ url: pageUrl });
-  },
-  onFooterItemClick(e) {
-    
-    const { index } = e.currentTarget.dataset;
-    const { footerItems } = this.data;
-    footerItems.forEach((item, i) => {
-      item.isActive = i === index;
-    });
-    if (index === 1) {
-      this.makePhoneCall();
-    }
-    this.setData({
-      footerItems
-    });
-  },
-  showLoadings() {
-    this.setData({
-      showLoading: true
-    });
-  },
-  hideLoading() {
-    this.setData({
-      showLoading: false
-    });
-  },
-  goToTerms() {
-    const { urlTerms } = this.data;
-    my.downloadFile({
-      url: urlTerms,
-      success({ apFilePath }) {
-        my.openDocument({
-          fileType: "pdf",
-          filePath: apFilePath,
-          success() {
-            console.info("Archivo PDF abierto correctamente");
-          },
-          fail(res) {
-            my.alert({
-              content: res.errorMessage || res.error
-            });
-          }
-        });
-      },
-    });
-  },
-  handleClose() {
-    this.setData({
-      modalVisibleDescription: false,
-      modalVisible: true,
-      basicVisible: true
-    });
-  },
-  onCancelButtonTap() {
-    console.log("Cancelar");
-    my.redirectTo({
-      url: '/main/ui/pages/home/home'
-    });
-    this.setData({
-      modalVisible: false
-    });
-  },
-  onAcceptButtonTap() {
-    this.redirectLoginServices();
-    this.setData({
-      modalVisible: false
-    });
-  },
-  handleOpenModal() {
-    console.log("Entrando");
-    this.setData({
-      modalVisible: true
-    });
-  },
-  onSignOut() {
-    this.showLoadings();
-    const deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
-    AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
-      this.hideLoading();
-      if (res.data) {
-        my.reLaunch({
-          url: "/main/ui/pages/index/index"
-        });
-      } else {
-        console.error("Page error");
-      }
-    });
+	navigateToMiniProgram(e) {
+		const appId = e.target.dataset.appId;
+		const index = e.target.dataset.index;
+		console.log(
+			`Navigating to mini program with appId: ${appId} at index: ${index}`
+		);
+		my.navigateToMiniProgram({
+			appId,
+			path: "pages/home/home",
+			extraData: {
+				data1: "test"
+			},
+			success(res) {
+				console.log("Navigated to mini program successfully", res);
+			},
+			fail(err) {
+				console.error("Failed to navigate to mini program", err);
+			}
+		});
+	},
+	handleShowMenu(e) {
+		const {
+			position
+		} = e.target.dataset;
+		this.setData({
+			position,
+			basicVisible: true
+		});
+	},
+	handlePopupClose() {
+		this.setData({
+			basicVisible: false
+		});
+	},
+	onIconClick(e) {
+		const index = e.target.dataset.index;
+		const pageUrl = this.data.menuAccess[index].pageUrl;
+		my.navigateTo({
+			url: pageUrl
+		});
+	},
+	onFooterItemClick(e) {
 
-    
-  },
-  makePhoneCall() {
-    my.makePhoneCall({ number: '6017435558' });
-  },
-  onUnload() {}
+		const {
+			index
+		} = e.currentTarget.dataset;
+		const {
+			footerItems
+		} = this.data;
+		footerItems.forEach((item, i) => {
+			item.isActive = i === index;
+		});
+		if (index === 1) {
+			this.makePhoneCall();
+		}
+		this.setData({
+			footerItems
+		});
+	},
+	showLoadings() {
+		this.setData({
+			showLoading: true
+		});
+	},
+	hideLoading() {
+		this.setData({
+			showLoading: false
+		});
+	},
+	goToTerms() {
+		const {
+			urlTerms
+		} = this.data;
+		my.downloadFile({
+			url: urlTerms,
+			success({
+				apFilePath
+			}) {
+				my.openDocument({
+					fileType: "pdf",
+					filePath: apFilePath,
+					success() {
+						console.info("Archivo PDF abierto correctamente");
+					},
+					fail(res) {
+						my.alert({
+							content: res.errorMessage || res.error
+						});
+					}
+				});
+			},
+		});
+	},
+	handleClose() {
+		this.setData({
+			modalVisibleDescription: false,
+			modalVisible: true,
+			basicVisible: true
+		});
+	},
+	onCancelButtonTap() {
+		console.log("Cancelar");
+		my.redirectTo({
+			url: '/main/ui/pages/home/home'
+		});
+		this.setData({
+			modalVisible: false
+		});
+	},
+	onAcceptButtonTap() {
+		this.redirectLoginServices();
+		this.setData({
+			modalVisible: false
+		});
+	},
+	handleOpenModal() {
+		console.log("Entrando");
+		this.setData({
+			modalVisible: true
+		});
+	},
+	onSignOut() {
+		this.showLoadings();
+		const deviceSpect = DeviceSpectViewModel.GetInfoDeviceStorage();
+		AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
+			this.hideLoading();
+			if (res.data) {
+				my.reLaunch({
+					url: "/main/ui/pages/index/index"
+				});
+			} else {
+				console.error("Page error");
+			}
+		});
+
+
+	},
+	makePhoneCall() {
+		my.call('openUrl', {
+		  url: "https://api.whatsapp.com/send?phone=573132975200"
+		}).then((values) => {
+		}).catch((value) => {
+		})
+	},
+	onUnload() {}
 });

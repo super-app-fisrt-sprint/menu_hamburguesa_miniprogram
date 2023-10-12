@@ -141,4 +141,5 @@
     </view>
   </view>
 </view>
+  
 <loading-component a:if="{{showLoading}}" />
