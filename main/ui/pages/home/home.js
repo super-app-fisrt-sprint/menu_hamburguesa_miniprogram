@@ -3,39 +3,6 @@ const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
 
 Page({
-  onLaunch () {
-    const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
-    // const { query, referrerInfo: { extraData } = {} } = options;
-    my.alert({
-      title: 'Prueba data',
-      content: `query: ${JSON.stringify(query) || ''}\nextraData: ${JSON.stringify(extraData) || ''}`
-    });
-  },
-  onLoad () {
-    const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
-    const { titleBarHeight, statusBarHeight } = my.getSystemInfoSync();
-
-    const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
-    // Services GETANYMACCLIST and GETCOUNTMASTERLINES
-
-    RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {
-
-    });
-
-    this.setData(
-      {
-        nit: infoLogin.data.DocumentNumber,
-        nombre: infoLogin.data.nombre
-      })
-
-    this.setData({
-      titleBarHeight,
-      statusBarHeight
-    });
-    my.setNavigationBar({
-      title: ""
-    });
-  },
   data: {
     nit: "",
     nombre: "",
@@ -141,7 +108,52 @@ Page({
 
     ]
   },
+  onLaunch () {
+    const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
+    // const { query, referrerInfo: { extraData } = {} } = options;
+    my.alert({
+      title: 'Prueba data',
+      content: `query: ${JSON.stringify(query) || ''}\nextraData: ${JSON.stringify(extraData) || ''}`
+    });
+  },
+  onLoad () {
+    const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
+    const { titleBarHeight, statusBarHeight } = my.getSystemInfoSync();
 
+    const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
+    // Services GETANYMACCLIST and GETCOUNTMASTERLINES
+
+    RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {
+
+    });
+
+    this.setData(
+      {
+        nit: infoLogin.data.DocumentNumber,
+        nombre: infoLogin.data.nombre,
+        tipoDocumento: this.DocumentType(infoLogin.data.DocumentType)
+      })
+
+    this.setData({
+      titleBarHeight,
+      statusBarHeight
+    });
+
+    my.setNavigationBar({
+      title: ""
+    });
+  },
+  DocumentType(type){
+    const documentTypes = {
+      1: "CC",
+      2: "CE",
+      3: "PP",
+      4: "CD",
+      5: "NIT"
+    };
+    const typeDocument = documentTypes[type] || "";
+    return typeDocument;
+  },
   navigateToMiniProgram (e) {
     const appId = e.target.dataset.appId;
     const pageUrl = e.target.dataset.pageUrl;
