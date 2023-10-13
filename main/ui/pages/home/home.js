@@ -255,12 +255,14 @@ Page({
     });
   },
   onCancelButtonTap () {
-    my.redirectTo({
-      url: '/main/ui/pages/home/home'
-    });
+    this.showLoadings()
     this.setData({
       modalVisible: false
     });
+    my.redirectTo({
+      url: '/main/ui/pages/home/home'
+    });
+ 
   },
   onAcceptButtonTap () {
     this.redirectLoginServices();
