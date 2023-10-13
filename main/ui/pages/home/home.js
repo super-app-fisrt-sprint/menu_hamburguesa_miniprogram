@@ -60,7 +60,8 @@ Page({
       {
         iconAccess: "/main/ui/assets/icons/users.svg",
         titleAccess: "Administrar perfiles",
-        pageUrl: "/main/ui/pages/index/index"
+        pageUrl:  "main/ui/pages/manageProfiles/manageProfiles",
+        appId: "3482020174685949",
       },
       {
         iconAccess: "/main/ui/assets/icons/user.svg",
@@ -188,7 +189,30 @@ Page({
   onIconClick (e) {
     const index = e.target.dataset.index;
     const pageUrl = this.data.menuAccess[index].pageUrl;
-    my.navigateTo({ url: pageUrl });
+    const appId = this.data.menuAccess[index].appId;
+    
+    const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
+    const dataMiniprogram = extraData.response;
+
+
+    console.log(appId);
+    console.log(pageUrl);
+    console.log(dataMiniprogram);
+
+    my.navigateToMiniProgram({
+      appId,
+      path: pageUrl,
+      extraData: { response: dataMiniprogram },
+      success (res) {
+
+      },
+      fail (err) {
+
+      }
+    });
+
+    console.info(e);
+
   },
   onFooterItemClick (e) {
     const { index, appId, path } = e.currentTarget.dataset;
@@ -255,14 +279,12 @@ Page({
     });
   },
   onCancelButtonTap () {
-    this.showLoadings()
-    this.setData({
-      modalVisible: false
-    });
     my.redirectTo({
       url: '/main/ui/pages/home/home'
     });
- 
+    this.setData({
+      modalVisible: false
+    });
   },
   onAcceptButtonTap () {
     this.redirectLoginServices();
