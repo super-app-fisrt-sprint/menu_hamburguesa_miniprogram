@@ -60,7 +60,7 @@ Page({
       {
         iconAccess: "/main/ui/assets/icons/users.svg",
         titleAccess: "Administrar perfiles",
-        pageUrl:  "main/ui/pages/manageProfiles/manageProfiles",
+        pageUrl: "main/ui/pages/manageProfiles/manageProfiles",
         appId: "3482020174685949",
       },
       {
@@ -109,7 +109,7 @@ Page({
 
     ]
   },
-  onLaunch () {
+  onLaunch() {
     const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
     // const { query, referrerInfo: { extraData } = {} } = options;
     my.alert({
@@ -117,9 +117,13 @@ Page({
       content: `query: ${JSON.stringify(query) || ''}\nextraData: ${JSON.stringify(extraData) || ''}`
     });
   },
-  onLoad () {
+  onShow() {
+    this.setData({
+      'footerItems[0].isActive': true,
+    })
+  },
+  onLoad() {
     const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
-    const { titleBarHeight, statusBarHeight } = my.getSystemInfoSync();
 
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     // Services GETANYMACCLIST and GETCOUNTMASTERLINES
@@ -130,21 +134,17 @@ Page({
 
     this.setData(
       {
+        'footerItems[0].isActive': true,
         nit: infoLogin.data.DocumentNumber,
         nombre: infoLogin.data.nombre,
         tipoDocumento: this.DocumentType(infoLogin.data.DocumentType)
       })
 
-    this.setData({
-      titleBarHeight,
-      statusBarHeight
-    });
-
     my.setNavigationBar({
       title: ""
     });
   },
-  DocumentType(type){
+  DocumentType(type) {
     const documentTypes = {
       1: "CC",
       2: "CE",
@@ -155,7 +155,7 @@ Page({
     const typeDocument = documentTypes[type] || "";
     return typeDocument;
   },
-  navigateToMiniProgram (e) {
+  navigateToMiniProgram(e) {
     const appId = e.target.dataset.appId;
     const pageUrl = e.target.dataset.pageUrl;
 
@@ -166,31 +166,31 @@ Page({
       appId,
       path: pageUrl,
       extraData: { response: dataMiniprogram },
-      success (res) {
+      success(res) {
 
       },
-      fail (err) {
+      fail(err) {
 
       }
     });
   },
-  handleShowMenu (e) {
+  handleShowMenu(e) {
     const { position } = e.target.dataset;
     this.setData({
       position,
       basicVisible: true
     });
   },
-  handlePopupClose () {
+  handlePopupClose() {
     this.setData({
       basicVisible: false
     });
   },
-  onIconClick (e) {
+  onIconClick(e) {
     const index = e.target.dataset.index;
     const pageUrl = this.data.menuAccess[index].pageUrl;
     const appId = this.data.menuAccess[index].appId;
-    
+
     const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
     const dataMiniprogram = extraData.response;
 
@@ -203,10 +203,10 @@ Page({
       appId,
       path: pageUrl,
       extraData: { response: dataMiniprogram },
-      success (res) {
+      success(res) {
 
       },
-      fail (err) {
+      fail(err) {
 
       }
     });
@@ -214,14 +214,14 @@ Page({
     console.info(e);
 
   },
-  onFooterItemClick (e) {
+  onFooterItemClick(e) {
     const { index, appId, path } = e.currentTarget.dataset;
     const { footerItems } = this.data;
     footerItems.forEach((item, i) => {
       item.isActive = i === index;
     });
     if (index === 1) {
-      this.makePhoneCall();
+      this.purchaseProduct();
     } else {
       my.navigateToMiniProgram({
         appId,
@@ -241,28 +241,28 @@ Page({
       footerItems
     });
   },
-  showLoadings () {
+  showLoadings() {
     this.setData({
       showLoading: true
     });
   },
-  hideLoading () {
+  hideLoading() {
     this.setData({
       showLoading: false
     });
   },
-  goToTerms () {
+  goToTerms() {
     const { urlTerms } = this.data;
     my.downloadFile({
       url: urlTerms,
-      success ({ apFilePath }) {
+      success({ apFilePath }) {
         my.openDocument({
           fileType: "pdf",
           filePath: apFilePath,
-          success () {
+          success() {
 
           },
-          fail (res) {
+          fail(res) {
             my.alert({
               content: res.errorMessage || res.error
             });
@@ -271,14 +271,14 @@ Page({
       }
     });
   },
-  handleClose () {
+  handleClose() {
     this.setData({
       modalVisibleDescription: false,
       modalVisible: true,
       basicVisible: true
     });
   },
-  onCancelButtonTap () {
+  onCancelButtonTap() {
     my.redirectTo({
       url: '/main/ui/pages/home/home'
     });
@@ -286,18 +286,18 @@ Page({
       modalVisible: false
     });
   },
-  onAcceptButtonTap () {
+  onAcceptButtonTap() {
     this.redirectLoginServices();
     this.setData({
       modalVisible: false
     });
   },
-  handleOpenModal () {
+  handleOpenModal() {
     this.setData({
       modalVisible: true
     });
   },
-  onSignOut () {
+  onSignOut() {
     this.showLoadings();
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
@@ -315,8 +315,12 @@ Page({
       });
     });
   },
-  makePhoneCall () {
-    my.makePhoneCall({ number: '6017435558' });
+  purchaseProduct() {
+    my.call('openUrl', {
+      url: "https://api.whatsapp.com/send?phone=573132975200"
+    }).then((values) => {
+    }).catch((value) => {
+    })
   },
-  onUnload () { }
+  onUnload() { }
 });
