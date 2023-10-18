@@ -117,11 +117,6 @@ Page({
       content: `query: ${JSON.stringify(query) || ''}\nextraData: ${JSON.stringify(extraData) || ''}`
     });
   },
-  onShow() {
-    this.setData({
-      'footerItems[0].isActive': true,
-    })
-  },
   onLoad() {
     const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
 
@@ -134,7 +129,6 @@ Page({
 
     this.setData(
       {
-        'footerItems[0].isActive': true,
         nit: infoLogin.data.DocumentNumber,
         nombre: infoLogin.data.nombre,
         tipoDocumento: this.DocumentType(infoLogin.data.DocumentType)
@@ -217,9 +211,6 @@ Page({
   onFooterItemClick(e) {
     const { index, appId, path } = e.currentTarget.dataset;
     const { footerItems } = this.data;
-    footerItems.forEach((item, i) => {
-      item.isActive = i === index;
-    });
     if (index === 1) {
       this.purchaseProduct();
     } else {
