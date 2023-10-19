@@ -1,7 +1,7 @@
 const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
-
+const {getUrlClaroVentas} =require("../../../domain/ClaroVentasViewModel")
 Page({
   data: {
     nit: "",
@@ -307,8 +307,9 @@ Page({
     });
   },
   purchaseProduct() {
+    const url=getUrlClaroVentas();
     my.call('openUrl', {
-      url: "https://api.whatsapp.com/send?phone=573132975200"
+      url: url
     }).then((values) => {
     }).catch((value) => {
     })
