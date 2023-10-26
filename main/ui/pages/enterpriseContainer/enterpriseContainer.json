@@ -1,0 +1,11 @@
+{
+  "defaultTitle": "",
+  "usingComponents": {
+    "header-company": "/node_modules/claro-superapp-components/components/header-enterprise/header-enterprise",
+    "modal-accept-cancel": "/main//ui/components/modal-accept-cancel/modal-accept-cancel",
+    "divider": "antd-mini/es/Divider/index",
+    "popup": "antd-mini/es/Popup/index",
+    "icon": "antd-mini/es/Icon/index",
+    "loading-component": "/main/ui/components/loading-component/loading-component"
+  }
+}
