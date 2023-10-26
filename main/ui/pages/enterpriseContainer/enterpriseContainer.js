@@ -18,21 +18,21 @@ Page({
         text: "Soluciones\nmóviles",
         hasBadge: false,
         appId: "3482020171845787",
-        pageUrl: "main/ui/pages/mobileSolutionsIndex/mobileSolutionsIndex"
+        pageUrl: "main/ui/pages/home/home"
       },
       {
         icon: "/main/ui/assets/icons/banda-ancha.svg",
         text: "Soluciones\nfijas HFC",
         hasBadge: false,
         appId: "3482020171847560",
-        pageUrl: "main/ui/pages/permanent-services/permanent-services"
+        pageUrl: "main/ui/pages/home/home"
       },
       {
         icon: "/main/ui/assets/icons/fibra-optica.svg",
         text: "Soluciones\nfijas FO",
         hasBadge: false,
         appId: "3482020171733540",
-        pageUrl: "main/ui/pages/mobileSolutions/mobileSolutions"
+        pageUrl: "main/ui/pages/home/home"
       },
       {
         icon: "/main/ui/assets/icons/historial.svg",
