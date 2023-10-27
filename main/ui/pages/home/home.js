@@ -219,8 +219,6 @@ Page({
       path: pageUrl,
       extraData: { response: dataMiniprogram },
       success (res) {
-      },
-      fail (err) {
       }
     });
   },
@@ -241,8 +239,6 @@ Page({
           data1: "test"
         },
         success: function (res) {
-        },
-        fail: function (err) {
         }
       });
     }
