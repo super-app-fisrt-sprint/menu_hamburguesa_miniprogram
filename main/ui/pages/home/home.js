@@ -174,8 +174,6 @@ Page({
       extraData: { response: dataMiniprogram },
       success (res) {
 
-      },
-      fail (err) {
       }
     });
   },
