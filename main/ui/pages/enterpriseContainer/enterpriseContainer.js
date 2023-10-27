@@ -32,7 +32,7 @@ Page({
         text: "Soluciones\nfijas FO",
         hasBadge: false,
         appId: "3482020171733540",
-        pageUrl: "main/ui/pages/home/home"
+        pageUrl: "main/ui/pages/mobileSolutions/mobileSolutions"
       },
       {
         icon: "/main/ui/assets/icons/historial.svg",
