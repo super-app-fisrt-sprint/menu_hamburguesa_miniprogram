@@ -3,15 +3,12 @@
   "pages": [
     "main/ui/pages/home/home",
     "main/ui/pages/index/index",
-    "main/ui/pages/terms/terms",
-    "main/ui/pages/enterpriseContainer/enterpriseContainer"
+    "main/ui/pages/terms/terms"
   ],
   "window": {
-    "defaultTitle": "",
+    "defaultTitle": "  　　　",
     "titleBarColor": "#040F16",
     "gestureBack": "YES",
-    "transparentTitle": "always",
-    "responsive": true,
-    "showTitleLoading": "YES"
+    "transparentTitle": "always"
   }
 }

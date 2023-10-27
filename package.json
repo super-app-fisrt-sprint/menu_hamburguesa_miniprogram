@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "antd-mini": "^1.8.3",
-    "claro-superapp-components": "^1.0.7",
+    "claro-superapp-components": "^1.0.22",
     "jest": "^29.5.0"
   },
   "jest": {
