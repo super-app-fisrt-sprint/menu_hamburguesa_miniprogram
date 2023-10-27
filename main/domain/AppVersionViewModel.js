@@ -2,6 +2,18 @@ const ResponseAppVersion = require("../data/attributes/AppVersion/entities/Versi
 const AppVersionRepository = require("../data/attributes/AppVersion/repository/GetAppVersionRepository");
 
 async function getAppVersion (deviceSpect) {
+  /**
+   * Recupera la versión de la aplicación basada en la especificación del dispositivon.
+   *
+   * @param {object} deviceSpect - La especificación del dispositivo utilizada para obtener la versión de la aplicación.
+   * @returns {object} - Un objeto que contiene los datos de la versión de la aplicación recuperada y el estado de éxito.
+   * El objeto tiene dos propiedades: 'Data' (String) y 'Success' (Boolean).
+   * 'Data' contiene los datos de la versión de la aplicación recuperada o un mensaje de error.
+   * 'éxito' indica si la recuperación de la versión de la aplicación fue exitosa o no.
+   *
+    // Output: { data: "15.9.0", success: true } or { data: "No se pudo obtener la version correcta del app", success: false }
+   */
+
   const appVersionRepository = new AppVersionRepository();
   const versionApp = new ResponseAppVersion("15.9.0", "android");
 

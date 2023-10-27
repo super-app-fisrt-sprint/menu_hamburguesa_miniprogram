@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: domain/AppVersionViewModel.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: domain/AppVersionViewModel.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const ResponseAppVersion = require("../data/attributes/AppVersion/entities/Version");
+const AppVersionRepository = require("../data/attributes/AppVersion/repository/GetAppVersionRepository");
+
+async function getAppVersion (deviceSpect) {
+  /**
+   * Recupera la versión de la aplicación basada en la especificación del dispositivon.
+   *
+   * @param {object} deviceSpect - La especificación del dispositivo utilizada para obtener la versión de la aplicación.
+   * @returns {object} - Un objeto que contiene los datos de la versión de la aplicación recuperada y el estado de éxito.
+   * El objeto tiene dos propiedades: 'Data' (String) y 'Success' (Boolean).
+   * 'Data' contiene los datos de la versión de la aplicación recuperada o un mensaje de error.
+   * 'éxito' indica si la recuperación de la versión de la aplicación fue exitosa o no.
+   *
+    // Output: { data: "15.9.0", success: true } or { data: "No se pudo obtener la version correcta del app", success: false }
+   */
+
+  const appVersionRepository = new AppVersionRepository();
+  const versionApp = new ResponseAppVersion("15.9.0", "android");
+
+  const result = { data: null, success: false };
+  try {
+    const res = await appVersionRepository.getAppVersionList(
+      deviceSpect,
+      versionApp
+    );
+    if (res &amp;&amp; res.data &amp;&amp; res.data.includes(`"mensaje":"Ok"`)) {
+      result.success = true;
+      result.data = res.data;
+    } else {
+      result.data = "No se pudo obtener la version correcta del app";
+    }
+    return result;
+  } catch (error) {
+    result.data = "Ocurrio un error al obtener la version del app";
+    return result;
+  }
+}
+
+module.exports.getAppVersion = getAppVersion;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-API.html">API</a></li><li><a href="module-AutoRefreshRepository.html">AutoRefreshRepository</a></li><li><a href="module-changeHeaderLocal.html">changeHeaderLocal</a></li><li><a href="module-deviceSpectRepository.html">deviceSpectRepository</a></li><li><a href="module-deviceSpectSourceLocal.html">deviceSpectSourceLocal</a></li><li><a href="module-versi%2525C3%2525B3n.html">versión</a></li></ul><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li><li><a href="module-API.html">API</a></li><li><a href="module-AutoRefreshRepository.html">AutoRefreshRepository</a></li><li><a href="module-deviceSpectRepository.html">deviceSpectRepository</a></li><li><a href="module-versi%2525C3%2525B3n.html">versión</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CreateDeviceSpectInStorage">CreateDeviceSpectInStorage</a></li><li><a href="global.html#CreateInfoDeviceStorage">CreateInfoDeviceStorage</a></li><li><a href="global.html#DocumentType">DocumentType</a></li><li><a href="global.html#GetDeviceSpectInStorage">GetDeviceSpectInStorage</a></li><li><a href="global.html#autoRefresh">autoRefresh</a></li><li><a href="global.html#changeValueHeader">changeValueHeader</a></li><li><a href="global.html#getAppVersionList">getAppVersionList</a></li><li><a href="global.html#getAppVersionRepository">getAppVersionRepository</a></li><li><a href="global.html#getInfoDeviceStorage">getInfoDeviceStorage</a></li><li><a href="global.html#getUrlClaroVentas">getUrlClaroVentas</a></li><li><a href="global.html#goToTerms">goToTerms</a></li><li><a href="global.html#handleClose">handleClose</a></li><li><a href="global.html#handleOpenModal">handleOpenModal</a></li><li><a href="global.html#handlePopupClose">handlePopupClose</a></li><li><a href="global.html#handleShowMenu">handleShowMenu</a></li><li><a href="global.html#hideLoading">hideLoading</a></li><li><a href="global.html#navigateToMiniProgram">navigateToMiniProgram</a></li><li><a href="global.html#onAcceptButtonTap">onAcceptButtonTap</a></li><li><a href="global.html#onCancelButtonTap">onCancelButtonTap</a></li><li><a href="global.html#onFooterItemClick">onFooterItemClick</a></li><li><a href="global.html#onIconClick">onIconClick</a></li><li><a href="global.html#onSignOut">onSignOut</a></li><li><a href="global.html#purchaseProduct">purchaseProduct</a></li><li><a href="global.html#refreshToken">refreshToken</a></li><li><a href="global.html#showLoadings">showLoadings</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Oct 27 2023 08:39:14 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ui/pages/home/home.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ui/pages/home/home.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
+const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
+const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
+const { getUrlClaroVentas } = require("../../../domain/ClaroVentasViewModel")
+Page({
+  data: {
+    nit: "",
+    nombre: "",
+    position: "",
+    basicVisible: false,
+    modalVisible: false,
+    showLoading: "",
+    urlTerms:
+      "https://miclaroempresas.com.co/documents/330416/0/Condiciones+Legales+de+Acceso+a+Mi+Claro+Empresas.pdf",
+    access: [
+      {
+        icon: "/main/ui/assets/icons/moviles.svg",
+        text: "Soluciones\nmóviles",
+        hasBadge: false,
+        appId: "3482020171845787",
+        pageUrl: "main/ui/pages/mobileSolutionsIndex/mobileSolutionsIndex"
+      },
+      {
+        icon: "/main/ui/assets/icons/banda-ancha.svg",
+        text: "Soluciones\nfijas HFC",
+        hasBadge: false,
+        appId: "3482020171847560",
+        pageUrl: "main/ui/pages/permanent-services/permanent-services"
+      },
+      {
+        icon: "/main/ui/assets/icons/fibra-optica.svg",
+        text: "Soluciones\nfijas FO",
+        hasBadge: false,
+        appId: "3482020171733540",
+        pageUrl: "main/ui/pages/mobileSolutions/mobileSolutions"
+      },
+      {
+        icon: "/main/ui/assets/icons/historial.svg",
+        text: "Consulta\ntu factura",
+        hasBadge: true,
+        appId: "3482020171743017",
+        pageUrl: "ui/pages/splash/index"
+      },
+      {
+        icon: "/main/ui/assets/icons/pagos.svg",
+        text: "Administrar\npagos",
+        hasBadge: true,
+        appId: "3482020171735889",
+        pageUrl: "ui/pages/splash/index"
+      },
+      {
+        icon: "/main/ui/assets/icons/equipos.svg",
+        text: "Equipos\nfinanciados",
+        hasBadge: true,
+        appId: "3482020171741569",
+        pageUrl: "ui/pages/splash/index"
+      }
+    ],
+    menuAccess: [
+      {
+        iconAccess: "/main/ui/assets/icons/users.svg",
+        titleAccess: "Administrar perfiles",
+        pageUrl: "main/ui/pages/manageProfiles/manageProfiles",
+        appId: "3482020174685949"
+      },
+      {
+        iconAccess: "/main/ui/assets/icons/user.svg",
+        titleAccess: "Gestión de la cuenta",
+        pageUrl: "/main/ui/pages/index/index"
+      }
+    ],
+    footerItems: [
+      {
+        icon: "/main/ui/assets/icons/claro.svg",
+        iconActive: "/main/ui/assets/icons/claro-active.svg",
+        title: "Inicio",
+        pageUrl: "/pages/index/index",
+        isActive: true,
+        appId: "",
+        path: ""
+      },
+      {
+        icon: "/main/ui/assets/icons/adquirir.svg",
+        iconActive: "/main/ui/assets/icons/adquirir-active.svg",
+        title: "Adquirir",
+        pageUrl: "/pages/index/index",
+        isActive: false,
+        appId: "",
+        path: ""
+      },
+      {
+        icon: "/main/ui/assets/icons/whatsapp.svg",
+        iconActive: "/main/ui/assets/icons/whatsapp-active.svg",
+        title: "Chat",
+        pageUrl: "/pages/index/index",
+        isActive: false,
+        appId: "3482020173007315",
+        path: "/main/ui/pages/chatService/chatService"
+      },
+      {
+        icon: "/main/ui/assets/icons/pedidos.svg",
+        iconActive: "/main/ui/assets/icons/pedidos-active.svg",
+        title: "Pedidos",
+        pageUrl: "/pages/index/index",
+        isActive: false,
+        appId: "3482020173097468",
+        path: "/main/ui/pages/orders/orders"
+      }
+
+    ]
+  },
+  onLaunch () {
+    const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
+    // const { query, referrerInfo: { extraData } = {} } = options;
+    my.alert({
+      title: 'Prueba data',
+      content: `query: ${JSON.stringify(query) || ''}\nextraData: ${JSON.stringify(extraData) || ''}`
+    });
+  },
+  onLoad () {
+    const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
+
+    const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
+    // Services GETANYMACCLIST and GETCOUNTMASTERLINES
+
+    RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {
+
+    });
+
+    this.setData(
+      {
+        nit: infoLogin.data.DocumentNumber,
+        nombre: infoLogin.data.nombre,
+        tipoDocumento: this.DocumentType(infoLogin.data.DocumentType)
+      })
+
+    my.setNavigationBar({
+      title: ""
+    });
+  },
+  /**
+   *Convierte un tipo de documento numérico en su representación de cadena correspondiente.
+   *
+   * @param {number} type - La representación numérica del tipo de documento.
+   * @returns {string} - La representación de cadena del tipo de documento.
+   */
+  DocumentType (type) {
+    const documentTypes = {
+      1: "CC",
+      2: "CE",
+      3: "PP",
+      4: "CD",
+      5: "NIT"
+    };
+    const typeDocument = documentTypes[type] || "";
+    return typeDocument;
+  },
+  /**
+   * Navega a un mini programa dentro de la aplicación Alipay.
+   * @param {object} e - El objeto de evento que contiene el elemento de destino y su conjunto de datos.
+   * @param {string} e.target.dataset.appId - La identificación del mini programa.
+   * @param {string} e.target.dataset.pageUrl - La URL de la página Mini del Programa.
+   */
+  navigateToMiniProgram (e) {
+    const appId = e.target.dataset.appId;
+    const pageUrl = e.target.dataset.pageUrl;
+
+    const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
+    const dataMiniprogram = extraData.response;
+
+    my.navigateToMiniProgram({
+      appId,
+      path: pageUrl,
+      extraData: { response: dataMiniprogram },
+      success (res) {
+
+      },
+      fail (err) {
+      }
+    });
+  },
+  /**
+   *Maneja el evento cuando se muestra el menú.
+   * Establece la posición y las propiedades BasicVisible en el objeto de datos para controlar la visibilidad del menú.
+   *
+   * @param {Object} e - El objeto de evento que contiene el conjunto de datos de destino con la propiedad de posición.
+   * @returns {void}
+   */
+  handleShowMenu (e) {
+    const { position } = e.target.dataset;
+    this.setData({
+      position,
+      basicVisible: true
+    });
+  },
+  /**
+   *Cierra la ventana emergente configurando la propiedad de datos 'BasicVisible` en `falso'.
+   */
+  handlePopupClose () {
+    this.setData({
+      basicVisible: false
+    });
+  },
+  /**
+   * Este método se activa cuando se hace clic en un icono.Recupera el índice, pageUrl y appid del conjunto de datos del icono hecho hecho hecho.
+   * Luego recupera extradatos del almacenamiento y lo asigna a DataMiniprogram.
+   * Finalmente, navega a un mini programa utilizando el AppID, PageUrl y Dataminiprogram recuperados.
+   * @param {object} e - El objeto de evento que contiene el elemento de destino y su conjunto de datos.
+   */
+  onIconClick (e) {
+    const { index } = e.target.dataset;
+    const { pageUrl, appId } = this.data.menuAccess[index];
+
+    const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
+    const dataMiniprogram = extraData.response;
+
+    my.navigateToMiniProgram({
+      appId,
+      path: pageUrl,
+      extraData: { response: dataMiniprogram },
+      success (res) {
+      },
+      fail (err) {
+      }
+    });
+  },
+  /**
+   * Se desencadena cuando se hace clic en un artículo de pie de página.
+   * @param {object} e - El objeto de evento que contiene los datos del elemento hecho.
+   */
+  onFooterItemClick (e) {
+    const { index, appId, path } = e.currentTarget.dataset;
+    const { footerItems } = this.data;
+    if (index === 1) {
+      this.purchaseProduct();
+    } else {
+      my.navigateToMiniProgram({
+        appId,
+        path,
+        extraData: {
+          data1: "test"
+        },
+        success: function (res) {
+        },
+        fail: function (err) {
+        }
+      });
+    }
+    this.setData({
+      footerItems
+    });
+  },
+  /**
+   * Establece la propiedad `showloading` en el objeto` data` a `verdadero '.
+   */
+  showLoadings () {
+    this.setData({
+      showLoading: true
+    });
+  },
+  /**
+   * Este método se utiliza para ocultar el indicador de carga configurando la propiedad `showloading` en el objeto` data` a `falso '.
+   */
+  hideLoading () {
+    this.setData({
+      showLoading: false
+    });
+  },
+  /**
+   *Abre un documento PDF de una URL dada.
+   */
+  goToTerms () {
+    const { urlTerms } = this.data;
+    my.downloadFile({
+      url: urlTerms,
+      success ({ apFilePath }) {
+        my.openDocument({
+          fileType: "pdf",
+          filePath: apFilePath,
+          success () {
+
+          },
+          fail (res) {
+            my.alert({
+              content: res.errorMessage || res.error
+            });
+          }
+        });
+      }
+    });
+  },
+  /**
+   * Actualiza el estado de las propiedades ModalVisibbledescription, ModalVisible y BasicVisible para controlar la visibilidad del modal.
+   */
+  handleClose () {
+    this.setData({
+      modalVisibleDescription: false,
+      modalVisible: true,
+      basicVisible: true
+    });
+  },
+  /**
+   * Llamado cuando se toca el botón Cancelar.Redirige al usuario a la página de inicio y oculta el modal.
+   */
+  onCancelButtonTap () {
+    my.redirectTo({
+      url: '/main/ui/pages/home/home'
+    });
+    this.setData({
+      modalVisible: false
+    });
+  },
+  /**
+   *Llamado cuando el usuario aprovecha el botón de aceptar en un modal.
+   * Redirige al usuario a los servicios de inicio de sesión y oculta el modal.
+   */
+  onAcceptButtonTap () {
+    this.redirectLoginServices();
+    this.setData({
+      modalVisible: false
+    });
+  },
+  /**
+   * Establece la propiedad 'modalVisible` en el objeto de datos a `true', que controla la visibilidad de un modal.
+   */
+  handleOpenModal () {
+    this.setData({
+      modalVisible: true
+    });
+  },
+  /**
+   * El método `Onsignout` se llama cuando el usuario desea cerrar la aplicación.
+   * Realiza algunas acciones antes de volver al programa Mini anterior.
+   */
+  onSignOut () {
+    this.showLoadings();
+    const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
+    AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
+      this.hideLoading();
+      my.navigateBackMiniProgram({
+        extraData: {
+          data1: "test"
+        },
+        success: (res) => {
+
+        },
+        fail: (res) => {
+
+        }
+      });
+    });
+  },
+  /**
+   * Abre una URL en la aplicación Alipay.
+   */
+  purchaseProduct () {
+    const url = getUrlClaroVentas();
+    my.call('openUrl', {
+      url
+    }).then((values) => {
+    }).catch((value) => {
+    })
+  },
+  onUnload () { }
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-API.html">API</a></li><li><a href="module-AutoRefreshRepository.html">AutoRefreshRepository</a></li><li><a href="module-changeHeaderLocal.html">changeHeaderLocal</a></li><li><a href="module-deviceSpectRepository.html">deviceSpectRepository</a></li><li><a href="module-deviceSpectSourceLocal.html">deviceSpectSourceLocal</a></li><li><a href="module-versi%2525C3%2525B3n.html">versión</a></li></ul><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li><li><a href="module-API.html">API</a></li><li><a href="module-AutoRefreshRepository.html">AutoRefreshRepository</a></li><li><a href="module-deviceSpectRepository.html">deviceSpectRepository</a></li><li><a href="module-versi%2525C3%2525B3n.html">versión</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CreateDeviceSpectInStorage">CreateDeviceSpectInStorage</a></li><li><a href="global.html#CreateInfoDeviceStorage">CreateInfoDeviceStorage</a></li><li><a href="global.html#DocumentType">DocumentType</a></li><li><a href="global.html#GetDeviceSpectInStorage">GetDeviceSpectInStorage</a></li><li><a href="global.html#autoRefresh">autoRefresh</a></li><li><a href="global.html#changeValueHeader">changeValueHeader</a></li><li><a href="global.html#getAppVersionList">getAppVersionList</a></li><li><a href="global.html#getAppVersionRepository">getAppVersionRepository</a></li><li><a href="global.html#getInfoDeviceStorage">getInfoDeviceStorage</a></li><li><a href="global.html#getUrlClaroVentas">getUrlClaroVentas</a></li><li><a href="global.html#goToTerms">goToTerms</a></li><li><a href="global.html#handleClose">handleClose</a></li><li><a href="global.html#handleOpenModal">handleOpenModal</a></li><li><a href="global.html#handlePopupClose">handlePopupClose</a></li><li><a href="global.html#handleShowMenu">handleShowMenu</a></li><li><a href="global.html#hideLoading">hideLoading</a></li><li><a href="global.html#navigateToMiniProgram">navigateToMiniProgram</a></li><li><a href="global.html#onAcceptButtonTap">onAcceptButtonTap</a></li><li><a href="global.html#onCancelButtonTap">onCancelButtonTap</a></li><li><a href="global.html#onFooterItemClick">onFooterItemClick</a></li><li><a href="global.html#onIconClick">onIconClick</a></li><li><a href="global.html#onSignOut">onSignOut</a></li><li><a href="global.html#purchaseProduct">purchaseProduct</a></li><li><a href="global.html#refreshToken">refreshToken</a></li><li><a href="global.html#showLoadings">showLoadings</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Oct 27 2023 08:39:14 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

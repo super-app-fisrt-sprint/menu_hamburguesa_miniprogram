@@ -1,6 +1,12 @@
 module.exports.CreateDeviceSpectInStorage = CreateDeviceSpectInStorage;
 module.exports.GetDeviceSpectInStorage = GetDeviceSpectInStorage;
 
+/**
+ *Almacena las especificaciones del dispositivo en el almacenamiento utilizando la tecla proporcionada.
+ * @param {string} key - La clave utilizada para almacenar las especificaciones del dispositivo en el almacenamiento.
+ * @param {object} data -Un objeto que contiene las especificaciones del dispositivo.
+ * @returns {boolean} - Devuelve verdadero si las especificaciones del dispositivo se almacenan correctamente en el almacenamiento, de lo contrario devuelve falso.
+ */
 function CreateDeviceSpectInStorage (key, data) {
   try {
     my.setStorage({
@@ -31,6 +37,11 @@ function CreateDeviceSpectInStorage (key, data) {
   }
 }
 
+/**
+ *Recupera las especificaciones del dispositivo del almacenamiento utilizando la tecla proporcionada.
+ * @param {string} tecla: la clave utilizada para recuperar las especificaciones del dispositivo del almacenamiento.
+ * @returns {objeto} - Devuelve las especificaciones del dispositivo como un objeto si existen en el almacenamiento, de lo contrario devuelve un objeto de error.
+ */
 function GetDeviceSpectInStorage (key) {
   try {
     const res = my.getStorageSync({ key });

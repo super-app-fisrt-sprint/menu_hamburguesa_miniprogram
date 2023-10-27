@@ -1,6 +1,10 @@
 const DeviceSpectRepository = require("../data/attributes/DeviceSpect/repository/DeviceSpectRepository");
 const AutoRefreshRepository = require("../data/attributes/AutoRefreshToken/repository/AutoRefreshRepository");
 
+/**
+ * Recupera la información de almacenamiento de dispositivos.ento de dispositivos.
+ * @returns {any} La información de almacenamiento del dispositivo.
+ */
 function getInfoDeviceStorage () {
   let response = null;
   try {
@@ -12,6 +16,12 @@ function getInfoDeviceStorage () {
   return response;
 }
 
+/**
+ * Crea información de almacenamiento de dispositivos.de dispositivos.
+ * @param {object} data -los Datos De Respuesta
+ * @param {object} deviceData - La información del dispositivo.
+ * @returns {object} Un objeto con la información de inicio de sesión actualizada y los encabezados del dispositivo.os encabezados del dispositivo.
+ */
 function CreateInfoDeviceStorage (data, deviceData) {
   const result = {
     data: null,

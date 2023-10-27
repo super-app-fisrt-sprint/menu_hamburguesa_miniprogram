@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: data/attributes/DeviceSpect/entities/DeviceSpect.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: data/attributes/DeviceSpect/entities/DeviceSpect.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Representa una especificación de dispositivo.
+ * @class
+ * @constructor
+ * @param {object} data - Un objeto que contiene varias propiedades con sus valores correspondientes.
+ * @property {string} X-SESSION-ID - La identificación de la sesión.
+ * @property {string} X-MC-LINE - La línea.
+ * @property {string} X-MC-LOB - El LOB.
+ * @property {string} Content-Type - El tipo de contenido.
+ * @property {string} X-MC-MAIL - El correo.
+ * @property {string} X-Carrier - El portador.
+ * @property {string} X-Wifi - El wifi.
+ * @property {string} X-MC-HE-V - La versión he.
+ * @property {string} X-MC-SO-V - La versión SO.
+ * @property {string} Cache-Control - El control de caché.
+ * @property {string} X-MC-SO-API - La API SO.
+ * @property {string} X-MC-SO-PHONE-F - El teléfono SO F.
+ * @property {string} X-MC-SO-PHONE-M - El Teléfono So M.
+ * @property {string} X-MC-APP-V - La versión de la aplicación.
+ * @property {string} X-MC-DEVICE-NAME - El nombre del dispositivo.
+ * @property {string} X-MC-DEVICE-ID - La identificación del dispositivo.
+ * @property {string} X-MC-USER-AGENT - El agente de usuario.
+ */
+module.exports = class deviceSpect {
+  constructor (data) {
+    this['X-SESSION-ID'] = data['X-SESSION-ID'];
+    this['X-MC-LINE'] = data['X-MC-LINE'];
+    this['X-MC-LOB'] = data['X-MC-LOB'];
+    this['Content-Type'] = data['Content-Type'];
+    this['X-MC-MAIL'] = data['X-MC-MAIL'];
+    this['X-Carrier'] = data['X-Carrier'];
+    this['X-Wifi'] = data['X-Wifi'];
+    this['X-MC-HE-V'] = data['X-MC-HE-V'];
+    this['X-MC-SO-V'] = data['X-MC-SO-V'];
+    this['Cache-Control'] = data['Cache-Control'];
+    this['X-MC-SO-API'] = data['X-MC-SO-API'];
+    this['X-MC-SO-PHONE-F'] = data['X-MC-SO-PHONE-F'];
+    this['X-MC-SO-PHONE-M'] = data['X-MC-SO-PHONE-M'];
+    this['X-MC-APP-V'] = data['X-MC-APP-V'];
+    this['X-MC-DEVICE-NAME'] = data['X-MC-DEVICE-NAME'];
+    this['X-MC-DEVICE-ID'] = data['X-MC-DEVICE-ID'];
+    this['X-MC-USER-AGENT'] = data['X-MC-USER-AGENT'];
+  }
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-API.html">API</a></li><li><a href="module-AutoRefreshRepository.html">AutoRefreshRepository</a></li><li><a href="module-changeHeaderLocal.html">changeHeaderLocal</a></li><li><a href="module-deviceSpectRepository.html">deviceSpectRepository</a></li><li><a href="module-deviceSpectSourceLocal.html">deviceSpectSourceLocal</a></li><li><a href="module-versi%2525C3%2525B3n.html">versión</a></li></ul><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li><li><a href="module-API.html">API</a></li><li><a href="module-AutoRefreshRepository.html">AutoRefreshRepository</a></li><li><a href="module-deviceSpectRepository.html">deviceSpectRepository</a></li><li><a href="module-versi%2525C3%2525B3n.html">versión</a></li></ul><h3>Global</h3><ul><li><a href="global.html#CreateDeviceSpectInStorage">CreateDeviceSpectInStorage</a></li><li><a href="global.html#CreateInfoDeviceStorage">CreateInfoDeviceStorage</a></li><li><a href="global.html#DocumentType">DocumentType</a></li><li><a href="global.html#GetDeviceSpectInStorage">GetDeviceSpectInStorage</a></li><li><a href="global.html#autoRefresh">autoRefresh</a></li><li><a href="global.html#changeValueHeader">changeValueHeader</a></li><li><a href="global.html#getAppVersionList">getAppVersionList</a></li><li><a href="global.html#getAppVersionRepository">getAppVersionRepository</a></li><li><a href="global.html#getInfoDeviceStorage">getInfoDeviceStorage</a></li><li><a href="global.html#getUrlClaroVentas">getUrlClaroVentas</a></li><li><a href="global.html#goToTerms">goToTerms</a></li><li><a href="global.html#handleClose">handleClose</a></li><li><a href="global.html#handleOpenModal">handleOpenModal</a></li><li><a href="global.html#handlePopupClose">handlePopupClose</a></li><li><a href="global.html#handleShowMenu">handleShowMenu</a></li><li><a href="global.html#hideLoading">hideLoading</a></li><li><a href="global.html#navigateToMiniProgram">navigateToMiniProgram</a></li><li><a href="global.html#onAcceptButtonTap">onAcceptButtonTap</a></li><li><a href="global.html#onCancelButtonTap">onCancelButtonTap</a></li><li><a href="global.html#onFooterItemClick">onFooterItemClick</a></li><li><a href="global.html#onIconClick">onIconClick</a></li><li><a href="global.html#onSignOut">onSignOut</a></li><li><a href="global.html#purchaseProduct">purchaseProduct</a></li><li><a href="global.html#refreshToken">refreshToken</a></li><li><a href="global.html#showLoadings">showLoadings</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Oct 27 2023 08:39:14 GMT-0500 (hora estándar de Colombia)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
