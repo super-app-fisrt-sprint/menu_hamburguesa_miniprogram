@@ -74,7 +74,6 @@
 
     <view class="cn-header-enterprise-container">
       <view class="cn-header-back-gesture">
-        <image mode="scaleToFill" class="cn-image-back cn-button-full-text__icon" />
       </view>
       <image class="menu-header__image" src="/main/ui/assets/logo-claro-blanco.svg" />
     </view>
