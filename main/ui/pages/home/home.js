@@ -1,7 +1,7 @@
 const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
-const {getUrlClaroVentas} =require("../../../domain/ClaroVentasViewModel")
+const { getUrlClaroVentas } = require("../../../domain/ClaroVentasViewModel")
 Page({
   data: {
     nit: "",
@@ -108,10 +108,6 @@ Page({
       }
 
     ]
-  },
-  onTitleClick()
-  {
-    my.navigateBackMiniProgram();
   },
   onLaunch() {
     const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
@@ -293,21 +289,20 @@ Page({
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
       this.hideLoading();
-      my.navigateBackMiniProgram({
-        extraData: {
-          data1: "test"
-        },
-        success: (res) => {
+      my.navigateToMiniProgram({
+        appId: "3482020172156760",
+        path: "main/ui/pages/login/singUp/singUp",
+        success(res) {
 
         },
-        fail: (res) => {
+        fail(err) {
 
         }
       });
     });
   },
   purchaseProduct() {
-    const url=getUrlClaroVentas();
+    const url = getUrlClaroVentas();
     my.call('openUrl', {
       url: url
     }).then((values) => {
