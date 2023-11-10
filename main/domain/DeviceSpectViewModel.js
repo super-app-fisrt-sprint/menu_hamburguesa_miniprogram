@@ -39,7 +39,7 @@ function CreateInfoDeviceStorage (data, deviceData) {
         "X-MC-USER-AGENT": "eyJpcCI6IjE3Mi4yMS44My4yNSIsInVzZXJBZ2VudCI6Ik1pQ2xhcm9BcHAvMC4wLjEgKHNhbXN1bmc7IFNNLUc5ODhOOyBcdTAwM2NhbmRyb2lkLzlcdTAwM2UpIn0=",
         "X-MC-DEVICE-ID": "sdSS5V/uzNMk7u+w5J7jrLK82uPH+QeVMag0lGPgjM/XZ5KOc7MKnHFsFNb8kPQtil3fH8ewmXvXD88huw4LGecaguoggK6aWSq+o3TmC0uyWNagvvJpl2R8VGwFdiil/JDQXF/JXv5Jm8nA+lr0TEMDDWqfc5bEtnOvX9mmmaQ=",
         "X-MC-LOB": extraData.usuario.tipoClienteID,
-        "X-MC-SO": deviceData.platform,
+        "X-MC-SO": deviceData.platform.toLowerCase(),
         "X-MC-SO-PHONE-F": deviceData.brand,
         "X-MC-SO-PHONE-M": deviceData.model,
         "X-MC-DEVICE-NAME": deviceData.brand + deviceData.model,

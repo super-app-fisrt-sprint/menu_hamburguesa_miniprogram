@@ -1,0 +1,8 @@
+{
+  "usingComponents": {},
+  "titleBarColor": "#040F16",
+  "gestureBack": "YES",
+  "transparentTitle": "none",
+  "responsive": true,
+  "showTitleLoading": "YES"
+}

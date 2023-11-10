@@ -6,5 +6,6 @@ module.exports = class APIs {
 
 const URL_BASE = {
   URL_API_GET_VERSION_APP: "https://apiselfservice.co/api/index.php/v1/core/movil/VersionesApp.json",
-  URL_AUTO_REFRESH: "https://apiselfservice.co/api/index.php/v2/soap/AuthRefresh.json"
+  URL_AUTO_REFRESH: "https://apiselfservice.co/api/index.php/v2/soap/AuthRefresh.json",
+  URL_API_BANNERS: "https://apiselfservice.co/api/index.php/v1/core/movil/bannersList.json?newDesing=1&tab=8"
 };

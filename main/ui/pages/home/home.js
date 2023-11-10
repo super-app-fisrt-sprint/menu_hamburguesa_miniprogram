@@ -1,9 +1,16 @@
 const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
-const { getUrlClaroVentas } = require("../../../domain/ClaroVentasViewModel")
+const BannerListViewModel = require("../../../domain/BannerListViewModel");
+const {getUrlClaroVentas} =require("../../../domain/ClaroVentasViewModel")
 Page({
   data: {
+    showContent: false,
+    scrollTopPos: 0,
+    orderIsTap: [],
+    toView: "0",
+    isButtonPressed: false,
+    interval: 0,
     nit: "",
     nombre: "",
     position: "",
@@ -118,15 +125,16 @@ Page({
     });
   },
   onLoad() {
+    this.showLoadings();
     const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
 
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     // Services GETANYMACCLIST and GETCOUNTMASTERLINES
-
+    
     RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {
 
     });
-
+    this.bannerList(deviceSpect);
     this.setData(
       {
         nit: infoLogin.data.DocumentNumber,
@@ -309,5 +317,90 @@ Page({
     }).catch((value) => {
     })
   },
-  onUnload() { }
+  onUnload() { },
+  bannerList(deviceSpect){
+    BannerListViewModel.ApiBannerList(deviceSpect).then((result) => {
+      if (result !== false) {
+        const BannerList = result.data;
+        this.setData({
+          showContent: true,
+          order: BannerList,
+          lengthOrder: BannerList.length
+        });
+
+        const lengthOrder = this.data.lengthOrder;
+        const orderIsTap = new Array(lengthOrder).fill(false);
+        orderIsTap[0] = true;
+        this.setData({
+          orderIsTap,
+          interval: 100 / lengthOrder
+        });
+      }
+      this.hideLoading();
+    });
+  },
+  buttonTap(e) {
+    const order = this.data.order;
+    const id = e.currentTarget.dataset.item;
+    const idString = id.toString();
+    const orderIsTap = order.map((_, i) => i === id);
+    this.setData({
+      orderIsTap,
+      isButtonPressed: !this.data.isButtonPressed,
+      toView: idString
+    });
+  },
+  goToTerms(url) {
+    let urlTerms = url;
+    if (url && url.startsWith("http://")) {
+      urlTerms = url.replace("http://", "https://");
+    }
+    this.showLoadings();
+    const that = this;
+    my.downloadFile({
+      url: urlTerms,
+
+      success({ apFilePath }) {
+        my.openDocument({
+          fileType: "pdf",
+
+          filePath: apFilePath,
+
+          success() {
+            that.hideLoading();
+          },
+          fail(res) {
+            my.alert({
+              content: res.errorMessage || res.error
+            });
+          }
+        });
+      },
+
+      fail(res) {
+        my.alert({
+          content: res.errorMessage || res.error
+        });
+      }
+    });
+  },
+  swiper(e) {
+    const order = this.data.order;
+    const { current } = e.detail;
+    const orderIsTap = order.map((_, i) => i === current);
+    this.setData({
+      orderIsTap
+    });
+  },
+  buttonTapNavigate(e) {
+    const value = e.currentTarget.dataset.url;
+    if (value.includes(".pdf")) {
+      this.goToTerms(value);
+    } else {
+      const url = `redirect/redirect?url=${value}`;
+      my.navigateTo({
+        url
+      });
+    }
+  },
 });
