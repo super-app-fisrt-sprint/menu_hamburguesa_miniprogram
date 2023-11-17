@@ -142,6 +142,8 @@ Page({
         nombre: infoLogin.data.nombre,
         tipoDocumento: this.DocumentType(infoLogin.data.DocumentType)
       });
+
+      this.calcularDocumentoIdentidad();
   },
   DocumentType(type) {
     const documentTypes = {
@@ -152,6 +154,7 @@ Page({
       5: "NIT"
     };
     const typeDocument = documentTypes[type] || "";
+    
     return typeDocument;
   },
   navigateToMiniProgram(e) {
@@ -402,6 +405,17 @@ Page({
       my.navigateTo({
         url
       });
+    }
+  },
+  calcularDocumentoIdentidad() {
+    const nit = this.data.nit.replace(/[^\d]/g, '');
+    console.log("nit---->",nit)
+    if (!isNaN(nit)) {
+      const vpri = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
+      let x = nit.split('').reverse().reduce((acc, val, i) => acc + (val * vpri[i]), 0) % 11;
+      const digitoVerificacion = x > 1 ? 11 - x : x;
+
+      this.setData({ digitoVerificacion: String(digitoVerificacion) });
     }
   },
 });
