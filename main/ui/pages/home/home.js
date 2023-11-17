@@ -143,7 +143,7 @@ Page({
         tipoDocumento: this.DocumentType(infoLogin.data.DocumentType)
       });
 
-      this.calcularDocumentoIdentidad();
+    this.calcularDocumentoIdentidad();
   },
   DocumentType(type) {
     const documentTypes = {
@@ -154,7 +154,7 @@ Page({
       5: "NIT"
     };
     const typeDocument = documentTypes[type] || "";
-    
+
     return typeDocument;
   },
   navigateToMiniProgram(e) {
@@ -163,6 +163,7 @@ Page({
 
     const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
     const dataMiniprogram = extraData.response;
+    const dataUser = extraData.keyUser
 
     my.navigateToMiniProgram({
       appId,
@@ -195,6 +196,7 @@ Page({
 
     const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
     const dataMiniprogram = extraData.response;
+    const key = extraData.keyUser
 
 
     console.log(appId);
@@ -204,7 +206,9 @@ Page({
     my.navigateToMiniProgram({
       appId,
       path: pageUrl,
-      extraData: { response: dataMiniprogram },
+      extraData: {
+        response: dataMiniprogram, key
+      },
       success(res) {
 
       },
@@ -409,7 +413,7 @@ Page({
   },
   calcularDocumentoIdentidad() {
     const nit = this.data.nit.replace(/[^\d]/g, '');
-    console.log("nit---->",nit)
+    console.log("nit---->", nit)
     if (!isNaN(nit)) {
       const vpri = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
       let x = nit.split('').reverse().reduce((acc, val, i) => acc + (val * vpri[i]), 0) % 11;
