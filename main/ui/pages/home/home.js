@@ -2,7 +2,7 @@ const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
 const BannerListViewModel = require("../../../domain/BannerListViewModel");
-const {getUrlClaroVentas} =require("../../../domain/ClaroVentasViewModel")
+const { getUrlClaroVentas } = require("../../../domain/ClaroVentasViewModel")
 Page({
   data: {
     showContent: false,
@@ -73,7 +73,8 @@ Page({
       {
         iconAccess: "/main/ui/assets/icons/user.svg",
         titleAccess: "Gestión de la cuenta",
-        pageUrl: "/main/ui/pages/index/index"
+        pageUrl: "main/ui/pages/accountManagement/accountManagement",
+        appId: "3482020177494589",
       }
     ],
     footerItems: [
@@ -130,7 +131,7 @@ Page({
 
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     // Services GETANYMACCLIST and GETCOUNTMASTERLINES
-    
+
     RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {
 
     });
@@ -318,7 +319,7 @@ Page({
     })
   },
   onUnload() { },
-  bannerList(deviceSpect){
+  bannerList(deviceSpect) {
     BannerListViewModel.ApiBannerList(deviceSpect).then((result) => {
       if (result !== false) {
         const BannerList = result.data;
