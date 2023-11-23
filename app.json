@@ -2,7 +2,6 @@
   "subPackageBuildType": "shared",
   "pages": [
     "main/ui/pages/home/home",
-    "main/ui/pages/index/index",
     "main/ui/pages/terms/terms",
     "main/ui/pages/home/redirect/redirect"
   ],
