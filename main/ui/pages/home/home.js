@@ -226,11 +226,14 @@ Page({
     if (index === 1) {
       this.purchaseProduct();
     } else {
+      const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
+      const dataMiniprogram = extraData.response;
+
       my.navigateToMiniProgram({
         appId,
         path,
         extraData: {
-          data1: "test"
+          response: dataMiniprogram
         },
         success: function (res) {
           console.log(res);
