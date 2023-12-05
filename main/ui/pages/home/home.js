@@ -103,7 +103,7 @@ Page({
         pageUrl: "/pages/index/index",
         isActive: false,
         appId: "3482020173007315",
-        path: "/main/ui/pages/chatService/chatService"
+        path: "main/ui/pages/chatService/chatService"
       },
       {
         icon: "/main/ui/assets/icons/pedidos.svg",
@@ -112,7 +112,7 @@ Page({
         pageUrl: "/pages/index/index",
         isActive: false,
         appId: "3482020173097468",
-        path: "/main/ui/pages/orders/orders"
+        path: "main/ui/pages/orders/orders"
       }
 
     ]
@@ -231,7 +231,7 @@ Page({
 
       my.navigateToMiniProgram({
         appId,
-        path,
+        path: path,
         extraData: {
           response: dataMiniprogram
         },
