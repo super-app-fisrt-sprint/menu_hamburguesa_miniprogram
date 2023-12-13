@@ -306,12 +306,13 @@ Page({
 
 
   onSignOut() {
-    const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
-    AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
-      this.showLoadings();
-      my.clearStorageSync();
-      my.exitMiniProgram();
-    });
+    my.exitMiniProgram();
+    // this.showLoadings();
+    // const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
+    // AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
+    //   my.clearStorageSync();
+    //   my.exitMiniProgram();
+    // });
   },
   purchaseProduct() {
     const url = getUrlClaroVentas();
