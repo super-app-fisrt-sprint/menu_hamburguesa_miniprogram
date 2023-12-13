@@ -1,6 +1,0 @@
-<view class="background">
-  <view class="loading-container">
-    <image id="loading-img" class="loading-img" src="{{loadingImgSrc}}" mode="aspectFit" />
-    <text class="loading-text">Espera un momento</text>
-  </view>
-</view>

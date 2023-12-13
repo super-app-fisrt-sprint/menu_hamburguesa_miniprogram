@@ -303,22 +303,14 @@ Page({
       modalVisible: true
     });
   },
+
+
   onSignOut() {
-    this.showLoadings();
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
-      this.hideLoading();
-      // my.navigateToMiniProgram({
-      //   appId: "3482020172156760",
-      //   path: "main/ui/pages/login/singUp/singUp",
-      //   success(res) {
-
-      //   },
-      //   fail(err) {
-
-      //   }
-      // });
-      my.exitMiniProgram({})
+      this.showLoadings();
+      my.clearStorageSync();
+      my.exitMiniProgram();
     });
   },
   purchaseProduct() {
