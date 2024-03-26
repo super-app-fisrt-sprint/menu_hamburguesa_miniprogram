@@ -7,7 +7,7 @@ const BannerList = require("../data/attributes/BannerListService/entities/Banner
  * @returns {Objeto|boolean}: los datos del banner asignado o falso si se produce un error o los datos de respuesta no son válidos.
  */
 
-async function ApiBannerList(deviceSpec) {
+async function ApiBannerList (deviceSpec) {
   const bannerListRepository = new BannerListRepository();
   const dataBanner = new BannerList();
   try {
@@ -20,7 +20,7 @@ async function ApiBannerList(deviceSpec) {
       res.data.response !== undefined &&
       res.data.error === 0
     ) {
-      dataBanner.data = res.data.response.map(({name, url, image}) => ({
+      dataBanner.data = res.data.response.map(({ name, url, image }) => ({
         name,
         url,
         image

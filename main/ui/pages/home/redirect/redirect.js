@@ -2,7 +2,7 @@ Page({
   data: {
     url: ""
   },
-  onLoad(options) {
+  onLoad (options) {
     my.setNavigationBar({
       title: ""
     });

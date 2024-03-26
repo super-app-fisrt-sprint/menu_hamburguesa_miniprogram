@@ -1,4 +1,11 @@
-.tea
-node_modules
+# dependencies
+node_modules/
+# config mini
+.mini-ide-tiny_app_ide_intl_poc_windows/
+# Ide
+.vscode/
+.idea/
+.tea/
+package-lock.json
 documentation
-.mini-ide-tiny_app_ide_intl_poc_windows
+results

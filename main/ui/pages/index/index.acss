@@ -1,0 +1,8 @@
+.container-info {
+  padding: 4%;
+  text-align: center;
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

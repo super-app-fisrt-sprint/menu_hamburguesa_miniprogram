@@ -5,6 +5,7 @@
     "divider": "antd-mini/es/Divider/index",
     "popup": "antd-mini/es/Popup/index",
     "icon": "antd-mini/es/Icon/index",
-    "loading-component": "/node_modules/claro-superapp-components/components/loading-component/loading-component"
+    "loading-component": "/node_modules/claro-superapp-components/components/loading-component/loading-component",
+    "onboarding": "/main//ui/components/OnBoarding/OnBoarding"
   }
 }

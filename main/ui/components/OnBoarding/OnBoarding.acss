@@ -1,0 +1,132 @@
+.onboarding-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(31, 30, 30, 85.6%);
+  z-index: 1000;
+}
+
+.onboarding-description {
+  text-align: center;
+  font-size: 14px;
+  transition: 450ms all;
+  font-weight: bold;
+  color: #5e5e5e;
+  z-index: 100;
+}
+
+.onboarding-description-top {
+  text-align: center;
+  font-size: 14px;
+  transition: 450ms all;
+  font-weight: bold;
+  color: #5e5e5e;
+  z-index: 100;
+}
+
+.onboarding-next {
+  width: 160px;
+  background-color: #da291c;
+  border-radius: 500px;
+  color: white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  z-index: 100;
+}
+
+.indicator {
+  position: absolute;
+  bottom: 60px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slice {
+  width: 20px;
+  height: 10px;
+  border: #fff solid 1px;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.slice-active {
+  width: 40px;
+  background-color: #fff;
+}
+
+.skip-tutorial {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+}
+
+.icon-flecha {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.text-to-jump {
+  color: white;
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.button-unique {
+  height: 40px;
+  width: 50%;
+}
+
+.container-popup {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 92%;
+  height: 153px;
+  position: relative;
+  border-radius: 10px;
+  gap: 20px;
+}
+
+.flecha-top,
+.flecha {
+  width: 10%;
+  height: 4vh;
+  position: absolute;
+  background-color: #ffff;
+  transform: rotate(45deg);
+  border-radius: 5px;
+}
+
+.container-popup-top {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 92%;
+  height: 153px;
+  position: relative;
+  border-radius: 10px;
+  gap: 20px;
+}
+
+.skip-tutorial-back {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 12vh;
+  left: 20px;
+}

@@ -1,0 +1,43 @@
+<view a:if="{{ show }}">
+  <view class="onboarding-container">
+
+    <view
+      a:if="{{ stepDescriptionTop !== '' }}"
+      class="container-popup-top"
+      style="top:{{position === 4 ? bottomPopupTopLast : bottomPopupTop }}px"
+    >
+      <view class="flecha-top" style="left:{{left}}; bottom:{{bottom}}"></view>
+        <text class="onboarding-description-top">
+          {{ stepDescriptionTop }}
+        </text>
+        <text class="onboarding-next button-unique" onTap="nextPosition">
+          {{buttonNext}}
+        </text>
+    </view>
+    
+    <view a:if="{{ stepDescription !== '' }}" class="container-popup" style="bottom:{{bottomPopup}}px">
+      <view class="flecha" style="left:{{left}}; bottom:{{bottom}}"></view>
+      <text class="onboarding-description">
+        {{ stepDescription }}
+      </text>
+      <text class="onboarding-next button-unique" onTap="nextPosition">
+        {{buttonNext}}
+      </text>
+    </view>
+
+    <view class="indicator">
+      <view a:for="{{slicesStatus}}" a:for-index="index" class="slice slice-{{item}}">
+      </view>
+    </view>
+
+    <view a:if="{{ position !== 0 }}" class="skip-tutorial-back" onTap="back">
+      <image class="icon-flecha" src="../../assets/icons/flecha-derecha-blanca.svg" />
+      <text class="text-to-jump">Anterior</text>
+    </view>
+
+    <view class="skip-tutorial" onTap="closeTutorial">
+      <text class="text-to-jump">Saltar tutorial</text>
+    </view>
+
+  </view>
+</view>

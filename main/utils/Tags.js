@@ -1,3 +1,4 @@
+/* eslint-disable */
 function myAppsFlayer(nameEvent) {
   my.call("AFLogEvent", {
     name: nameEvent,
@@ -8,11 +9,11 @@ function myAppsFlayer(nameEvent) {
   });
 }
 
-function myFirebase(nameEvent) {
+function myFirebase (nameEvent) {
   my.call("FIRLogEvent", {
     nameEvent,
     parameters: {}
   });
 }
 
-module.exports = {myFirebase, myAppsFlayer};
+module.exports = { myFirebase, myAppsFlayer };

@@ -6,7 +6,7 @@ module.exports.requestbannerList = requestbannerList;
  * @param {object} Devicespect: un objeto que contiene las especificaciones del dispositivo, incluidos los encabezados "X-MC-SO", "X-MC-Device-ID" y "X-MC-User-Agent" requeridos para la solicitud.
  * @returns {promesa}: una promesa que se resuelve con la respuesta si la solicitud es exitosa o rechaza con el error si la solicitud falla.
  */
-function requestbannerList(url, deviceSpect) {
+function requestbannerList (url, deviceSpect) {
   return new Promise((resolve, reject) => {
     my.request({
       url,

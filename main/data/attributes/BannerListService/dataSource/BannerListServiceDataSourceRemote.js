@@ -15,7 +15,7 @@ module.exports = class BannerListDataSourceRemote {
    * @constructor
    * @returns {bannerListDataSourCeremote} La instancia de Singleton de BannerListDataSourCeremote.
    */
-  constructor() {
+  constructor () {
     if (BannerListDataSourceRemote.instance) {
       return BannerListDataSourceRemote.instance;
     } else {
@@ -29,7 +29,7 @@ module.exports = class BannerListDataSourceRemote {
    * @param {object} Devicespect: la especificación del dispositivo utilizada para recuperar las listas de banner.
    * @returns {Promise | Array } Una promesa que se resuelve a las listas de banner recuperadas.
    */
-  async GetBannerLists(deviceSpect) {
+  async GetBannerLists (deviceSpect) {
     return await BannerListRemote.requestbannerList(api.URL_BASE.URL_API_BANNERS, deviceSpect);
   }
 };

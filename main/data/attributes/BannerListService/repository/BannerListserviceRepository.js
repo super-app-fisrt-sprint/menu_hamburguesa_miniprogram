@@ -14,7 +14,7 @@ module.exports = class BannerListRepository {
    * @constructor
    * @returns {bannerListRepository} La instancia de la clase BannerListRepository.
    */
-  constructor() {
+  constructor () {
     if (BannerListRepository.instance) {
       return BannerListRepository.instance;
     } else {
@@ -28,7 +28,7 @@ module.exports = class BannerListRepository {
    * @param {object} Devicespect: la especificación del dispositivo utilizada para obtener las listas de banner de forma remota.
    * @returns {Promise | Array } Una promesa que se resuelve a las listas de banner recuperadas.
    */
-  async getBannerListRemote(deviceSpect) {
+  async getBannerListRemote (deviceSpect) {
     return await BannerListDatasourceRemote.GetBannerLists(deviceSpect);
   }
 };

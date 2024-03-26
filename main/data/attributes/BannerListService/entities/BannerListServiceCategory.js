@@ -1,6 +1,6 @@
 module.exports = class DataBanner {
   static instance;
-  constructor(data) {
+  constructor (data) {
     this.data = data;
 
     if (DataBanner.instance) {
@@ -10,7 +10,7 @@ module.exports = class DataBanner {
     }
   }
 
-  updateParams(params) {
+  updateParams (params) {
     Object.assign(this, params);
   }
 };
