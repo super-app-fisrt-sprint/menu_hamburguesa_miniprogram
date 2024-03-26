@@ -2,7 +2,8 @@ const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
 const BannerListViewModel = require("../../../domain/BannerListViewModel");
-const { getUrlClaroVentas } = require("../../../domain/ClaroVentasViewModel")
+const {getUrlClaroVentas} = require("../../../domain/ClaroVentasViewModel");
+const {myAppsFlayer, myFirebase} = require("../../../utils/Tags");
 Page({
   data: {
     showContent: false,
@@ -17,8 +18,7 @@ Page({
     basicVisible: false,
     modalVisible: false,
     showLoading: "",
-    urlTerms:
-      "https://miclaroempresas.com.co/documents/330416/0/Condiciones+Legales+de+Acceso+a+Mi+Claro+Empresas.pdf",
+    urlTerms: "https://miclaroempresas.com.co/documents/330416/0/Condiciones+Legales+de+Acceso+a+Mi+Claro+Empresas.pdf",
     access: [
       {
         icon: "/main/ui/assets/icons/moviles.svg",
@@ -68,13 +68,13 @@ Page({
         iconAccess: "/main/ui/assets/icons/users.svg",
         titleAccess: "Administrar perfiles",
         pageUrl: "main/ui/pages/manageProfiles/manageProfiles",
-        appId: "3482020174685949",
+        appId: "3482020174685949"
       },
       {
         iconAccess: "/main/ui/assets/icons/user.svg",
         titleAccess: "Gestión de la cuenta",
         pageUrl: "main/ui/pages/accountManagement/accountManagement",
-        appId: "3482020177494589",
+        appId: "3482020177494589"
       }
     ],
     footerItems: [
@@ -114,34 +114,30 @@ Page({
         appId: "3482020173097468",
         path: "main/ui/pages/orders/orders"
       }
-
     ]
   },
   onLaunch() {
-    const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
+    const {query, referrerInfo: {extraData} = {}} = my.getLaunchOptionsSync();
     // const { query, referrerInfo: { extraData } = {} } = options;
     my.alert({
-      title: 'Prueba data',
-      content: `query: ${JSON.stringify(query) || ''}\nextraData: ${JSON.stringify(extraData) || ''}`
+      title: "Prueba data",
+      content: `query: ${JSON.stringify(query) || ""}\nextraData: ${JSON.stringify(extraData) || ""}`
     });
   },
   onLoad() {
     this.showLoadings();
-    const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
+    const infoLogin = my.getStorageSync({key: "N_USER_INFO_LOGIN"});
 
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     // Services GETANYMACCLIST and GETCOUNTMASTERLINES
 
-    RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {
-
-    });
+    RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {});
     this.bannerList(deviceSpect);
-    this.setData(
-      {
-        nit: infoLogin.data.DocumentNumber,
-        nombre: infoLogin.data.nombre,
-        tipoDocumento: this.DocumentType(infoLogin.data.DocumentType)
-      });
+    this.setData({
+      nit: infoLogin.data.DocumentNumber,
+      nombre: infoLogin.data.nombre,
+      tipoDocumento: this.DocumentType(infoLogin.data.DocumentType)
+    });
 
     this.calcularDocumentoIdentidad();
   },
@@ -161,28 +157,28 @@ Page({
     const appId = e.target.dataset.appId;
     const pageUrl = e.target.dataset.pageUrl;
 
-    const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
+    const extraData = my.getStorageSync({key: "extraData"}).data || {};
     const dataMiniprogram = extraData.response;
-    const dataUser = extraData.keyUser
+    const dataUser = extraData.keyUser;
 
     my.navigateToMiniProgram({
       appId,
       path: pageUrl,
-      extraData: { response: dataMiniprogram },
-      success(res) {
-
-      },
+      extraData: {response: dataMiniprogram},
+      success(res) {},
       fail(err) {
-
+        console.error(err);
       }
     });
   },
   handleShowMenu(e) {
-    const { position } = e.target.dataset;
+    const {position} = e.target.dataset;
     this.setData({
       position,
       basicVisible: true
     });
+    myAppsFlayer("sa_zt_bt_emp_menuh");
+    myFirebase("sa_zt_bt_emp_menuh");
   },
   handlePopupClose() {
     this.setData({
@@ -194,10 +190,9 @@ Page({
     const pageUrl = this.data.menuAccess[index].pageUrl;
     const appId = this.data.menuAccess[index].appId;
 
-    const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
+    const extraData = my.getStorageSync({key: "extraData"}).data || {};
     const dataMiniprogram = extraData.response;
-    const key = extraData.keyUser
-
+    const key = extraData.keyUser;
 
     console.log(appId);
     console.log(pageUrl);
@@ -207,31 +202,27 @@ Page({
       appId,
       path: pageUrl,
       extraData: {
-        response: dataMiniprogram, key
+        response: dataMiniprogram,
+        key
       },
-      success(res) {
-
-      },
-      fail(err) {
-
-      }
+      success(res) {},
+      fail(err) {}
     });
 
     console.info(e);
-
   },
   onFooterItemClick(e) {
-    const { index, appId, path } = e.currentTarget.dataset;
-    const { footerItems } = this.data;
+    const {index, appId, path} = e.currentTarget.dataset;
+    const {footerItems} = this.data;
     if (index === 1) {
       this.purchaseProduct();
     } else {
-      const extraData = my.getStorageSync({ key: 'extraData' }).data || {};
+      const extraData = my.getStorageSync({key: "extraData"}).data || {};
       const dataMiniprogram = extraData.response;
 
       my.navigateToMiniProgram({
         appId,
-        path: path,
+        path,
         extraData: {
           response: dataMiniprogram
         },
@@ -258,16 +249,14 @@ Page({
     });
   },
   goToTerms() {
-    const { urlTerms } = this.data;
+    const {urlTerms} = this.data;
     my.downloadFile({
       url: urlTerms,
-      success({ apFilePath }) {
+      success({apFilePath}) {
         my.openDocument({
           fileType: "pdf",
           filePath: apFilePath,
-          success() {
-
-          },
+          success() {},
           fail(res) {
             my.alert({
               content: res.errorMessage || res.error
@@ -286,7 +275,7 @@ Page({
   },
   onCancelButtonTap() {
     my.redirectTo({
-      url: '/main/ui/pages/home/home'
+      url: "/main/ui/pages/home/home"
     });
     this.setData({
       modalVisible: false
@@ -304,7 +293,6 @@ Page({
     });
   },
 
-
   onSignOut() {
     my.exitMiniProgram();
     // this.showLoadings();
@@ -316,13 +304,13 @@ Page({
   },
   purchaseProduct() {
     const url = getUrlClaroVentas();
-    my.call('openUrl', {
-      url: url
-    }).then((values) => {
-    }).catch((value) => {
+    my.call("openUrl", {
+      url
     })
+      .then((values) => {})
+      .catch((value) => {});
   },
-  onUnload() { },
+  onUnload() {},
   bannerList(deviceSpect) {
     BannerListViewModel.ApiBannerList(deviceSpect).then((result) => {
       if (result !== false) {
@@ -365,7 +353,7 @@ Page({
     my.downloadFile({
       url: urlTerms,
 
-      success({ apFilePath }) {
+      success({apFilePath}) {
         my.openDocument({
           fileType: "pdf",
 
@@ -391,7 +379,7 @@ Page({
   },
   swiper(e) {
     const order = this.data.order;
-    const { current } = e.detail;
+    const {current} = e.detail;
     const orderIsTap = order.map((_, i) => i === current);
     this.setData({
       orderIsTap
@@ -409,14 +397,18 @@ Page({
     }
   },
   calcularDocumentoIdentidad() {
-    const nit = this.data.nit.replace(/[^\d]/g, '');
-    console.log("nit---->", nit)
+    const nit = this.data.nit.replace(/[^\d]/g, "");
+    console.log("nit---->", nit);
     if (!isNaN(nit)) {
       const vpri = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
-      let x = nit.split('').reverse().reduce((acc, val, i) => acc + (val * vpri[i]), 0) % 11;
+      const x =
+        nit
+          .split("")
+          .reverse()
+          .reduce((acc, val, i) => acc + val * vpri[i], 0) % 11;
       const digitoVerificacion = x > 1 ? 11 - x : x;
 
-      this.setData({ digitoVerificacion: String(digitoVerificacion) });
+      this.setData({digitoVerificacion: String(digitoVerificacion)});
     }
-  },
+  }
 });
