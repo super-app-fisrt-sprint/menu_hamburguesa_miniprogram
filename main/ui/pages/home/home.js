@@ -2,8 +2,8 @@ const DeviceSpectViewModel = require("../../../domain/DeviceSpectViewModel");
 const AppVersionViewModel = require("../../../domain/AppVersionViewModel");
 const RefreshTokenViewModel = require("../../../domain/RefreshTokenViewModel");
 const BannerListViewModel = require("../../../domain/BannerListViewModel");
-const {getUrlClaroVentas} = require("../../../domain/ClaroVentasViewModel");
-const {myAppsFlayer, myFirebase} = require("../../../utils/Tags");
+const { getUrlClaroVentas } = require("../../../domain/ClaroVentasViewModel");
+const { myAppsFlayer, myFirebase } = require("../../../utils/Tags");
 Page({
   data: {
     showContent: false,
@@ -117,7 +117,7 @@ Page({
     ]
   },
   onLaunch() {
-    const {query, referrerInfo: {extraData} = {}} = my.getLaunchOptionsSync();
+    const { query, referrerInfo: { extraData } = {} } = my.getLaunchOptionsSync();
     // const { query, referrerInfo: { extraData } = {} } = options;
     my.alert({
       title: "Prueba data",
@@ -126,12 +126,12 @@ Page({
   },
   onLoad() {
     this.showLoadings();
-    const infoLogin = my.getStorageSync({key: "N_USER_INFO_LOGIN"});
+    const infoLogin = my.getStorageSync({ key: "N_USER_INFO_LOGIN" });
 
     const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
     // Services GETANYMACCLIST and GETCOUNTMASTERLINES
 
-    RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => {});
+    RefreshTokenViewModel.refreshToken(deviceSpect).then((refreshResult) => { });
     this.bannerList(deviceSpect);
     this.setData({
       nit: infoLogin.data.DocumentNumber,
@@ -157,22 +157,22 @@ Page({
     const appId = e.target.dataset.appId;
     const pageUrl = e.target.dataset.pageUrl;
 
-    const extraData = my.getStorageSync({key: "extraData"}).data || {};
+    const extraData = my.getStorageSync({ key: "extraData" }).data || {};
     const dataMiniprogram = extraData.response;
     const dataUser = extraData.keyUser;
 
     my.navigateToMiniProgram({
       appId,
       path: pageUrl,
-      extraData: {response: dataMiniprogram},
-      success(res) {},
+      extraData: { response: dataMiniprogram },
+      success(res) { },
       fail(err) {
         console.error(err);
       }
     });
   },
   handleShowMenu(e) {
-    const {position} = e.target.dataset;
+    const { position } = e.target.dataset;
     this.setData({
       position,
       basicVisible: true
@@ -190,7 +190,7 @@ Page({
     const pageUrl = this.data.menuAccess[index].pageUrl;
     const appId = this.data.menuAccess[index].appId;
 
-    const extraData = my.getStorageSync({key: "extraData"}).data || {};
+    const extraData = my.getStorageSync({ key: "extraData" }).data || {};
     const dataMiniprogram = extraData.response;
     const key = extraData.keyUser;
 
@@ -205,19 +205,19 @@ Page({
         response: dataMiniprogram,
         key
       },
-      success(res) {},
-      fail(err) {}
+      success(res) { },
+      fail(err) { }
     });
 
     console.info(e);
   },
   onFooterItemClick(e) {
-    const {index, appId, path} = e.currentTarget.dataset;
-    const {footerItems} = this.data;
+    const { index, appId, path } = e.currentTarget.dataset;
+    const { footerItems } = this.data;
     if (index === 1) {
       this.purchaseProduct();
     } else {
-      const extraData = my.getStorageSync({key: "extraData"}).data || {};
+      const extraData = my.getStorageSync({ key: "extraData" }).data || {};
       const dataMiniprogram = extraData.response;
 
       my.navigateToMiniProgram({
@@ -249,14 +249,14 @@ Page({
     });
   },
   goToTerms() {
-    const {urlTerms} = this.data;
+    const { urlTerms } = this.data;
     my.downloadFile({
       url: urlTerms,
-      success({apFilePath}) {
+      success({ apFilePath }) {
         my.openDocument({
           fileType: "pdf",
           filePath: apFilePath,
-          success() {},
+          success() { },
           fail(res) {
             my.alert({
               content: res.errorMessage || res.error
@@ -280,6 +280,8 @@ Page({
     this.setData({
       modalVisible: false
     });
+    myAppsFlayer('sa_zt_bt_emp_cerrarsesion_cancelar')
+    myFirebase('sa_zt_bt_emp_cerrarsesion_cancelar')
   },
   onAcceptButtonTap() {
     this.redirectLoginServices();
@@ -291,26 +293,24 @@ Page({
     this.setData({
       modalVisible: true
     });
+    myAppsFlayer('sa_zt_bt_emp_cerrarsesion');
+    myFirebase('sa_zt_bt_emp_cerrarsesion');
   },
 
   onSignOut() {
     my.exitMiniProgram();
-    // this.showLoadings();
-    // const deviceSpect = DeviceSpectViewModel.getInfoDeviceStorage();
-    // AppVersionViewModel.getAppVersion(deviceSpect).then(res => {
-    //   my.clearStorageSync();
-    //   my.exitMiniProgram();
-    // });
+    myAppsFlayer("sa_zt_bt_emp_cerrarsesion_aceptar")
+    myFirebase("sa_zt_bt_emp_cerrarsesion_aceptar")
   },
   purchaseProduct() {
     const url = getUrlClaroVentas();
     my.call("openUrl", {
       url
     })
-      .then((values) => {})
-      .catch((value) => {});
+      .then((values) => { })
+      .catch((value) => { });
   },
-  onUnload() {},
+  onUnload() { },
   bannerList(deviceSpect) {
     BannerListViewModel.ApiBannerList(deviceSpect).then((result) => {
       if (result !== false) {
@@ -353,7 +353,7 @@ Page({
     my.downloadFile({
       url: urlTerms,
 
-      success({apFilePath}) {
+      success({ apFilePath }) {
         my.openDocument({
           fileType: "pdf",
 
@@ -376,10 +376,13 @@ Page({
         });
       }
     });
+    myAppsFlayer("sa_zt_bt_emp_tyc")
+    myFirebase("sa_zt_bt_emp_tyc")
+
   },
   swiper(e) {
     const order = this.data.order;
-    const {current} = e.detail;
+    const { current } = e.detail;
     const orderIsTap = order.map((_, i) => i === current);
     this.setData({
       orderIsTap
@@ -408,7 +411,7 @@ Page({
           .reduce((acc, val, i) => acc + val * vpri[i], 0) % 11;
       const digitoVerificacion = x > 1 ? 11 - x : x;
 
-      this.setData({digitoVerificacion: String(digitoVerificacion)});
+      this.setData({ digitoVerificacion: String(digitoVerificacion) });
     }
   }
 });
